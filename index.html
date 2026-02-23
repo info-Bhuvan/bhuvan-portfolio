@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bhuvan Bommannavar</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -29,6 +29,7 @@ color:var(--text);
 overflow-x:hidden;
 }
 
+/* WebGL canvas */
 canvas{
 position:fixed;
 top:0;
@@ -49,12 +50,35 @@ z-index:100;
 transition:opacity 0.6s ease;
 }
 
+/* PREMIUM CEO NAME */
 .logo{
-font-family:'Cormorant Garamond',serif;
-font-size:34px;
+position:relative;
+font-family:'Playfair Display', serif;
+font-size:44px;
 font-weight:700;
+font-style:italic;
+background: linear-gradient(90deg, #ffffff, #9ec5ff, #ffffff);
+background-size:200% auto;
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+letter-spacing:1px;
+text-shadow:0 8px 30px rgba(79,140,255,0.35);
+animation: shimmer 6s linear infinite, glowPulse 4s ease-in-out infinite;
 }
 
+/* Light sweep shimmer */
+@keyframes shimmer{
+0%{background-position:200% center;}
+100%{background-position:-200% center;}
+}
+
+/* Soft glow breathing */
+@keyframes glowPulse{
+0%,100%{text-shadow:0 8px 30px rgba(79,140,255,0.35);}
+50%{text-shadow:0 12px 40px rgba(79,140,255,0.55);}
+}
+
+/* Buttons */
 .header-buttons{
 display:flex;
 gap:20px;
@@ -81,14 +105,16 @@ display:flex;
 flex-direction:column;
 justify-content:center;
 padding:160px 10%;
+position:relative;
 }
 
+/* Hero */
 .hero{
 text-align:center;
 }
 
 .hero h1{
-font-family:'Cormorant Garamond',serif;
+font-family:'Playfair Display', serif;
 font-size:64px;
 margin-bottom:20px;
 }
@@ -96,6 +122,65 @@ margin-bottom:20px;
 .hero p{
 font-size:22px;
 color:var(--muted);
+}
+
+/* Grid */
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:60px;
+margin-top:60px;
+perspective:1200px;
+}
+
+/* Pallets */
+.card{
+padding:40px;
+background:var(--glass);
+backdrop-filter:blur(25px);
+transform-style:preserve-3d;
+transition:transform 0.8s cubic-bezier(.16,1,.3,1),
+box-shadow 0.8s cubic-bezier(.16,1,.3,1);
+cursor:pointer;
+}
+
+.card:hover{
+box-shadow:0 30px 60px rgba(0,0,0,0.7);
+}
+
+.card-content{
+opacity:0;
+max-height:0;
+overflow:hidden;
+transition:all 0.8s ease;
+color:var(--muted);
+margin-top:20px;
+line-height:1.6;
+}
+
+.card.active{
+transform:translateZ(120px) scale(1.05);
+}
+
+.card.active .card-content{
+opacity:1;
+max-height:2000px;
+}
+
+/* Final Words */
+.final-words{
+text-align:center;
+font-family:'Playfair Display', serif;
+font-size:60px;
+letter-spacing:8px;
+opacity:0.9;
+}
+
+/* Responsive */
+@media(max-width:768px){
+.hero h1{font-size:36px;}
+.final-words{font-size:32px;}
+.logo{font-size:30px;}
 }
 </style>
 </head>
@@ -105,7 +190,7 @@ color:var(--muted);
 <div class="logo">Bhuvan Bommannavar</div>
 <div class="header-buttons">
 <a href="Bhuvan_CV_23-02-2026.pdf" download class="btn">Download Resume</a>
-<a href="#contact" class="btn">Contact Me</a>
+<a href="mailto:info.bhuvaneshwar.b@gmail.com" class="btn">Contact Me</a>
 </div>
 </header>
 
@@ -114,55 +199,63 @@ color:var(--muted);
 <p>Scroll to explore the journey.</p>
 </section>
 
-<section></section>
-<section></section>
-<section id="contact">
-<p>Phone: +91 8867429944</p>
-<p>Email: <a href="mailto:info.bhuvaneshwar.b@gmail.com" style="color:#4f8cff;">info.bhuvaneshwar.b@gmail.com</a></p>
+<section>
+<div class="grid">
+<div class="card" onclick="toggleCard(this)">
+<h3>Objective</h3>
+<div class="card-content">
+Results-driven sales professional with 3+ years of experience in real estate, specializing in sales and marketing across builder and channel partner networks. Skilled at leveraging interpersonal abilities alongside Excel, SQL, Tableau, and Power BI to drive strategic decision-making and enhance business performance.
+</div>
+</div>
+
+<div class="card" onclick="toggleCard(this)">
+<h3>Skills</h3>
+<div class="card-content">
+Python (Pursuing), Statistics, SQL, Power BI, Tableau, Excel, Gen AI.<br><br>
+Problem solving, Team player, Adaptable, Goal oriented.
+</div>
+</div>
+</div>
+</section>
+
+<section>
+<div class="final-words">
+SALES · ANALYSIS · GROWTH
+</div>
 </section>
 
 <script>
 gsap.registerPlugin(ScrollTrigger);
 
-/* ===============================
-   THREE JS DEPTH SYSTEM
-================================= */
-
-const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
-const renderer = new THREE.WebGLRenderer({alpha:true, antialias:true});
-renderer.setSize(window.innerWidth, window.innerHeight);
-renderer.setPixelRatio(window.devicePixelRatio);
+/* THREE JS DEPTH */
+const scene=new THREE.Scene();
+const camera=new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,1000);
+const renderer=new THREE.WebGLRenderer({alpha:true});
+renderer.setSize(window.innerWidth,window.innerHeight);
 document.body.appendChild(renderer.domElement);
+camera.position.z=8;
 
-camera.position.z = 8;
-
-/* Particle Layers */
-const particlesCount = 6000;
-const geometry = new THREE.BufferGeometry();
-const positions = new Float32Array(particlesCount * 3);
-
-for(let i=0;i<particlesCount;i++){
-positions[i*3] = (Math.random()-0.5)*40;
-positions[i*3+1] = (Math.random()-0.5)*40;
-positions[i*3+2] = (Math.random()-0.5)*60; // Z depth distribution
+const geometry=new THREE.BufferGeometry();
+const count=6000;
+const pos=new Float32Array(count*3);
+for(let i=0;i<count;i++){
+pos[i*3]=(Math.random()-0.5)*40;
+pos[i*3+1]=(Math.random()-0.5)*40;
+pos[i*3+2]=(Math.random()-0.5)*60;
 }
+geometry.setAttribute('position',new THREE.BufferAttribute(pos,3));
 
-geometry.setAttribute('position', new THREE.BufferAttribute(positions,3));
-
-const material = new THREE.PointsMaterial({
-size:0.02,
-color:0x4f8cff,
-transparent:true,
-opacity:0.8
-});
-
-const particles = new THREE.Points(geometry, material);
+const material=new THREE.PointsMaterial({size:0.02,color:0x4f8cff});
+const particles=new THREE.Points(geometry,material);
 scene.add(particles);
 
-/* ===============================
-   SCROLL-DRIVEN CAMERA DEPTH
-================================= */
+function animate(){
+requestAnimationFrame(animate);
+particles.rotation.y+=0.0004;
+particles.rotation.x+=0.0002;
+renderer.render(scene,camera);
+}
+animate();
 
 gsap.to(camera.position,{
 z:2,
@@ -174,67 +267,9 @@ scrub:true
 }
 });
 
-/* ===============================
-   MOUSE PARALLAX
-================================= */
-
-let mouseX = 0;
-let mouseY = 0;
-
-document.addEventListener("mousemove",(e)=>{
-mouseX = (e.clientX/window.innerWidth - 0.5) * 2;
-mouseY = (e.clientY/window.innerHeight - 0.5) * 2;
-});
-
-/* ===============================
-   PARTICLE DEPTH RESPONSE
-================================= */
-
-let scrollVelocity = 0;
-
-ScrollTrigger.create({
-start:0,
-end:"max",
-onUpdate:(self)=>{
-scrollVelocity = self.getVelocity() * 0.00005;
+function toggleCard(card){
+card.classList.toggle("active");
 }
-});
-
-/* ===============================
-   RENDER LOOP
-================================= */
-
-function animate(){
-requestAnimationFrame(animate);
-
-/* subtle rotation */
-particles.rotation.y += 0.0004;
-particles.rotation.x += 0.0002;
-
-/* camera parallax */
-camera.position.x += (mouseX * 2 - camera.position.x) * 0.02;
-camera.position.y += (-mouseY * 2 - camera.position.y) * 0.02;
-
-/* depth response */
-particles.rotation.z += scrollVelocity;
-
-/* smooth damping */
-scrollVelocity *= 0.9;
-
-renderer.render(scene,camera);
-}
-animate();
-
-/* Resize */
-window.addEventListener('resize',()=>{
-renderer.setSize(window.innerWidth,window.innerHeight);
-camera.aspect = window.innerWidth/window.innerHeight;
-camera.updateProjectionMatrix();
-});
-
-/* ===============================
-   TYPING EFFECT
-================================= */
 
 const text="Hey 👋 Welcome to my profile. Bhuvan here.";
 let i=0;
@@ -247,10 +282,8 @@ setTimeout(typing,60);
 }
 typing();
 
-/* Header dissolve */
 window.addEventListener("scroll",()=>{
-let header=document.getElementById("header");
-header.style.opacity=1-window.scrollY/300;
+document.getElementById("header").style.opacity=1-window.scrollY/300;
 });
 </script>
 
