@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bhuvan Bommannavar | Analytics & Strategy Portfolio</title>
+<title>Bhuvan Bommannavar | Interactive Portfolio</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
@@ -19,8 +19,8 @@ box-sizing:border-box;
 body{
 font-family:'Inter',sans-serif;
 background:#0f172a;
-color:#e2e8f0;
-overflow-x:hidden;
+color:#fff;
+overflow:hidden;
 }
 
 canvas{
@@ -30,34 +30,7 @@ left:0;
 z-index:-1;
 }
 
-.container{
-width:90%;
-max-width:1200px;
-margin:auto;
-}
-
-nav{
-position:fixed;
-width:100%;
-padding:20px 0;
-background:rgba(15,23,42,0.8);
-backdrop-filter:blur(10px);
-z-index:100;
-}
-
-nav .container{
-display:flex;
-justify-content:space-between;
-align-items:center;
-}
-
-nav a{
-color:white;
-text-decoration:none;
-margin-left:20px;
-font-weight:500;
-}
-
+/* HERO */
 .hero{
 height:100vh;
 display:flex;
@@ -69,7 +42,7 @@ padding:20px;
 }
 
 .hero h1{
-font-size:clamp(32px,6vw,60px);
+font-size:clamp(30px,6vw,60px);
 background:linear-gradient(90deg,#3b82f6,#00f5d4);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
@@ -77,64 +50,104 @@ background:linear-gradient(90deg,#3b82f6,#00f5d4);
 
 .hero p{
 margin-top:20px;
-max-width:700px;
+max-width:600px;
 color:#94a3b8;
 }
 
-.btn{
-display:inline-block;
-margin-top:30px;
-padding:14px 30px;
+.buttons{
+margin-top:40px;
+display:flex;
+flex-wrap:wrap;
+gap:20px;
+justify-content:center;
+}
+
+.btn3d{
+padding:14px 28px;
 border-radius:40px;
 background:linear-gradient(90deg,#3b82f6,#00f5d4);
-color:white;
-text-decoration:none;
+cursor:pointer;
 font-weight:600;
-transition:0.3s;
+transition:0.4s;
+transform-style:preserve-3d;
 }
 
-.btn:hover{
-transform:scale(1.05);
+.btn3d:hover{
+transform:translateY(-5px) scale(1.05);
 }
 
-section{
-padding:100px 0;
-}
-
-section h2{
-font-size:32px;
-margin-bottom:40px;
-}
-
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:25px;
-}
-
-.card{
-background:rgba(255,255,255,0.05);
-border:1px solid rgba(255,255,255,0.1);
+/* MODAL WINDOWS */
+.modal{
+position:fixed;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%) scale(0);
+width:90%;
+max-width:900px;
+background:rgba(15,23,42,0.95);
 backdrop-filter:blur(20px);
-padding:30px;
 border-radius:20px;
+padding:40px;
+z-index:1000;
+transition:0.4s ease;
+overflow-y:auto;
+max-height:80vh;
+box-shadow:0 0 40px rgba(0,255,255,0.2);
+}
+
+.modal.active{
+transform:translate(-50%,-50%) scale(1);
+}
+
+.close-btn{
+position:absolute;
+top:20px;
+right:25px;
+font-size:20px;
+cursor:pointer;
+color:#00f5d4;
+}
+
+.modal h2{
+margin-bottom:20px;
+}
+
+.modal p{
+line-height:1.6;
+color:#cbd5e1;
+}
+
+.overlay{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.6);
+opacity:0;
+pointer-events:none;
 transition:0.4s;
 }
 
-.card:hover{
-transform:translateY(-8px);
+.overlay.active{
+opacity:1;
+pointer-events:all;
 }
 
-footer{
-padding:40px 0;
-text-align:center;
-color:#94a3b8;
-border-top:1px solid rgba(255,255,255,0.1);
+.download{
+margin-top:30px;
+display:inline-block;
+padding:12px 24px;
+background:#00f5d4;
+color:#000;
+border-radius:30px;
+text-decoration:none;
+font-weight:600;
 }
 
 @media(max-width:768px){
-section{
-padding:80px 0;
+.modal{
+padding:25px;
 }
 }
 
@@ -145,146 +158,56 @@ padding:80px 0;
 
 <canvas id="bg"></canvas>
 
-<nav>
-<div class="container">
-<strong>Bhuvan Bommannavar</strong>
-<div>
-<a href="#about">About</a>
-<a href="#experience">Experience</a>
-<a href="#projects">Projects</a>
-<a href="#contact">Contact</a>
-</div>
-</div>
-</nav>
-
 <div class="hero">
 <h1>Data. Strategy. Growth.</h1>
-<p>Sales Leader with 3+ years of real estate experience, now specializing in Business Analytics using Excel, SQL, Power BI & Tableau to drive data-backed decisions.</p>
-<a href="Bhuvan_Bommannavar_Resume.pdf" download class="btn">Download Resume</a>
+<p>Sales Leader transitioning into Analytics & Business Intelligence.</p>
+
+<div class="buttons">
+<div class="btn3d" onclick="openModal('about')">About</div>
+<div class="btn3d" onclick="openModal('experience')">Experience</div>
+<div class="btn3d" onclick="openModal('projects')">Projects</div>
+<div class="btn3d" onclick="openModal('contact')">Contact</div>
 </div>
 
-<section id="about">
-<div class="container">
+<a href="Bhuvan_Bommannavar_Resume.pdf" download class="download">Download Resume</a>
+</div>
+
+<!-- Overlay -->
+<div class="overlay" id="overlay" onclick="closeModal()"></div>
+
+<!-- ABOUT MODAL -->
+<div class="modal" id="about">
+<span class="close-btn" onclick="closeModal()">✖</span>
 <h2>About Me</h2>
-<div class="card">
+<p>
 MBA (Finance & Marketing) – 8.26 CGPA  
 B.E Mechanical Engineering  
-Skilled in Excel (Advanced), SQL, Power BI, Tableau, Python (learning), Statistics & Gen AI.  
+Skilled in Excel (Advanced), SQL, Power BI, Tableau, Python & Statistics.  
 Languages: English, Kannada, Hindi, Marathi.
+</p>
 </div>
-</div>
-</section>
 
-<section id="experience">
-<div class="container">
+<!-- EXPERIENCE MODAL -->
+<div class="modal" id="experience">
+<span class="close-btn" onclick="closeModal()">✖</span>
 <h2>Experience</h2>
-<div class="grid">
-<div class="card">
-<strong>Sales Manager</strong><br>
-Premier Real Estate Services<br>
-May 2025 – Present
+<p>
+Sales Manager – Premier Real Estate Services (2025–Present)  
+Assistant Sales Manager – Sobha Ltd  
+Senior Relationship Manager – Fly Realty  
+Relationship Manager – Brad Realty
+</p>
 </div>
 
-<div class="card">
-<strong>Assistant Sales Manager</strong><br>
-Sobha Ltd<br>
-Jun 2024 – Feb 2025
-</div>
-
-<div class="card">
-<strong>Senior Relationship Manager</strong><br>
-Fly Realty<br>
-Apr 2023 – May 2024
-</div>
-
-<div class="card">
-<strong>Relationship Manager</strong><br>
-Brad Realty<br>
-Apr 2022 – Apr 2023
-</div>
-</div>
-</div>
-</section>
-
-<section id="projects">
-<div class="container">
-<h2>Projects & Research</h2>
-<div class="grid">
-
-<div class="card">
-<strong>Risk Analysis in Capital Budgeting</strong><br>
-Probability & sensitivity analysis for ethanol plant investment.
-</div>
-
-<div class="card">
-<strong>Deloitte Data Analyst Simulation</strong><br>
-Operations & decision-making analytics project using Excel & Tableau.
-</div>
-
-<div class="card">
-<strong>Engineering Innovation Projects</strong><br>
-Multi DOF Robotic Arm, Prosthetic Arm, Multi Maize Thresher, Sasyojasa (Plant-E).
-</div>
-
-<div class="card">
-<strong>Achievements</strong><br>
-Multiple National & State Level Paper Presentation Awards.  
-Project sponsored by Karnataka State Council for Science & Technology.
-</div>
-
-</div>
-</div>
-</section>
-
-<section id="contact">
-<div class="container">
-<h2>Contact</h2>
-<div class="card">
-Email: info.bhuvaneshwar.b@gmail.com<br>
-Phone: 8867429944<br>
-Location: Bangalore, India
-</div>
-</div>
-</section>
-
-<footer>
-© 2026 Bhuvan Bommannavar | Analytics & Strategy Portfolio
-</footer>
-
-<script>
-
-// Real 3D Rotating Geometry Background
-const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
-const renderer = new THREE.WebGLRenderer({canvas:document.getElementById('bg'), alpha:true});
-renderer.setSize(window.innerWidth, window.innerHeight);
-
-const geometry = new THREE.IcosahedronGeometry(8,1);
-const material = new THREE.MeshStandardMaterial({color:0x3b82f6, wireframe:true});
-const shape = new THREE.Mesh(geometry, material);
-scene.add(shape);
-
-const light = new THREE.PointLight(0xffffff,1);
-light.position.set(20,20,20);
-scene.add(light);
-
-camera.position.z = 20;
-
-function animate(){
-requestAnimationFrame(animate);
-shape.rotation.x += 0.003;
-shape.rotation.y += 0.004;
-renderer.render(scene,camera);
-}
-animate();
-
-window.addEventListener('resize',()=>{
-renderer.setSize(window.innerWidth,window.innerHeight);
-camera.aspect = window.innerWidth/window.innerHeight;
-camera.updateProjectionMatrix();
-});
-
-</script>
-
-</body>
-</html>
+<!-- PROJECTS MODAL -->
+<div class="modal" id="projects">
+<span class="close-btn" onclick="closeModal()">✖</span>
+<h2>Projects</h2>
+<p>
+Risk Analysis in Capital Budgeting (Ethanol Plant)  
+Deloitte Data Analyst Simulation  
+Multi DOF Robotic Arm  
+Prosthetic Arm  
+Multi Maize Thresher  
+Sasyojasa (Plant-E)  
+Multiple National Level Achievements
