@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bhuvan Bommannavar | Strategy & Analytics</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+
+<style>
+
+body{
+margin:0;
+font-family:'Inter',sans-serif;
+background:#0f172a;
+color:white;
+overflow-x:hidden;
+}
+
+canvas{
+position:fixed;
+top:0;
+left:0;
+z-index:-1;
+}
+
+nav{
+display:flex;
+justify-content:space-between;
+padding:20px 8%;
+position:fixed;
+width:100%;
+z-index:100;
+background:rgba(15,23,42,0.6);
+backdrop-filter:blur(10px);
+}
+
+nav a{
+color:white;
+text-decoration:none;
+margin-left:20px;
+font-weight:500;
+}
+
+.hero{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:0 20px;
+}
+
+.hero h1{
+font-size:56px;
+background:linear-gradient(90deg,#3b82f6,#00f5d4);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+margin:0;
+}
+
+.hero p{
+max-width:600px;
+color:#94a3b8;
+margin-top:20px;
+}
+
+.btn{
+background:linear-gradient(90deg,#3b82f6,#00f5d4);
+padding:14px 30px;
+border-radius:40px;
+text-decoration:none;
+color:white;
+font-weight:600;
+margin-top:30px;
+display:inline-block;
+transition:0.3s;
+}
+
+.btn:hover{
+transform:scale(1.05);
+}
+
+section{
+padding:120px 8%;
+}
+
+h2{
+font-size:34px;
+margin-bottom:40px;
+}
+
+.card{
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.1);
+backdrop-filter:blur(20px);
+padding:30px;
+border-radius:20px;
+transition:0.4s;
+transform-style:preserve-3d;
+}
+
+.card:hover{
+transform:rotateY(8deg) rotateX(5deg) scale(1.05);
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:30px;
+}
+
+footer{
+text-align:center;
+padding:40px;
+color:#94a3b8;
+}
+
+@media(max-width:768px){
+.hero h1{font-size:36px;}
+section{padding:80px 5%;}
+}
+
+</style>
+</head>
+
+<body>
+
+<canvas id="bg"></canvas>
+
+<nav>
+<div><strong>Bhuvan</strong></div>
+<div>
+<a href="#about">About</a>
+<a href="#projects">Projects</a>
+<a href="#contact">Contact</a>
+</div>
+</nav>
+
+<div class="hero">
+<h1>Data. Strategy. Growth.</h1>
+<p>Sales Leader turned Analytics Professional. Building revenue strategy with data intelligence and business insight.</p>
+<a href="Bhuvan_Bommannavar_Resume.pdf" download class="btn">Download Resume</a>
+</div>
+
+<section id="about">
+<h2>About Me</h2>
+<div class="card">
+MBA (Finance & Marketing) – 8.26 CGPA  
+3+ Years Real Estate Sales Leadership  
+Skilled in Excel, SQL, Power BI, Tableau & Data-Driven Strategy  
+Focused on Analytics & Business Intelligence roles.
+</div>
+</section>
+
+<section id="projects">
+<h2>Featured Projects</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>Capital Budget Risk Analysis</h3>
+Probability & sensitivity modeling for ethanol plant investment using analytical frameworks.
+</div>
+
+<div class="card">
+<h3>Deloitte Data Analyst Simulation</h3>
+Operational decision-making dashboard using Excel & Tableau.
+</div>
+
+<div class="card">
+<h3>Power BI Dashboard</h3>
+Interactive visual analytics dashboard for business performance tracking.
+</div>
+
+</div>
+</section>
+
+<section id="contact">
+<h2>Let’s Connect</h2>
+<div class="card">
+Email: info.bhuvaneshwar.b@gmail.com<br><br>
+Phone: 8867429944<br><br>
+Location: Bangalore, India
+</div>
+</section>
+
+<footer>
+© 2026 Bhuvan Bommannavar | Strategy & Analytics Portfolio
+</footer>
+
+<script>
+
+// 3D Animated Background
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer({canvas:document.getElementById('bg'), alpha:true});
+renderer.setSize(window.innerWidth, window.innerHeight);
+
+const geometry = new THREE.TorusKnotGeometry(10,3,100,16);
+const material = new THREE.MeshStandardMaterial({color:0x3b82f6, wireframe:true});
+const torus = new THREE.Mesh(geometry, material);
+
+scene.add(torus);
+
+const light = new THREE.PointLight(0xffffff,1);
+light.position.set(20,20,20);
+scene.add(light);
+
+camera.position.z = 30;
+
+function animate(){
+requestAnimationFrame(animate);
+torus.rotation.x += 0.005;
+torus.rotation.y += 0.005;
+renderer.render(scene,camera);
+}
+animate();
+
+window.addEventListener('resize',()=>{
+renderer.setSize(window.innerWidth,window.innerHeight);
+camera.aspect = window.innerWidth/window.innerHeight;
+camera.updateProjectionMatrix();
+});
+
+</script>
+
+</body>
+</html>
