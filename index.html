@@ -1,158 +1,305 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bhuvan Bommannavar | Spatial Portfolio</title>
+<title>Bhuvan Bommannavar | Portfolio</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
-body{
+:root{
+--bg:#0f172a;
+--accent:#38bdf8;
+--text:#f8fafc;
+--muted:#94a3b8;
+}
+
+*{
 margin:0;
-overflow:hidden;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
 font-family:'Inter',sans-serif;
-background:#000;
-color:white;
+background:var(--bg);
+color:var(--text);
+overflow-x:hidden;
+scroll-behavior:smooth;
 }
 
-#overlayContent{
+/* Animated background */
+body::before{
+content:"";
 position:fixed;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
-width:90%;
-max-width:900px;
-background:rgba(15,23,42,0.95);
-backdrop-filter:blur(25px);
-padding:40px;
-border-radius:20px;
-display:none;
-z-index:10;
+width:200%;
+height:200%;
+background:radial-gradient(circle at 20% 30%, #1e293b, transparent),
+radial-gradient(circle at 80% 70%, #0ea5e9, transparent);
+animation:moveBg 15s linear infinite;
+z-index:-1;
 }
 
-#overlayContent h2{
+@keyframes moveBg{
+0%{transform:translate(0,0);}
+50%{transform:translate(-20%, -20%);}
+100%{transform:translate(0,0);}
+}
+
+header{
+position:fixed;
+width:100%;
+top:0;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 50px;
+background:rgba(15,23,42,0.7);
+backdrop-filter:blur(15px);
+z-index:100;
+}
+
+.logo{
+font-family:'Playfair Display',serif;
+font-size:24px;
+font-weight:bold;
+color:var(--accent);
+}
+
+.header-buttons{
+display:flex;
+gap:20px;
+}
+
+.btn{
+text-decoration:none;
+color:white;
+padding:8px 16px;
+background:var(--accent);
+border-radius:25px;
+font-size:14px;
+}
+
+section{
+min-height:100vh;
+padding:150px 10% 100px;
+}
+
+.hero{
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+}
+
+.hero h1{
+font-size:40px;
 margin-bottom:20px;
 }
 
-#closeBtn{
-position:absolute;
-top:15px;
-right:20px;
-cursor:pointer;
-font-size:20px;
-color:#00f5d4;
+.hero p{
+color:var(--muted);
+font-size:18px;
+max-width:700px;
+margin:auto;
 }
 
-#download{
-position:fixed;
-bottom:30px;
-left:50%;
-transform:translateX(-50%);
-padding:14px 28px;
-background:#00f5d4;
-color:#000;
-border-radius:30px;
-text-decoration:none;
+/* pallets */
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:40px;
+margin-top:60px;
+}
+
+.card{
+background:rgba(255,255,255,0.05);
+padding:40px;
+cursor:pointer;
+transition:all .4s ease;
+}
+
+.card:hover{
+transform:translateY(-10px);
+background:rgba(255,255,255,0.1);
+}
+
+.details{
+display:none;
+margin-top:60px;
+}
+
+.details.active{
+display:block;
+animation:fade .5s ease;
+}
+
+@keyframes fade{
+from{opacity:0;transform:translateY(20px);}
+to{opacity:1;transform:translateY(0);}
+}
+
+.details h2{
+color:var(--accent);
+margin-bottom:20px;
+}
+
+.details h3{
+margin-top:20px;
 font-weight:600;
-z-index:10;
+}
+
+.details p{
+color:var(--muted);
+margin-top:8px;
+line-height:1.6;
+}
+
+@media(max-width:768px){
+header{padding:15px 20px;}
+section{padding:130px 20px;}
+.hero h1{font-size:28px;}
 }
 </style>
 </head>
 
 <body>
 
-<div id="overlayContent">
-<span id="closeBtn">✖</span>
-<h2 id="panelTitle"></h2>
-<p id="panelText"></p>
+<header>
+<div class="logo">Bhuvan Bommannavar</div>
+<div class="header-buttons">
+<a href="Bhuvan_CV_23-02-2026.pdf" download class="btn">Download Resume</a>
+<a href="mailto:info.bhuvaneshwar.b@gmail.com" class="btn">Contact Me</a>
+</div>
+</header>
+
+<section class="hero">
+<div>
+<h1>Heyy 👋 Welcome to my Profile</h1>
+<p>Bhuvan here. You can know more about me here. If you find this interesting feel free to connect with me.</p>
+</div>
+</section>
+
+<section>
+<div class="grid">
+<div class="card" onclick="showDetails('objective')">Objective</div>
+<div class="card" onclick="showDetails('skills')">Skills</div>
+<div class="card" onclick="showDetails('experience')">Experience</div>
+<div class="card" onclick="showDetails('education')">Education</div>
 </div>
 
-<a id="download" href="Bhuvan_Bommannavar_Resume.pdf" download>Download Resume</a>
+<div id="objective" class="details">
+<h2>Objective</h2>
+<p>Results-driven sales professional with over 3 years of experience in real estate, specializing in sales and marketing across builder and channel partner networks. Skilled at leveraging strong interpersonal abilities alongside data analytics tools such as Excel, SQL, Tableau, and Power BI to drive strategic decision-making and enhance business performance. Seeking to contribute this blend of sales expertise and analytical capability to a dynamic, growth-oriented organization.</p>
+</div>
+
+<div id="skills" class="details">
+<h2>Skills</h2>
+<p>Python (Pursuing), Statistics for Data Analysis, SQL, Power BI, Tableau, MS Excel, Gen AI for Data Analysis.</p>
+<p>Real time problem solving techniques.</p>
+<p>Team player, adaptable, punctual, optimistic, goal oriented.</p>
+</div>
+
+<div id="experience" class="details">
+<h2>Experience</h2>
+
+<h3>Premier Real Estate Services</h3>
+<p>01/05/2025 – Present</p>
+<p>Sales Manager</p>
+
+<h3>Sobha Ltd</h3>
+<p>01/06/2024 – 28/02/2025</p>
+<p>Assistant Sales Manager</p>
+
+<h3>Fly Realty</h3>
+<p>18/04/2023 – 08/05/2024</p>
+<p>Senior Relationship Manager</p>
+
+<h3>Brad Realty</h3>
+<p>21/04/2022 – 17/04/2023</p>
+<p>Relationship Manager</p>
+
+</div>
+
+<div id="education" class="details">
+<h2>Education</h2>
+
+<h3>MBA (Finance & Marketing)</h3>
+<p>REVA University, Bangalore | 8.26 CGPA | 2020–2022</p>
+
+<h3>B.E Mechanical Engineering</h3>
+<p>Hirasugar Institute of Technology | 6.59 CGPA | 2015–2019</p>
+
+<h3>Pre University Board</h3>
+<p>M.G.V P U College | 53% | 2013–2015</p>
+
+<h3>Karnataka Secondary Education Board</h3>
+<p>K.R.C.E.S School | 71% | 2012–2013</p>
+
+</div>
+
+</section>
+
+<section>
+<div class="grid">
+<div class="card" onclick="showDetails('projects')">Projects</div>
+<div class="card" onclick="showDetails('awards')">Awards & Achievements</div>
+</div>
+
+<div id="projects" class="details">
+<h2>Projects</h2>
+<p><strong>Risk Analysis in Capital Budgeting of Ethanol Plant</strong> – Analysis using probability & sensitivity approaches.</p>
+<p><strong>Robotic Arm</strong> – Multi degree of freedom mechanical robotic arm.</p>
+<p><strong>Multi Maize Thresher</strong> – Agricultural innovation with multi-function capability.</p>
+<p><strong>Prosthetic Arm</strong> – 21 DOF biological-mechanical extension arm.</p>
+<p><strong>Sasyojasa (Plant-E)</strong> – Engineering-based acid battery using plant alkaline matter.</p>
+</div>
+
+<div id="awards" class="details">
+<h2>Awards & Achievements</h2>
+<p>Multiple National Level Paper Presentation Prizes.</p>
+<p>State Level Project Exhibition – SHRISHTI 2K18.</p>
+<p>Sponsored by Karnataka State Council for Science and Technology.</p>
+</div>
+
+</section>
+
+<section>
+<div class="grid">
+<div class="card" onclick="showDetails('certifications')">Certifications</div>
+<div class="card" onclick="showDetails('internship')">Internship</div>
+<div class="card" onclick="showDetails('workshop')">Workshop</div>
+</div>
+
+<div id="certifications" class="details">
+<h2>Certifications</h2>
+<p>Microsoft Excel (Advanced)</p>
+<p>Business Analytics using Excel</p>
+<p>Business Analytics using Power BI</p>
+</div>
+
+<div id="internship" class="details">
+<h2>Internship</h2>
+<p>P K Pumps and Precicast Pvt Ltd</p>
+<p>Agile Capital Services (BFSI Sector)</p>
+<p>Skillfied Mentor (Excel & Power BI)</p>
+<p>Deloitte – Data Analyst Simulation</p>
+</div>
+
+<div id="workshop" class="details">
+<h2>Workshop</h2>
+<p>ISRO – Engineering Subsystems in Space Technology</p>
+<p>IIM Calcutta (with REVA University) – Data Analytics</p>
+</div>
+
+</section>
 
 <script>
-
-let scene = new THREE.Scene();
-let camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
-let renderer = new THREE.WebGLRenderer({antialias:true});
-renderer.setSize(window.innerWidth, window.innerHeight);
-document.body.appendChild(renderer.domElement);
-
-camera.position.z = 15;
-
-// Ambient Light
-const light = new THREE.PointLight(0xffffff,1);
-light.position.set(20,20,20);
-scene.add(light);
-
-// Floating Panels Data
-const panelsData = [
-{ title:"About", text:"MBA (Finance & Marketing), 8.26 CGPA. Skilled in Excel, SQL, Power BI, Tableau. 3+ years real estate leadership experience."},
-{ title:"Experience", text:"Sales Manager – Premier Real Estate Services. Assistant Sales Manager – Sobha Ltd. Senior Relationship Manager – Fly Realty. Relationship Manager – Brad Realty."},
-{ title:"Projects", text:"Risk Analysis in Capital Budgeting. Deloitte Data Simulation. Robotic Arm. Prosthetic Arm. Multi Maize Thresher."},
-{ title:"Contact", text:"Email: info.bhuvaneshwar.b@gmail.com | Phone: 8867429944 | Bangalore, India."}
-];
-
-let panels = [];
-
-const geometry = new THREE.BoxGeometry(5,3,0.3);
-const material = new THREE.MeshStandardMaterial({color:0x00f5d4, metalness:0.6, roughness:0.2});
-
-panelsData.forEach((data,i)=>{
-let panel = new THREE.Mesh(geometry, material.clone());
-panel.position.x = (i-1.5)*7;
-panel.position.y = Math.sin(i)*2;
-panel.userData = data;
-scene.add(panel);
-panels.push(panel);
-});
-
-// Raycaster for clicks
-const raycaster = new THREE.Raycaster();
-const mouse = new THREE.Vector2();
-
-window.addEventListener("click", function(event){
-mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
-
-raycaster.setFromCamera(mouse, camera);
-const intersects = raycaster.intersectObjects(panels);
-
-if(intersects.length > 0){
-openPanel(intersects[0].object.userData);
+function showDetails(id){
+document.querySelectorAll('.details').forEach(el=>el.classList.remove('active'));
+document.getElementById(id).classList.add('active');
 }
-});
-
-function openPanel(data){
-document.getElementById("panelTitle").innerText = data.title;
-document.getElementById("panelText").innerText = data.text;
-document.getElementById("overlayContent").style.display="block";
-}
-
-document.getElementById("closeBtn").onclick = function(){
-document.getElementById("overlayContent").style.display="none";
-}
-
-// Animate floating effect
-function animate(){
-requestAnimationFrame(animate);
-
-panels.forEach((panel,i)=>{
-panel.rotation.y += 0.005;
-panel.position.y = Math.sin(Date.now()*0.001 + i)*1.5;
-});
-
-renderer.render(scene,camera);
-}
-animate();
-
-window.addEventListener('resize',()=>{
-renderer.setSize(window.innerWidth,window.innerHeight);
-camera.aspect = window.innerWidth/window.innerHeight;
-camera.updateProjectionMatrix();
-});
-
 </script>
 
 </body>
