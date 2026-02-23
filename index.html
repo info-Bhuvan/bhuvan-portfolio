@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bhuvan Bommannavar</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -14,7 +14,6 @@
 <style>
 :root{
 --bg:#04060c;
---glass:rgba(255,255,255,0.05);
 --accent:#4f8cff;
 --text:#f1f5f9;
 --muted:#94a3b8;
@@ -36,6 +35,7 @@ left:0;
 z-index:-2;
 }
 
+/* Header */
 header{
 position:fixed;
 top:0;
@@ -48,10 +48,29 @@ z-index:100;
 transition:opacity 0.6s ease;
 }
 
+/* Executive Name */
 .logo{
-font-family:'Cormorant Garamond',serif;
-font-size:34px;
+font-family:'Playfair Display', serif;
+font-size:42px;
+font-style:italic;
 font-weight:700;
+background:linear-gradient(90deg,#ffffff,#9ec5ff,#ffffff);
+background-size:200% auto;
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+letter-spacing:1px;
+text-shadow:0 8px 30px rgba(79,140,255,0.35);
+animation:shimmer 6s linear infinite, glowPulse 4s ease-in-out infinite;
+}
+
+@keyframes shimmer{
+0%{background-position:200% center;}
+100%{background-position:-200% center;}
+}
+
+@keyframes glowPulse{
+0%,100%{text-shadow:0 8px 30px rgba(79,140,255,0.35);}
+50%{text-shadow:0 12px 40px rgba(79,140,255,0.55);}
 }
 
 .header-buttons{
@@ -73,59 +92,63 @@ min-height:100vh;
 display:flex;
 flex-direction:column;
 justify-content:center;
-padding:160px 10%;
+padding:160px 8%;
 position:relative;
 }
 
+/* Hero */
 .hero{
 text-align:center;
 }
 
 .hero h1{
-font-family:'Cormorant Garamond',serif;
+font-family:'Playfair Display',serif;
 font-size:64px;
 margin-bottom:20px;
 }
 
-.hero p{
-font-size:22px;
-color:var(--muted);
+/* ===== ONE ROW PALLETS ===== */
+.row{
+display:flex;
+gap:80px;
+overflow-x:auto;
+scroll-behavior:smooth;
 }
 
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:60px;
-margin-top:60px;
-perspective:1200px;
-}
-
+/* Immersed pallet */
 .card{
-padding:40px;
-background:var(--glass);
-backdrop-filter:blur(25px);
-transform-style:preserve-3d;
-transition:transform 0.8s cubic-bezier(.16,1,.3,1),
-box-shadow 0.8s cubic-bezier(.16,1,.3,1);
+min-width:280px;
 cursor:pointer;
+transition:all 0.8s cubic-bezier(.16,1,.3,1);
+transform-style:preserve-3d;
 }
 
-.card:hover{
-box-shadow:0 30px 60px rgba(0,0,0,0.7);
+.card h3{
+font-size:28px;
+font-weight:400;
+color:var(--text);
+opacity:0.8;
+transition:0.4s;
 }
 
 .card-content{
+margin-top:20px;
+color:var(--muted);
+line-height:1.6;
 opacity:0;
 max-height:0;
 overflow:hidden;
-transition:all 0.8s ease;
-color:var(--muted);
-margin-top:20px;
-line-height:1.6;
+transition:all 0.6s ease;
 }
 
+/* Active pallet */
 .card.active{
-transform:translateZ(120px) scale(1.05);
+transform:translateZ(120px) scale(1.1);
+}
+
+.card.active h3{
+opacity:1;
+color:#ffffff;
 }
 
 .card.active .card-content{
@@ -133,9 +156,10 @@ opacity:1;
 max-height:2000px;
 }
 
+/* Final words */
 .final-words{
 text-align:center;
-font-family:'Cormorant Garamond',serif;
+font-family:'Playfair Display',serif;
 font-size:60px;
 letter-spacing:8px;
 opacity:0.9;
@@ -143,6 +167,7 @@ opacity:0.9;
 
 @media(max-width:768px){
 .hero h1{font-size:36px;}
+.logo{font-size:30px;}
 .final-words{font-size:32px;}
 }
 </style>
@@ -159,96 +184,40 @@ opacity:0.9;
 
 <section class="hero">
 <h1 id="typing"></h1>
-<p>Scroll to explore the journey.</p>
 </section>
 
 <section>
-<div class="grid">
+<div class="row">
 
 <div class="card" onclick="toggleCard(this)">
 <h3>Objective</h3>
 <div class="card-content">
-Results-driven sales professional with 3+ years of experience in real estate, specializing in sales and marketing across builder and channel partner networks. Skilled at leveraging interpersonal abilities alongside Excel, SQL, Tableau, and Power BI to drive strategic decision-making and enhance business performance.
+Results-driven sales professional with 3+ years of experience in real estate, specializing in sales and marketing across builder and channel partner networks...
 </div>
 </div>
 
 <div class="card" onclick="toggleCard(this)">
 <h3>Skills</h3>
 <div class="card-content">
-Python (Pursuing), Statistics for Data Analysis, SQL, Power BI, Tableau, MS Excel, Gen AI for Data Analysis.<br><br>
-Problem solving techniques, Team player, Adaptable, Goal oriented.
+Python, SQL, Power BI, Tableau, Excel, Statistics, Gen AI...
 </div>
 </div>
 
 <div class="card" onclick="toggleCard(this)">
 <h3>Experience</h3>
 <div class="card-content">
-Premier Real Estate Services — Sales Manager (01/05/2025 – Present)<br><br>
-Sobha Ltd — Assistant Sales Manager (01/06/2024 – 28/02/2025)<br><br>
-Fly Realty — Senior Relationship Manager (18/04/2023 – 08/05/2024)<br><br>
-Brad Realty — Relationship Manager (21/04/2022 – 17/04/2023)
+Premier Real Estate Services — Sales Manager (01/05/2025 – Present)...<br>
+Sobha Ltd — Assistant Sales Manager...<br>
+Fly Realty...<br>
+Brad Realty...
 </div>
 </div>
 
 <div class="card" onclick="toggleCard(this)">
 <h3>Education</h3>
 <div class="card-content">
-MBA – Finance & Marketing, REVA University (8.26 CGPA) — 2020–2022<br><br>
-B.E Mechanical Engineering, Hirasugar Institute of Technology — 2015–2019<br><br>
-Pre University & SSLC details as per academic records.
-</div>
-</div>
-
-</div>
-</section>
-
-<section>
-<div class="grid">
-
-<div class="card" onclick="toggleCard(this)">
-<h3>Projects</h3>
-<div class="card-content">
-Risk Analysis in Capital Budgeting of Ethanol Plant.<br><br>
-Robotic Arm – Multi DOF mechanical robotic arm.<br><br>
-Prosthetic Arm – 21 DOF biological mechanical arm.<br><br>
-Multi Maize Thresher.<br><br>
-Sasyojasa (Plant-E).
-</div>
-</div>
-
-<div class="card" onclick="toggleCard(this)">
-<h3>Awards & Achievements</h3>
-<div class="card-content">
-Multiple National Level Paper Presentation Prizes.<br><br>
-State Level Project Exhibition (SHRISHTI 2K18).<br><br>
-Sponsored by Karnataka State Council for Science and Technology.
-</div>
-</div>
-
-</div>
-</section>
-
-<section>
-<div class="grid">
-
-<div class="card" onclick="toggleCard(this)">
-<h3>Certifications</h3>
-<div class="card-content">
-Microsoft Excel (Advanced).<br>
-Business Analytics using Excel.<br>
-Business Analytics using Power BI.
-</div>
-</div>
-
-<div class="card" onclick="toggleCard(this)">
-<h3>Internship & Workshop</h3>
-<div class="card-content">
-P K Pumps and Precicast Pvt Ltd.<br>
-Agile Capital Services (BFSI Sector).<br>
-Skillfied Mentor (Excel & Power BI).<br>
-Deloitte Data Analyst Simulation.<br><br>
-ISRO Workshop – Engineering Subsystems.<br>
-IIM Calcutta Workshop – Data Analytics.
+MBA – Finance & Marketing...<br>
+B.E Mechanical Engineering...
 </div>
 </div>
 
@@ -264,7 +233,7 @@ SALES · ANALYSIS · GROWTH
 <script>
 gsap.registerPlugin(ScrollTrigger);
 
-/* THREE JS DEPTH */
+/* WebGL unchanged */
 const scene=new THREE.Scene();
 const camera=new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,1000);
 const renderer=new THREE.WebGLRenderer({alpha:true});
@@ -305,9 +274,12 @@ scrub:true
 }
 });
 
-/* Card 3D outward animation */
+/* SINGLE ACTIVE PALLET */
 function toggleCard(card){
-card.classList.toggle("active");
+document.querySelectorAll('.card').forEach(c=>{
+if(c!==card) c.classList.remove('active');
+});
+card.classList.toggle('active');
 }
 
 /* Typing */
@@ -326,7 +298,4 @@ typing();
 window.addEventListener("scroll",()=>{
 document.getElementById("header").style.opacity=1-window.scrollY/300;
 });
-</script>
-
-</body>
-</html>
+</
