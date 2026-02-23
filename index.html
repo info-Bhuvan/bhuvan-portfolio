@@ -3,19 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bhuvan Bommannavar | Strategy & Analytics</title>
+<title>Bhuvan Bommannavar | Analytics & Strategy Portfolio</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
 
 <style>
 
-body{
+*{
 margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
 font-family:'Inter',sans-serif;
 background:#0f172a;
-color:white;
+color:#e2e8f0;
 overflow-x:hidden;
 }
 
@@ -26,15 +30,25 @@ left:0;
 z-index:-1;
 }
 
+.container{
+width:90%;
+max-width:1200px;
+margin:auto;
+}
+
 nav{
-display:flex;
-justify-content:space-between;
-padding:20px 8%;
 position:fixed;
 width:100%;
-z-index:100;
-background:rgba(15,23,42,0.6);
+padding:20px 0;
+background:rgba(15,23,42,0.8);
 backdrop-filter:blur(10px);
+z-index:100;
+}
+
+nav .container{
+display:flex;
+justify-content:space-between;
+align-items:center;
 }
 
 nav a{
@@ -51,32 +65,31 @@ flex-direction:column;
 justify-content:center;
 align-items:center;
 text-align:center;
-padding:0 20px;
+padding:20px;
 }
 
 .hero h1{
-font-size:56px;
+font-size:clamp(32px,6vw,60px);
 background:linear-gradient(90deg,#3b82f6,#00f5d4);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
-margin:0;
 }
 
 .hero p{
-max-width:600px;
-color:#94a3b8;
 margin-top:20px;
+max-width:700px;
+color:#94a3b8;
 }
 
 .btn{
-background:linear-gradient(90deg,#3b82f6,#00f5d4);
+display:inline-block;
+margin-top:30px;
 padding:14px 30px;
 border-radius:40px;
-text-decoration:none;
+background:linear-gradient(90deg,#3b82f6,#00f5d4);
 color:white;
+text-decoration:none;
 font-weight:600;
-margin-top:30px;
-display:inline-block;
 transition:0.3s;
 }
 
@@ -85,12 +98,18 @@ transform:scale(1.05);
 }
 
 section{
-padding:120px 8%;
+padding:100px 0;
 }
 
-h2{
-font-size:34px;
+section h2{
+font-size:32px;
 margin-bottom:40px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:25px;
 }
 
 .card{
@@ -100,28 +119,23 @@ backdrop-filter:blur(20px);
 padding:30px;
 border-radius:20px;
 transition:0.4s;
-transform-style:preserve-3d;
 }
 
 .card:hover{
-transform:rotateY(8deg) rotateX(5deg) scale(1.05);
-}
-
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:30px;
+transform:translateY(-8px);
 }
 
 footer{
+padding:40px 0;
 text-align:center;
-padding:40px;
 color:#94a3b8;
+border-top:1px solid rgba(255,255,255,0.1);
 }
 
 @media(max-width:768px){
-.hero h1{font-size:36px;}
-section{padding:80px 5%;}
+section{
+padding:80px 0;
+}
 }
 
 </style>
@@ -132,90 +146,134 @@ section{padding:80px 5%;}
 <canvas id="bg"></canvas>
 
 <nav>
-<div><strong>Bhuvan</strong></div>
+<div class="container">
+<strong>Bhuvan Bommannavar</strong>
 <div>
 <a href="#about">About</a>
+<a href="#experience">Experience</a>
 <a href="#projects">Projects</a>
 <a href="#contact">Contact</a>
+</div>
 </div>
 </nav>
 
 <div class="hero">
 <h1>Data. Strategy. Growth.</h1>
-<p>Sales Leader turned Analytics Professional. Building revenue strategy with data intelligence and business insight.</p>
+<p>Sales Leader with 3+ years of real estate experience, now specializing in Business Analytics using Excel, SQL, Power BI & Tableau to drive data-backed decisions.</p>
 <a href="Bhuvan_Bommannavar_Resume.pdf" download class="btn">Download Resume</a>
 </div>
 
 <section id="about">
+<div class="container">
 <h2>About Me</h2>
 <div class="card">
 MBA (Finance & Marketing) – 8.26 CGPA  
-3+ Years Real Estate Sales Leadership  
-Skilled in Excel, SQL, Power BI, Tableau & Data-Driven Strategy  
-Focused on Analytics & Business Intelligence roles.
+B.E Mechanical Engineering  
+Skilled in Excel (Advanced), SQL, Power BI, Tableau, Python (learning), Statistics & Gen AI.  
+Languages: English, Kannada, Hindi, Marathi.
+</div>
+</div>
+</section>
+
+<section id="experience">
+<div class="container">
+<h2>Experience</h2>
+<div class="grid">
+<div class="card">
+<strong>Sales Manager</strong><br>
+Premier Real Estate Services<br>
+May 2025 – Present
+</div>
+
+<div class="card">
+<strong>Assistant Sales Manager</strong><br>
+Sobha Ltd<br>
+Jun 2024 – Feb 2025
+</div>
+
+<div class="card">
+<strong>Senior Relationship Manager</strong><br>
+Fly Realty<br>
+Apr 2023 – May 2024
+</div>
+
+<div class="card">
+<strong>Relationship Manager</strong><br>
+Brad Realty<br>
+Apr 2022 – Apr 2023
+</div>
+</div>
 </div>
 </section>
 
 <section id="projects">
-<h2>Featured Projects</h2>
-
+<div class="container">
+<h2>Projects & Research</h2>
 <div class="grid">
 
 <div class="card">
-<h3>Capital Budget Risk Analysis</h3>
-Probability & sensitivity modeling for ethanol plant investment using analytical frameworks.
+<strong>Risk Analysis in Capital Budgeting</strong><br>
+Probability & sensitivity analysis for ethanol plant investment.
 </div>
 
 <div class="card">
-<h3>Deloitte Data Analyst Simulation</h3>
-Operational decision-making dashboard using Excel & Tableau.
+<strong>Deloitte Data Analyst Simulation</strong><br>
+Operations & decision-making analytics project using Excel & Tableau.
 </div>
 
 <div class="card">
-<h3>Power BI Dashboard</h3>
-Interactive visual analytics dashboard for business performance tracking.
+<strong>Engineering Innovation Projects</strong><br>
+Multi DOF Robotic Arm, Prosthetic Arm, Multi Maize Thresher, Sasyojasa (Plant-E).
 </div>
 
+<div class="card">
+<strong>Achievements</strong><br>
+Multiple National & State Level Paper Presentation Awards.  
+Project sponsored by Karnataka State Council for Science & Technology.
+</div>
+
+</div>
 </div>
 </section>
 
 <section id="contact">
-<h2>Let’s Connect</h2>
+<div class="container">
+<h2>Contact</h2>
 <div class="card">
-Email: info.bhuvaneshwar.b@gmail.com<br><br>
-Phone: 8867429944<br><br>
+Email: info.bhuvaneshwar.b@gmail.com<br>
+Phone: 8867429944<br>
 Location: Bangalore, India
+</div>
 </div>
 </section>
 
 <footer>
-© 2026 Bhuvan Bommannavar | Strategy & Analytics Portfolio
+© 2026 Bhuvan Bommannavar | Analytics & Strategy Portfolio
 </footer>
 
 <script>
 
-// 3D Animated Background
+// Real 3D Rotating Geometry Background
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
 const renderer = new THREE.WebGLRenderer({canvas:document.getElementById('bg'), alpha:true});
 renderer.setSize(window.innerWidth, window.innerHeight);
 
-const geometry = new THREE.TorusKnotGeometry(10,3,100,16);
+const geometry = new THREE.IcosahedronGeometry(8,1);
 const material = new THREE.MeshStandardMaterial({color:0x3b82f6, wireframe:true});
-const torus = new THREE.Mesh(geometry, material);
-
-scene.add(torus);
+const shape = new THREE.Mesh(geometry, material);
+scene.add(shape);
 
 const light = new THREE.PointLight(0xffffff,1);
 light.position.set(20,20,20);
 scene.add(light);
 
-camera.position.z = 30;
+camera.position.z = 20;
 
 function animate(){
 requestAnimationFrame(animate);
-torus.rotation.x += 0.005;
-torus.rotation.y += 0.005;
+shape.rotation.x += 0.003;
+shape.rotation.y += 0.004;
 renderer.render(scene,camera);
 }
 animate();
