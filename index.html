@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bhuvan Bommannavar</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -29,7 +29,6 @@ color:var(--text);
 overflow-x:hidden;
 }
 
-/* WebGL canvas */
 canvas{
 position:fixed;
 top:0;
@@ -37,7 +36,6 @@ left:0;
 z-index:-2;
 }
 
-/* Header */
 header{
 position:fixed;
 top:0;
@@ -50,35 +48,12 @@ z-index:100;
 transition:opacity 0.6s ease;
 }
 
-/* PREMIUM CEO NAME */
 .logo{
-position:relative;
-font-family:'Playfair Display', serif;
-font-size:44px;
+font-family:'Cormorant Garamond',serif;
+font-size:34px;
 font-weight:700;
-font-style:italic;
-background: linear-gradient(90deg, #ffffff, #9ec5ff, #ffffff);
-background-size:200% auto;
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
-letter-spacing:1px;
-text-shadow:0 8px 30px rgba(79,140,255,0.35);
-animation: shimmer 6s linear infinite, glowPulse 4s ease-in-out infinite;
 }
 
-/* Light sweep shimmer */
-@keyframes shimmer{
-0%{background-position:200% center;}
-100%{background-position:-200% center;}
-}
-
-/* Soft glow breathing */
-@keyframes glowPulse{
-0%,100%{text-shadow:0 8px 30px rgba(79,140,255,0.35);}
-50%{text-shadow:0 12px 40px rgba(79,140,255,0.55);}
-}
-
-/* Buttons */
 .header-buttons{
 display:flex;
 gap:20px;
@@ -93,12 +68,6 @@ text-decoration:none;
 transition:0.4s cubic-bezier(.16,1,.3,1);
 }
 
-.btn:hover{
-transform:translateY(-4px);
-box-shadow:0 15px 30px rgba(79,140,255,0.4);
-}
-
-/* Sections */
 section{
 min-height:100vh;
 display:flex;
@@ -108,13 +77,12 @@ padding:160px 10%;
 position:relative;
 }
 
-/* Hero */
 .hero{
 text-align:center;
 }
 
 .hero h1{
-font-family:'Playfair Display', serif;
+font-family:'Cormorant Garamond',serif;
 font-size:64px;
 margin-bottom:20px;
 }
@@ -124,7 +92,6 @@ font-size:22px;
 color:var(--muted);
 }
 
-/* Grid */
 .grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
@@ -133,7 +100,6 @@ margin-top:60px;
 perspective:1200px;
 }
 
-/* Pallets */
 .card{
 padding:40px;
 background:var(--glass);
@@ -167,20 +133,17 @@ opacity:1;
 max-height:2000px;
 }
 
-/* Final Words */
 .final-words{
 text-align:center;
-font-family:'Playfair Display', serif;
+font-family:'Cormorant Garamond',serif;
 font-size:60px;
 letter-spacing:8px;
 opacity:0.9;
 }
 
-/* Responsive */
 @media(max-width:768px){
 .hero h1{font-size:36px;}
 .final-words{font-size:32px;}
-.logo{font-size:30px;}
 }
 </style>
 </head>
@@ -201,6 +164,7 @@ opacity:0.9;
 
 <section>
 <div class="grid">
+
 <div class="card" onclick="toggleCard(this)">
 <h3>Objective</h3>
 <div class="card-content">
@@ -211,10 +175,83 @@ Results-driven sales professional with 3+ years of experience in real estate, sp
 <div class="card" onclick="toggleCard(this)">
 <h3>Skills</h3>
 <div class="card-content">
-Python (Pursuing), Statistics, SQL, Power BI, Tableau, Excel, Gen AI.<br><br>
-Problem solving, Team player, Adaptable, Goal oriented.
+Python (Pursuing), Statistics for Data Analysis, SQL, Power BI, Tableau, MS Excel, Gen AI for Data Analysis.<br><br>
+Problem solving techniques, Team player, Adaptable, Goal oriented.
 </div>
 </div>
+
+<div class="card" onclick="toggleCard(this)">
+<h3>Experience</h3>
+<div class="card-content">
+Premier Real Estate Services — Sales Manager (01/05/2025 – Present)<br><br>
+Sobha Ltd — Assistant Sales Manager (01/06/2024 – 28/02/2025)<br><br>
+Fly Realty — Senior Relationship Manager (18/04/2023 – 08/05/2024)<br><br>
+Brad Realty — Relationship Manager (21/04/2022 – 17/04/2023)
+</div>
+</div>
+
+<div class="card" onclick="toggleCard(this)">
+<h3>Education</h3>
+<div class="card-content">
+MBA – Finance & Marketing, REVA University (8.26 CGPA) — 2020–2022<br><br>
+B.E Mechanical Engineering, Hirasugar Institute of Technology — 2015–2019<br><br>
+Pre University & SSLC details as per academic records.
+</div>
+</div>
+
+</div>
+</section>
+
+<section>
+<div class="grid">
+
+<div class="card" onclick="toggleCard(this)">
+<h3>Projects</h3>
+<div class="card-content">
+Risk Analysis in Capital Budgeting of Ethanol Plant.<br><br>
+Robotic Arm – Multi DOF mechanical robotic arm.<br><br>
+Prosthetic Arm – 21 DOF biological mechanical arm.<br><br>
+Multi Maize Thresher.<br><br>
+Sasyojasa (Plant-E).
+</div>
+</div>
+
+<div class="card" onclick="toggleCard(this)">
+<h3>Awards & Achievements</h3>
+<div class="card-content">
+Multiple National Level Paper Presentation Prizes.<br><br>
+State Level Project Exhibition (SHRISHTI 2K18).<br><br>
+Sponsored by Karnataka State Council for Science and Technology.
+</div>
+</div>
+
+</div>
+</section>
+
+<section>
+<div class="grid">
+
+<div class="card" onclick="toggleCard(this)">
+<h3>Certifications</h3>
+<div class="card-content">
+Microsoft Excel (Advanced).<br>
+Business Analytics using Excel.<br>
+Business Analytics using Power BI.
+</div>
+</div>
+
+<div class="card" onclick="toggleCard(this)">
+<h3>Internship & Workshop</h3>
+<div class="card-content">
+P K Pumps and Precicast Pvt Ltd.<br>
+Agile Capital Services (BFSI Sector).<br>
+Skillfied Mentor (Excel & Power BI).<br>
+Deloitte Data Analyst Simulation.<br><br>
+ISRO Workshop – Engineering Subsystems.<br>
+IIM Calcutta Workshop – Data Analytics.
+</div>
+</div>
+
 </div>
 </section>
 
@@ -257,6 +294,7 @@ renderer.render(scene,camera);
 }
 animate();
 
+/* Scroll camera push */
 gsap.to(camera.position,{
 z:2,
 scrollTrigger:{
@@ -267,10 +305,12 @@ scrub:true
 }
 });
 
+/* Card 3D outward animation */
 function toggleCard(card){
 card.classList.toggle("active");
 }
 
+/* Typing */
 const text="Hey 👋 Welcome to my profile. Bhuvan here.";
 let i=0;
 function typing(){
@@ -282,6 +322,7 @@ setTimeout(typing,60);
 }
 typing();
 
+/* Header dissolve */
 window.addEventListener("scroll",()=>{
 document.getElementById("header").style.opacity=1-window.scrollY/300;
 });
