@@ -9,44 +9,41 @@
 
 <style>
 :root{
---bg1:#f8fafc;
---bg2:#e0f2fe;
---accent:#0ea5e9;
+--bg1:#f5f7fa;
+--bg2:#e4ecf5;
+--accent:#2563eb;
 --text:#0f172a;
 --muted:#64748b;
 }
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
+*{margin:0;padding:0;box-sizing:border-box;}
 
 body{
 font-family:'Inter',sans-serif;
+background:linear-gradient(135deg,var(--bg1),var(--bg2));
 color:var(--text);
-background:linear-gradient(120deg,var(--bg1),var(--bg2));
 overflow-x:hidden;
 scroll-behavior:smooth;
 }
 
-/* Floating soft gradient layer */
+/* Animated layered background */
 body::before{
 content:"";
 position:fixed;
-width:150%;
-height:150%;
-background:radial-gradient(circle at 20% 30%, rgba(14,165,233,0.25), transparent),
-radial-gradient(circle at 80% 70%, rgba(59,130,246,0.25), transparent);
-animation:move 18s ease-in-out infinite alternate;
-z-index:-1;
+width:200%;
+height:200%;
+background:
+radial-gradient(circle at 20% 30%, rgba(37,99,235,0.15), transparent),
+radial-gradient(circle at 80% 70%, rgba(14,165,233,0.15), transparent);
+animation:move 20s ease-in-out infinite alternate;
+z-index:-2;
 }
-
 @keyframes move{
 0%{transform:translate(0,0);}
-100%{transform:translate(-10%, -10%);}
+100%{transform:translate(-8%, -8%);}
 }
 
+/* Header */
 header{
 position:fixed;
 top:0;
@@ -55,8 +52,8 @@ display:flex;
 justify-content:space-between;
 align-items:center;
 padding:25px 8%;
-background:rgba(255,255,255,0.6);
 backdrop-filter:blur(20px);
+background:rgba(255,255,255,0.6);
 z-index:100;
 }
 
@@ -64,8 +61,6 @@ z-index:100;
 font-family:'Playfair Display',serif;
 font-size:26px;
 font-weight:700;
-color:var(--text);
-letter-spacing:1px;
 }
 
 .header-buttons{
@@ -83,10 +78,9 @@ background:var(--accent);
 color:white;
 transition:0.3s ease;
 }
-
 .btn:hover{
 transform:translateY(-2px);
-box-shadow:0 10px 20px rgba(14,165,233,0.3);
+box-shadow:0 15px 25px rgba(37,99,235,0.25);
 }
 
 /* Sections */
@@ -95,69 +89,103 @@ min-height:100vh;
 display:flex;
 flex-direction:column;
 justify-content:center;
-padding:140px 12%;
+padding:140px 10%;
 opacity:0;
 transform:translateY(40px);
 transition:all 1s ease;
 }
-
 section.visible{
 opacity:1;
 transform:translateY(0);
 }
 
+/* Hero */
 .hero{
 text-align:center;
 }
-
 .hero h1{
 font-family:'Playfair Display',serif;
 font-size:52px;
-font-weight:700;
-margin-bottom:25px;
+margin-bottom:20px;
 }
-
 .hero p{
 font-size:20px;
 color:var(--muted);
 max-width:750px;
 margin:auto;
+}
+
+/* Pallets */
+.pallet-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:30px;
+margin-top:60px;
+}
+
+.pallet{
+padding:40px;
+border-radius:20px;
+background:rgba(255,255,255,0.4);
+backdrop-filter:blur(25px);
+cursor:pointer;
+transition:all .4s ease;
+font-weight:500;
+}
+.pallet:hover{
+transform:translateY(-8px) scale(1.02);
+box-shadow:0 25px 40px rgba(0,0,0,0.08);
+}
+
+/* Slide panel */
+.detail-panel{
+position:fixed;
+top:0;
+right:-100%;
+width:50%;
+height:100%;
+background:rgba(255,255,255,0.85);
+backdrop-filter:blur(40px);
+padding:120px 60px;
+overflow-y:auto;
+transition:0.6s cubic-bezier(.77,0,.18,1);
+z-index:200;
+}
+.detail-panel.active{
+right:0;
+}
+
+.close{
+position:absolute;
+top:40px;
+right:50px;
+font-size:22px;
+cursor:pointer;
+}
+
+.detail-panel h2{
+font-family:'Playfair Display',serif;
+font-size:36px;
+margin-bottom:30px;
+}
+.detail-panel h3{
+margin-top:25px;
+font-size:18px;
+font-weight:600;
+}
+.detail-panel p{
+margin-top:8px;
+color:var(--muted);
 line-height:1.6;
 }
 
-/* Premium content block */
-.block{
-max-width:900px;
-margin:auto;
-}
-
-.block h2{
-font-family:'Playfair Display',serif;
-font-size:38px;
-margin-bottom:25px;
-}
-
-.block h3{
-margin-top:35px;
-font-size:20px;
-font-weight:600;
-}
-
-.block p{
-margin-top:8px;
-color:var(--muted);
-line-height:1.7;
-}
-
-/* Responsive */
-@media(max-width:768px){
+/* Mobile */
+@media(max-width:900px){
+.detail-panel{width:100%;padding:100px 30px;}
 .hero h1{font-size:34px;}
-.block h2{font-size:28px;}
-section{padding:120px 8%;}
 }
 </style>
 </head>
-
 <body>
 
 <header>
@@ -177,53 +205,98 @@ If you find this interesting, feel free to connect with me.
 </section>
 
 <section>
-<div class="block">
-<h2>Objective</h2>
-<p>
-Results-driven sales professional with 3+ years in real estate, blending leadership experience with analytical expertise in Excel, SQL, Power BI and Tableau. Passionate about driving strategic decisions through data-driven insights.
-</p>
+<div class="pallet-grid">
+<div class="pallet" onclick="openPanel('objective')">Objective</div>
+<div class="pallet" onclick="openPanel('skills')">Skills</div>
+<div class="pallet" onclick="openPanel('experience')">Experience</div>
+<div class="pallet" onclick="openPanel('education')">Education</div>
+<div class="pallet" onclick="openPanel('projects')">Projects</div>
+<div class="pallet" onclick="openPanel('awards')">Awards & Achievements</div>
+<div class="pallet" onclick="openPanel('certifications')">Certifications</div>
+<div class="pallet" onclick="openPanel('internship')">Internship</div>
+<div class="pallet" onclick="openPanel('workshop')">Workshop</div>
 </div>
 </section>
 
-<section>
-<div class="block">
-<h2>Experience</h2>
+<div class="detail-panel" id="panel">
+<div class="close" onclick="closePanel()">✕</div>
+<div id="panel-content"></div>
+</div>
 
+<script>
+
+const data = {
+objective: `
+<h2>Objective</h2>
+<p>Results-driven sales professional with 3+ years of experience in real estate, leveraging analytics tools like Excel, SQL, Power BI & Tableau to drive strategic decisions.</p>
+`,
+skills: `
+<h2>Skills</h2>
+<p>Python (Pursuing), SQL, Power BI, Tableau, Advanced Excel, Gen AI for Data Analysis.</p>
+<p>Problem solving, Team leadership, Adaptability, Goal orientation.</p>
+`,
+experience: `
+<h2>Experience</h2>
 <h3>Premier Real Estate Services</h3>
 <p>01/05/2025 – Present</p>
 <p>Sales Manager</p>
-
 <h3>Sobha Ltd</h3>
 <p>01/06/2024 – 28/02/2025</p>
 <p>Assistant Sales Manager</p>
-
 <h3>Fly Realty</h3>
 <p>18/04/2023 – 08/05/2024</p>
 <p>Senior Relationship Manager</p>
-
 <h3>Brad Realty</h3>
 <p>21/04/2022 – 17/04/2023</p>
 <p>Relationship Manager</p>
-
-</div>
-</section>
-
-<section>
-<div class="block">
+`,
+education: `
 <h2>Education</h2>
-
 <h3>MBA – Finance & Marketing</h3>
 <p>REVA University | 8.26 CGPA | 2020–2022</p>
-
 <h3>B.E Mechanical Engineering</h3>
 <p>Hirasugar Institute of Technology | 2015–2019</p>
+`,
+projects: `
+<h2>Projects</h2>
+<p><strong>Risk Analysis in Capital Budgeting</strong> – Ethanol plant analysis.</p>
+<p><strong>Robotic Arm</strong> – Multi DOF robotic system.</p>
+<p><strong>Prosthetic Arm</strong> – 21 DOF mechanical arm.</p>
+`,
+awards: `
+<h2>Awards & Achievements</h2>
+<p>Multiple National Level Paper Presentation Prizes.</p>
+<p>State Level Project Exhibition Recognition.</p>
+`,
+certifications: `
+<h2>Certifications</h2>
+<p>Advanced Excel</p>
+<p>Business Analytics using Excel</p>
+<p>Power BI Certification</p>
+`,
+internship: `
+<h2>Internship</h2>
+<p>P K Pumps and Precicast Pvt Ltd</p>
+<p>Agile Capital Services</p>
+<p>Skillfied Mentor</p>
+<p>Deloitte Data Analyst Simulation</p>
+`,
+workshop: `
+<h2>Workshop</h2>
+<p>ISRO – Engineering Subsystems in Space Technology</p>
+<p>IIM Calcutta – Data Analytics Workshop</p>
+`
+};
 
-</div>
-</section>
+function openPanel(section){
+document.getElementById("panel-content").innerHTML = data[section];
+document.getElementById("panel").classList.add("active");
+}
+function closePanel(){
+document.getElementById("panel").classList.remove("active");
+}
 
-<script>
 const sections = document.querySelectorAll("section");
-
 const observer = new IntersectionObserver(entries=>{
 entries.forEach(entry=>{
 if(entry.isIntersecting){
@@ -231,10 +304,8 @@ entry.target.classList.add("visible");
 }
 });
 },{threshold:0.2});
+sections.forEach(section=>observer.observe(section));
 
-sections.forEach(section=>{
-observer.observe(section);
-});
 </script>
 
 </body>
