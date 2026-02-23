@@ -1,213 +1,159 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bhuvan Bommannavar | Interactive Portfolio</title>
+<title>Bhuvan Bommannavar | Spatial Portfolio</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
 
 <style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
-
 body{
-font-family:'Inter',sans-serif;
-background:#0f172a;
-color:#fff;
+margin:0;
 overflow:hidden;
+font-family:'Inter',sans-serif;
+background:#000;
+color:white;
 }
 
-canvas{
-position:fixed;
-top:0;
-left:0;
-z-index:-1;
-}
-
-/* HERO */
-.hero{
-height:100vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-text-align:center;
-padding:20px;
-}
-
-.hero h1{
-font-size:clamp(30px,6vw,60px);
-background:linear-gradient(90deg,#3b82f6,#00f5d4);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-}
-
-.hero p{
-margin-top:20px;
-max-width:600px;
-color:#94a3b8;
-}
-
-.buttons{
-margin-top:40px;
-display:flex;
-flex-wrap:wrap;
-gap:20px;
-justify-content:center;
-}
-
-.btn3d{
-padding:14px 28px;
-border-radius:40px;
-background:linear-gradient(90deg,#3b82f6,#00f5d4);
-cursor:pointer;
-font-weight:600;
-transition:0.4s;
-transform-style:preserve-3d;
-}
-
-.btn3d:hover{
-transform:translateY(-5px) scale(1.05);
-}
-
-/* MODAL WINDOWS */
-.modal{
+#overlayContent{
 position:fixed;
 top:50%;
 left:50%;
-transform:translate(-50%,-50%) scale(0);
+transform:translate(-50%,-50%);
 width:90%;
 max-width:900px;
 background:rgba(15,23,42,0.95);
-backdrop-filter:blur(20px);
-border-radius:20px;
+backdrop-filter:blur(25px);
 padding:40px;
-z-index:1000;
-transition:0.4s ease;
-overflow-y:auto;
-max-height:80vh;
-box-shadow:0 0 40px rgba(0,255,255,0.2);
+border-radius:20px;
+display:none;
+z-index:10;
 }
 
-.modal.active{
-transform:translate(-50%,-50%) scale(1);
-}
-
-.close-btn{
-position:absolute;
-top:20px;
-right:25px;
-font-size:20px;
-cursor:pointer;
-color:#00f5d4;
-}
-
-.modal h2{
+#overlayContent h2{
 margin-bottom:20px;
 }
 
-.modal p{
-line-height:1.6;
-color:#cbd5e1;
+#closeBtn{
+position:absolute;
+top:15px;
+right:20px;
+cursor:pointer;
+font-size:20px;
+color:#00f5d4;
 }
 
-.overlay{
+#download{
 position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.6);
-opacity:0;
-pointer-events:none;
-transition:0.4s;
-}
-
-.overlay.active{
-opacity:1;
-pointer-events:all;
-}
-
-.download{
-margin-top:30px;
-display:inline-block;
-padding:12px 24px;
+bottom:30px;
+left:50%;
+transform:translateX(-50%);
+padding:14px 28px;
 background:#00f5d4;
 color:#000;
 border-radius:30px;
 text-decoration:none;
 font-weight:600;
+z-index:10;
 }
-
-@media(max-width:768px){
-.modal{
-padding:25px;
-}
-}
-
 </style>
 </head>
 
 <body>
 
-<canvas id="bg"></canvas>
-
-<div class="hero">
-<h1>Data. Strategy. Growth.</h1>
-<p>Sales Leader transitioning into Analytics & Business Intelligence.</p>
-
-<div class="buttons">
-<div class="btn3d" onclick="openModal('about')">About</div>
-<div class="btn3d" onclick="openModal('experience')">Experience</div>
-<div class="btn3d" onclick="openModal('projects')">Projects</div>
-<div class="btn3d" onclick="openModal('contact')">Contact</div>
+<div id="overlayContent">
+<span id="closeBtn">✖</span>
+<h2 id="panelTitle"></h2>
+<p id="panelText"></p>
 </div>
 
-<a href="Bhuvan_Bommannavar_Resume.pdf" download class="download">Download Resume</a>
-</div>
+<a id="download" href="Bhuvan_Bommannavar_Resume.pdf" download>Download Resume</a>
 
-<!-- Overlay -->
-<div class="overlay" id="overlay" onclick="closeModal()"></div>
+<script>
 
-<!-- ABOUT MODAL -->
-<div class="modal" id="about">
-<span class="close-btn" onclick="closeModal()">✖</span>
-<h2>About Me</h2>
-<p>
-MBA (Finance & Marketing) – 8.26 CGPA  
-B.E Mechanical Engineering  
-Skilled in Excel (Advanced), SQL, Power BI, Tableau, Python & Statistics.  
-Languages: English, Kannada, Hindi, Marathi.
-</p>
-</div>
+let scene = new THREE.Scene();
+let camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+let renderer = new THREE.WebGLRenderer({antialias:true});
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.body.appendChild(renderer.domElement);
 
-<!-- EXPERIENCE MODAL -->
-<div class="modal" id="experience">
-<span class="close-btn" onclick="closeModal()">✖</span>
-<h2>Experience</h2>
-<p>
-Sales Manager – Premier Real Estate Services (2025–Present)  
-Assistant Sales Manager – Sobha Ltd  
-Senior Relationship Manager – Fly Realty  
-Relationship Manager – Brad Realty
-</p>
-</div>
+camera.position.z = 15;
 
-<!-- PROJECTS MODAL -->
-<div class="modal" id="projects">
-<span class="close-btn" onclick="closeModal()">✖</span>
-<h2>Projects</h2>
-<p>
-Risk Analysis in Capital Budgeting (Ethanol Plant)  
-Deloitte Data Analyst Simulation  
-Multi DOF Robotic Arm  
-Prosthetic Arm  
-Multi Maize Thresher  
-Sasyojasa (Plant-E)  
-Multiple National Level Achievements
+// Ambient Light
+const light = new THREE.PointLight(0xffffff,1);
+light.position.set(20,20,20);
+scene.add(light);
+
+// Floating Panels Data
+const panelsData = [
+{ title:"About", text:"MBA (Finance & Marketing), 8.26 CGPA. Skilled in Excel, SQL, Power BI, Tableau. 3+ years real estate leadership experience."},
+{ title:"Experience", text:"Sales Manager – Premier Real Estate Services. Assistant Sales Manager – Sobha Ltd. Senior Relationship Manager – Fly Realty. Relationship Manager – Brad Realty."},
+{ title:"Projects", text:"Risk Analysis in Capital Budgeting. Deloitte Data Simulation. Robotic Arm. Prosthetic Arm. Multi Maize Thresher."},
+{ title:"Contact", text:"Email: info.bhuvaneshwar.b@gmail.com | Phone: 8867429944 | Bangalore, India."}
+];
+
+let panels = [];
+
+const geometry = new THREE.BoxGeometry(5,3,0.3);
+const material = new THREE.MeshStandardMaterial({color:0x00f5d4, metalness:0.6, roughness:0.2});
+
+panelsData.forEach((data,i)=>{
+let panel = new THREE.Mesh(geometry, material.clone());
+panel.position.x = (i-1.5)*7;
+panel.position.y = Math.sin(i)*2;
+panel.userData = data;
+scene.add(panel);
+panels.push(panel);
+});
+
+// Raycaster for clicks
+const raycaster = new THREE.Raycaster();
+const mouse = new THREE.Vector2();
+
+window.addEventListener("click", function(event){
+mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+
+raycaster.setFromCamera(mouse, camera);
+const intersects = raycaster.intersectObjects(panels);
+
+if(intersects.length > 0){
+openPanel(intersects[0].object.userData);
+}
+});
+
+function openPanel(data){
+document.getElementById("panelTitle").innerText = data.title;
+document.getElementById("panelText").innerText = data.text;
+document.getElementById("overlayContent").style.display="block";
+}
+
+document.getElementById("closeBtn").onclick = function(){
+document.getElementById("overlayContent").style.display="none";
+}
+
+// Animate floating effect
+function animate(){
+requestAnimationFrame(animate);
+
+panels.forEach((panel,i)=>{
+panel.rotation.y += 0.005;
+panel.position.y = Math.sin(Date.now()*0.001 + i)*1.5;
+});
+
+renderer.render(scene,camera);
+}
+animate();
+
+window.addEventListener('resize',()=>{
+renderer.setSize(window.innerWidth,window.innerHeight);
+camera.aspect = window.innerWidth/window.innerHeight;
+camera.updateProjectionMatrix();
+});
+
+</script>
+
+</body>
+</html>
