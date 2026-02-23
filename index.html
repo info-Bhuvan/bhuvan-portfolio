@@ -5,42 +5,45 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bhuvan Bommannavar</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
+
 :root{
---bg1:#f5f7fa;
---bg2:#e4ecf5;
---accent:#2563eb;
---text:#0f172a;
---muted:#64748b;
+--bg:#0b0f19;
+--glass:rgba(255,255,255,0.06);
+--accent:#3b82f6;
+--text:#e2e8f0;
+--muted:#94a3b8;
 }
 
 *{margin:0;padding:0;box-sizing:border-box;}
 
 body{
 font-family:'Inter',sans-serif;
-background:linear-gradient(135deg,var(--bg1),var(--bg2));
+background:var(--bg);
 color:var(--text);
 overflow-x:hidden;
 scroll-behavior:smooth;
 }
 
-/* Animated layered background */
+/* 3D animated gradient background */
 body::before{
 content:"";
 position:fixed;
 width:200%;
 height:200%;
 background:
-radial-gradient(circle at 20% 30%, rgba(37,99,235,0.15), transparent),
-radial-gradient(circle at 80% 70%, rgba(14,165,233,0.15), transparent);
-animation:move 20s ease-in-out infinite alternate;
+radial-gradient(circle at 20% 30%, #1e293b, transparent),
+radial-gradient(circle at 80% 70%, #1e40af, transparent),
+radial-gradient(circle at 40% 80%, #0f172a, transparent);
+animation:animateBg 25s ease infinite alternate;
 z-index:-2;
 }
-@keyframes move{
+
+@keyframes animateBg{
 0%{transform:translate(0,0);}
-100%{transform:translate(-8%, -8%);}
+100%{transform:translate(-10%,-10%);}
 }
 
 /* Header */
@@ -52,20 +55,20 @@ display:flex;
 justify-content:space-between;
 align-items:center;
 padding:25px 8%;
-backdrop-filter:blur(20px);
-background:rgba(255,255,255,0.6);
+transition:opacity 0.6s ease;
 z-index:100;
 }
 
 .logo{
-font-family:'Playfair Display',serif;
-font-size:26px;
+font-family:'Cormorant Garamond',serif;
+font-size:30px;
 font-weight:700;
+letter-spacing:1px;
 }
 
 .header-buttons{
 display:flex;
-gap:15px;
+gap:20px;
 }
 
 .btn{
@@ -73,14 +76,14 @@ padding:10px 20px;
 border-radius:30px;
 text-decoration:none;
 font-size:14px;
-font-weight:500;
 background:var(--accent);
 color:white;
-transition:0.3s ease;
+transition:0.3s;
 }
+
 .btn:hover{
-transform:translateY(-2px);
-box-shadow:0 15px 25px rgba(37,99,235,0.25);
+transform:translateY(-3px);
+box-shadow:0 10px 20px rgba(59,130,246,0.3);
 }
 
 /* Sections */
@@ -90,221 +93,229 @@ display:flex;
 flex-direction:column;
 justify-content:center;
 padding:140px 10%;
-opacity:0;
-transform:translateY(40px);
-transition:all 1s ease;
-}
-section.visible{
-opacity:1;
-transform:translateY(0);
 }
 
 /* Hero */
 .hero{
 text-align:center;
 }
+
 .hero h1{
-font-family:'Playfair Display',serif;
+font-family:'Cormorant Garamond',serif;
 font-size:52px;
-margin-bottom:20px;
-}
-.hero p{
-font-size:20px;
-color:var(--muted);
-max-width:750px;
-margin:auto;
+min-height:80px;
 }
 
-/* Pallets */
-.pallet-grid{
+.hero p{
+margin-top:25px;
+color:var(--muted);
+font-size:20px;
+}
+
+/* Glass Cards */
+.grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-gap:30px;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:40px;
 margin-top:60px;
 }
 
-.pallet{
+.card{
 padding:40px;
+background:var(--glass);
+backdrop-filter:blur(20px);
 border-radius:20px;
-background:rgba(255,255,255,0.4);
-backdrop-filter:blur(25px);
 cursor:pointer;
-transition:all .4s ease;
-font-weight:500;
-}
-.pallet:hover{
-transform:translateY(-8px) scale(1.02);
-box-shadow:0 25px 40px rgba(0,0,0,0.08);
+transition:all 0.4s ease;
+position:relative;
+overflow:hidden;
 }
 
-/* Slide panel */
-.detail-panel{
-position:fixed;
-top:0;
-right:-100%;
-width:50%;
-height:100%;
-background:rgba(255,255,255,0.85);
-backdrop-filter:blur(40px);
-padding:120px 60px;
-overflow-y:auto;
-transition:0.6s cubic-bezier(.77,0,.18,1);
-z-index:200;
-}
-.detail-panel.active{
-right:0;
+.card:hover{
+transform:translateY(-10px);
+box-shadow:0 20px 40px rgba(0,0,0,0.4);
 }
 
-.close{
-position:absolute;
-top:40px;
-right:50px;
-font-size:22px;
-cursor:pointer;
-}
-
-.detail-panel h2{
-font-family:'Playfair Display',serif;
-font-size:36px;
-margin-bottom:30px;
-}
-.detail-panel h3{
-margin-top:25px;
-font-size:18px;
-font-weight:600;
-}
-.detail-panel p{
-margin-top:8px;
+.card-content{
+max-height:0;
+overflow:hidden;
+transition:max-height 0.8s ease;
+margin-top:20px;
 color:var(--muted);
-line-height:1.6;
 }
 
-/* Mobile */
-@media(max-width:900px){
-.detail-panel{width:100%;padding:100px 30px;}
-.hero h1{font-size:34px;}
+.card.active .card-content{
+max-height:1000px;
 }
+
+/* Contact section */
+.contact-box{
+margin-top:40px;
+font-size:18px;
+}
+
+.contact-box a{
+color:var(--accent);
+text-decoration:none;
+}
+
+/* Responsive */
+@media(max-width:768px){
+.hero h1{font-size:32px;}
+}
+
 </style>
 </head>
+
 <body>
 
-<header>
+<header id="header">
 <div class="logo">Bhuvan Bommannavar</div>
 <div class="header-buttons">
 <a href="Bhuvan_CV_23-02-2026.pdf" download class="btn">Download Resume</a>
-<a href="mailto:info.bhuvaneshwar.b@gmail.com" class="btn">Contact Me</a>
+<a href="#contact" class="btn">Contact Me</a>
 </div>
 </header>
 
 <section class="hero">
-<h1>Hey 👋 Welcome to My Profile</h1>
-<p>
-Bhuvan here. You can know more about me here.  
-If you find this interesting, feel free to connect with me.
-</p>
+<h1 id="typing"></h1>
+<p>Scroll down to explore my journey.</p>
 </section>
 
+<!-- SECTION 1 -->
 <section>
-<div class="pallet-grid">
-<div class="pallet" onclick="openPanel('objective')">Objective</div>
-<div class="pallet" onclick="openPanel('skills')">Skills</div>
-<div class="pallet" onclick="openPanel('experience')">Experience</div>
-<div class="pallet" onclick="openPanel('education')">Education</div>
-<div class="pallet" onclick="openPanel('projects')">Projects</div>
-<div class="pallet" onclick="openPanel('awards')">Awards & Achievements</div>
-<div class="pallet" onclick="openPanel('certifications')">Certifications</div>
-<div class="pallet" onclick="openPanel('internship')">Internship</div>
-<div class="pallet" onclick="openPanel('workshop')">Workshop</div>
+<div class="grid">
+<div class="card" onclick="toggleCard(this)">
+<h3>Objective</h3>
+<div class="card-content">
+Results-driven sales professional with 3+ years in real estate leveraging analytics tools like Excel, SQL, Power BI & Tableau to drive strategic decisions and business growth.
+</div>
+</div>
+
+<div class="card" onclick="toggleCard(this)">
+<h3>Skills</h3>
+<div class="card-content">
+Python (Pursuing), SQL, Power BI, Tableau, Advanced Excel, Gen AI for Data Analysis.<br><br>
+Problem solving, Team leadership, Adaptability, Goal oriented mindset.
+</div>
+</div>
+
+<div class="card" onclick="toggleCard(this)">
+<h3>Experience</h3>
+<div class="card-content">
+<strong>Premier Real Estate Services</strong><br>
+01/05/2025 – Present<br>
+Sales Manager<br><br>
+
+<strong>Sobha Ltd</strong><br>
+01/06/2024 – 28/02/2025<br>
+Assistant Sales Manager<br><br>
+
+<strong>Fly Realty</strong><br>
+Senior Relationship Manager<br><br>
+
+<strong>Brad Realty</strong><br>
+Relationship Manager
+</div>
+</div>
+
+<div class="card" onclick="toggleCard(this)">
+<h3>Education</h3>
+<div class="card-content">
+MBA – Finance & Marketing (8.26 CGPA)<br>
+REVA University<br><br>
+
+B.E Mechanical Engineering<br>
+Hirasugar Institute of Technology
+</div>
+</div>
 </div>
 </section>
 
-<div class="detail-panel" id="panel">
-<div class="close" onclick="closePanel()">✕</div>
-<div id="panel-content"></div>
+<!-- SECTION 2 -->
+<section>
+<div class="grid">
+<div class="card" onclick="toggleCard(this)">
+<h3>Projects</h3>
+<div class="card-content">
+Risk Analysis in Capital Budgeting of Ethanol Plant.<br><br>
+Robotic Arm – Multi DOF System.<br><br>
+Prosthetic Arm – 21 DOF mechanical arm.<br><br>
+Multi Maize Thresher.<br><br>
+Sasyojasa (Plant-E).
 </div>
+</div>
+
+<div class="card" onclick="toggleCard(this)">
+<h3>Awards & Achievements</h3>
+<div class="card-content">
+Multiple National Level Paper Presentation Prizes.<br><br>
+State Level Project Exhibition Recognition.<br><br>
+Sponsored by Karnataka State Council for Science & Technology.
+</div>
+</div>
+</div>
+</section>
+
+<!-- SECTION 3 -->
+<section>
+<div class="grid">
+<div class="card" onclick="toggleCard(this)">
+<h3>Certifications</h3>
+<div class="card-content">
+Advanced Excel Certification.<br>
+Business Analytics using Excel.<br>
+Power BI Certification.
+</div>
+</div>
+
+<div class="card" onclick="toggleCard(this)">
+<h3>Internship & Workshop</h3>
+<div class="card-content">
+P K Pumps & Precicast Pvt Ltd.<br>
+Agile Capital Services.<br>
+Skillfied Mentor.<br>
+Deloitte Data Analyst Simulation.<br><br>
+ISRO – Engineering Subsystems Workshop.<br>
+IIM Calcutta – Data Analytics Workshop.
+</div>
+</div>
+</div>
+</section>
+
+<section id="contact">
+<h2>Contact</h2>
+<div class="contact-box">
+Phone: +91 8867429944<br><br>
+Email: <a href="mailto:info.bhuvaneshwar.b@gmail.com">info.bhuvaneshwar.b@gmail.com</a>
+</div>
+</section>
 
 <script>
 
-const data = {
-objective: `
-<h2>Objective</h2>
-<p>Results-driven sales professional with 3+ years of experience in real estate, leveraging analytics tools like Excel, SQL, Power BI & Tableau to drive strategic decisions.</p>
-`,
-skills: `
-<h2>Skills</h2>
-<p>Python (Pursuing), SQL, Power BI, Tableau, Advanced Excel, Gen AI for Data Analysis.</p>
-<p>Problem solving, Team leadership, Adaptability, Goal orientation.</p>
-`,
-experience: `
-<h2>Experience</h2>
-<h3>Premier Real Estate Services</h3>
-<p>01/05/2025 – Present</p>
-<p>Sales Manager</p>
-<h3>Sobha Ltd</h3>
-<p>01/06/2024 – 28/02/2025</p>
-<p>Assistant Sales Manager</p>
-<h3>Fly Realty</h3>
-<p>18/04/2023 – 08/05/2024</p>
-<p>Senior Relationship Manager</p>
-<h3>Brad Realty</h3>
-<p>21/04/2022 – 17/04/2023</p>
-<p>Relationship Manager</p>
-`,
-education: `
-<h2>Education</h2>
-<h3>MBA – Finance & Marketing</h3>
-<p>REVA University | 8.26 CGPA | 2020–2022</p>
-<h3>B.E Mechanical Engineering</h3>
-<p>Hirasugar Institute of Technology | 2015–2019</p>
-`,
-projects: `
-<h2>Projects</h2>
-<p><strong>Risk Analysis in Capital Budgeting</strong> – Ethanol plant analysis.</p>
-<p><strong>Robotic Arm</strong> – Multi DOF robotic system.</p>
-<p><strong>Prosthetic Arm</strong> – 21 DOF mechanical arm.</p>
-`,
-awards: `
-<h2>Awards & Achievements</h2>
-<p>Multiple National Level Paper Presentation Prizes.</p>
-<p>State Level Project Exhibition Recognition.</p>
-`,
-certifications: `
-<h2>Certifications</h2>
-<p>Advanced Excel</p>
-<p>Business Analytics using Excel</p>
-<p>Power BI Certification</p>
-`,
-internship: `
-<h2>Internship</h2>
-<p>P K Pumps and Precicast Pvt Ltd</p>
-<p>Agile Capital Services</p>
-<p>Skillfied Mentor</p>
-<p>Deloitte Data Analyst Simulation</p>
-`,
-workshop: `
-<h2>Workshop</h2>
-<p>ISRO – Engineering Subsystems in Space Technology</p>
-<p>IIM Calcutta – Data Analytics Workshop</p>
-`
-};
-
-function openPanel(section){
-document.getElementById("panel-content").innerHTML = data[section];
-document.getElementById("panel").classList.add("active");
+/* Typing animation */
+const text = "Hey 👋 Welcome to my profile. Bhuvan here.";
+let i = 0;
+function typing(){
+if(i < text.length){
+document.getElementById("typing").innerHTML += text.charAt(i);
+i++;
+setTimeout(typing, 60);
 }
-function closePanel(){
-document.getElementById("panel").classList.remove("active");
+}
+typing();
+
+/* Expand cards */
+function toggleCard(card){
+card.classList.toggle("active");
 }
 
-const sections = document.querySelectorAll("section");
-const observer = new IntersectionObserver(entries=>{
-entries.forEach(entry=>{
-if(entry.isIntersecting){
-entry.target.classList.add("visible");
-}
+/* Header fade on scroll */
+window.addEventListener("scroll", function(){
+let header = document.getElementById("header");
+let scroll = window.scrollY;
+header.style.opacity = 1 - scroll / 300;
 });
-},{threshold:0.2});
-sections.forEach(section=>observer.observe(section));
 
 </script>
 
