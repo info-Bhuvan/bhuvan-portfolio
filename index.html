@@ -3,27 +3,38 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bhuvaneshwar Bommannavar | Executive Portfolio</title>
-<meta name="description" content="Bhuvaneshwar Bommannavar - Sales Manager | MBA | Real Estate & Data Analytics Professional">
+<title>Bhuvaneshwar Bommannavar | Executive Presence</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 :root{
---primary:#00e0ff;
---dark:#0f172a;
---glass:rgba(255,255,255,0.08);
+--accent:#00f0ff;
+--bg1:#0b1220;
+--bg2:#111827;
+--glass:rgba(255,255,255,0.06);
 }
 
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;scroll-behavior:smooth;}
-
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+html{scroll-behavior:smooth;}
 body{
-background:linear-gradient(135deg,#0f172a,#1e293b,#0f172a);
+background:linear-gradient(135deg,var(--bg1),var(--bg2));
 color:white;
 overflow-x:hidden;
 }
 
-/* PARTICLE CANVAS */
+/* Spotlight cursor */
+.cursor{
+position:fixed;
+width:400px;
+height:400px;
+background:radial-gradient(circle, rgba(0,240,255,0.15) 0%, transparent 60%);
+pointer-events:none;
+z-index:0;
+transform:translate(-50%,-50%);
+}
+
+/* Particle canvas */
 canvas{
 position:fixed;
 top:0;
@@ -31,7 +42,7 @@ left:0;
 z-index:-1;
 }
 
-/* NAVBAR */
+/* Nav */
 nav{
 position:fixed;
 top:0;
@@ -40,38 +51,38 @@ display:flex;
 justify-content:space-between;
 align-items:center;
 padding:20px 8%;
-background:rgba(0,0,0,0.4);
 backdrop-filter:blur(15px);
+background:rgba(0,0,0,0.4);
 z-index:1000;
 }
 
 .logo{
 font-family:'Great Vibes',cursive;
 font-size:30px;
-color:var(--primary);
+color:var(--accent);
 }
 
-.nav-buttons{
-display:flex;
-gap:15px;
-}
+.nav-buttons{display:flex;gap:15px;}
 
 .btn{
 padding:10px 22px;
 border:none;
-border-radius:30px;
-background:var(--primary);
+border-radius:40px;
+background:var(--accent);
 color:#000;
 font-weight:600;
 cursor:pointer;
 transition:0.3s;
+position:relative;
+overflow:hidden;
 }
 
 .btn:hover{
-transform:translateY(-3px) scale(1.05);
+transform:translateY(-4px) scale(1.05);
+box-shadow:0 10px 30px rgba(0,240,255,0.4);
 }
 
-/* SECTIONS */
+/* Sections */
 section{
 min-height:100vh;
 padding:140px 10%;
@@ -79,8 +90,8 @@ display:flex;
 flex-direction:column;
 justify-content:center;
 opacity:0;
-transform:translateY(50px);
-transition:1s ease;
+transform:translateY(60px);
+transition:1.2s cubic-bezier(.16,1,.3,1);
 }
 
 section.active{
@@ -89,86 +100,74 @@ transform:translateY(0);
 }
 
 h1{
-font-size:38px;
+font-size:42px;
 margin-bottom:40px;
 font-weight:600;
+letter-spacing:1px;
 }
 
+/* Glass card */
 .card{
 background:var(--glass);
 backdrop-filter:blur(20px);
-padding:35px;
-border-radius:20px;
-margin-bottom:25px;
+padding:40px;
+border-radius:25px;
+margin-bottom:30px;
 transition:0.4s;
+position:relative;
 }
 
 .card:hover{
-transform:translateY(-6px);
+transform:translateY(-8px);
 }
 
-/* HERO */
-.hero{
-text-align:center;
-}
-
-.typing{
-font-size:32px;
-color:var(--primary);
-margin-top:20px;
-}
-
-/* TIMELINE */
+/* Timeline */
 .timeline{
-border-left:3px solid var(--primary);
+border-left:3px solid var(--accent);
 padding-left:25px;
 }
 
 .timeline-item{
-margin-bottom:30px;
+margin-bottom:35px;
 position:relative;
 }
 
 .timeline-item::before{
 content:"";
 position:absolute;
-left:-11px;
-top:5px;
-width:15px;
-height:15px;
-background:var(--primary);
+left:-12px;
+top:8px;
+width:16px;
+height:16px;
+background:var(--accent);
 border-radius:50%;
 }
 
-/* SKILLS */
-.skill{
-margin-bottom:20px;
-}
-
+/* Skill bars */
+.skill{margin-bottom:20px;}
 .bar{
 height:8px;
-background:#334155;
-border-radius:10px;
+background:#1f2937;
+border-radius:20px;
 overflow:hidden;
 }
-
 .bar span{
 display:block;
 height:100%;
 width:0;
-background:var(--primary);
+background:var(--accent);
 transition:2s ease;
 }
 
-/* COUNTERS */
+/* Counter */
 .counter{
-font-size:36px;
+font-size:48px;
 font-weight:700;
-color:var(--primary);
+color:var(--accent);
 }
 
-/* CONTACT MODAL */
-#contactModal{
+/* Contact Modal */
+#contact{
 position:fixed;
 top:0;
 left:0;
@@ -181,47 +180,47 @@ align-items:center;
 opacity:0;
 visibility:hidden;
 transition:0.4s;
+z-index:2000;
 }
 
-#contactModal.active{
+#contact.active{
 opacity:1;
 visibility:visible;
 }
 
-.modal-content{
-background:#111827;
-padding:40px;
-border-radius:20px;
+.modal{
+background:#0f172a;
+padding:50px;
+border-radius:30px;
 text-align:center;
 transform:scale(0.8);
 transition:0.4s;
 }
 
-#contactModal.active .modal-content{
+#contact.active .modal{
 transform:scale(1);
 }
 
-/* SCROLL PROGRESS */
-#progressBar{
+/* Scroll progress */
+#progress{
 position:fixed;
 top:0;
 left:0;
 height:4px;
-background:var(--primary);
+background:var(--accent);
 width:0%;
-z-index:2000;
+z-index:3000;
 }
 
-/* MOBILE */
 @media(max-width:768px){
-h1{font-size:26px;}
-.typing{font-size:20px;}
+h1{font-size:28px;}
 }
 </style>
 </head>
 <body>
 
-<div id="progressBar"></div>
+<div id="progress"></div>
+<div class="cursor" id="cursor"></div>
 <canvas id="particles"></canvas>
 
 <nav>
@@ -232,10 +231,11 @@ h1{font-size:26px;}
 </div>
 </nav>
 
-<section class="hero">
+<section>
 <h1>Welcome</h1>
 <div class="card">
-<div id="typingText" class="typing"></div>
+👋 Welcome to my Executive Profile.<br><br>
+Bhuvan here. Explore my journey in sales, leadership, analytics, and innovation. If this resonates with you — let’s connect.
 </div>
 </section>
 
@@ -244,14 +244,14 @@ h1{font-size:26px;}
 
 <div class="card">
 <strong>Objective</strong><br><br>
-Results-driven sales professional with 3+ years experience in real estate sales & marketing across builder and channel partner networks. Strong in Excel, SQL, Tableau & Power BI enabling strategic decision-making.
+Results-driven sales professional with 3+ years experience in real estate sales and analytics-driven strategy execution across builder and channel networks.
 </div>
 
 <div class="card">
-<strong>Core Skills</strong><br><br>
-<div class="skill">Sales & Marketing<div class="bar"><span data-width="95%"></span></div></div>
-<div class="skill">Business Analytics<div class="bar"><span data-width="90%"></span></div></div>
-<div class="skill">Problem Solving<div class="bar"><span data-width="85%"></span></div></div>
+<strong>Core Expertise</strong><br><br>
+<div class="skill">Sales & Revenue Growth<div class="bar"><span data-width="95%"></span></div></div>
+<div class="skill">Data Analytics & BI<div class="bar"><span data-width="90%"></span></div></div>
+<div class="skill">Strategic Execution<div class="bar"><span data-width="85%"></span></div></div>
 </div>
 
 <div class="card timeline">
@@ -272,7 +272,6 @@ Final Year Project Sponsored by Karnataka State Council for Science & Technology
 </div>
 
 <div class="card">
-<strong>Major Projects</strong><br><br>
 Risk Analysis in Capital Budgeting of Ethanol Plant<br>
 Multi Degree Robotic Arm<br>
 Multi Maize Thresher<br>
@@ -301,9 +300,9 @@ Workshops: ISRO | IIM Calcutta (Data Analytics)
 
 </section>
 
-<div id="contactModal">
-<div class="modal-content">
-<h2>Contact Me</h2><br>
+<div id="contact">
+<div class="modal">
+<h2>Connect With Me</h2><br>
 📞 +91 8867429944<br><br>
 📧 info.bhuvaneshwar.b@gmail.com<br><br>
 <button class="btn" onclick="closeContact()">Close</button>
@@ -311,19 +310,14 @@ Workshops: ISRO | IIM Calcutta (Data Analytics)
 </div>
 
 <script>
-/* Typing Animation */
-const text="👋 Heyy, Welcome to my Profile. Bhuvan here. You can know more about me here. If you find this interesting feel free to connect with me.";
-let i=0;
-function typing(){
-if(i<text.length){
-document.getElementById("typingText").innerHTML+=text.charAt(i);
-i++;
-setTimeout(typing,30);
-}
-}
-typing();
+/* Spotlight Cursor */
+document.addEventListener("mousemove",e=>{
+const cursor=document.getElementById("cursor");
+cursor.style.left=e.clientX+"px";
+cursor.style.top=e.clientY+"px";
+});
 
-/* Scroll reveal */
+/* Scroll Reveal */
 const sections=document.querySelectorAll("section");
 window.addEventListener("scroll",()=>{
 sections.forEach(sec=>{
@@ -333,7 +327,7 @@ sec.classList.add("active");
 });
 });
 
-/* Skill animation */
+/* Skill Animation */
 const bars=document.querySelectorAll(".bar span");
 window.addEventListener("scroll",()=>{
 bars.forEach(bar=>{
@@ -343,43 +337,52 @@ bar.style.width=bar.dataset.width;
 });
 });
 
-/* Scroll progress */
+/* Scroll Progress */
 window.addEventListener("scroll",()=>{
 let scrollTop=document.documentElement.scrollTop;
 let height=document.documentElement.scrollHeight-document.documentElement.clientHeight;
-document.getElementById("progressBar").style.width=(scrollTop/height)*100+"%";
+document.getElementById("progress").style.width=(scrollTop/height)*100+"%";
 });
 
-/* Particle network */
+/* Particle Network */
 const canvas=document.getElementById("particles");
 const ctx=canvas.getContext("2d");
 canvas.width=window.innerWidth;
 canvas.height=window.innerHeight;
-
 let particles=[];
-for(let i=0;i<70;i++){
-particles.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,vx:0.3,vy:0.3});
+for(let i=0;i<80;i++){
+particles.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,vx:0.5,vy:0.5});
 }
-
 function animate(){
 ctx.clearRect(0,0,canvas.width,canvas.height);
-particles.forEach(p=>{
-p.x+=p.vx;
-p.y+=p.vy;
+for(let i=0;i<particles.length;i++){
+let p=particles[i];
+p.x+=p.vx;p.y+=p.vy;
 if(p.x>canvas.width||p.x<0)p.vx*=-1;
 if(p.y>canvas.height||p.y<0)p.vy*=-1;
 ctx.beginPath();
 ctx.arc(p.x,p.y,2,0,Math.PI*2);
-ctx.fillStyle="#00e0ff";
+ctx.fillStyle="#00f0ff";
 ctx.fill();
-});
+for(let j=i+1;j<particles.length;j++){
+let p2=particles[j];
+let dist=Math.hypot(p.x-p2.x,p.y-p2.y);
+if(dist<120){
+ctx.strokeStyle="rgba(0,240,255,0.1)";
+ctx.beginPath();
+ctx.moveTo(p.x,p.y);
+ctx.lineTo(p2.x,p2.y);
+ctx.stroke();
+}
+}
+}
 requestAnimationFrame(animate);
 }
 animate();
 
-/* Contact Modal */
-function openContact(){document.getElementById("contactModal").classList.add("active");}
-function closeContact(){document.getElementById("contactModal").classList.remove("active");}
+/* Contact */
+function openContact(){document.getElementById("contact").classList.add("active");}
+function closeContact(){document.getElementById("contact").classList.remove("active");}
 </script>
 
 </body>
