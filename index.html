@@ -23,7 +23,7 @@ color:white;
 overflow-x:hidden;
 }
 
-/* Spotlight cursor */
+/* Spotlight Cursor */
 .cursor{
 position:fixed;
 width:400px;
@@ -34,7 +34,7 @@ z-index:0;
 transform:translate(-50%,-50%);
 }
 
-/* Particle canvas */
+/* Particle Canvas */
 canvas{
 position:fixed;
 top:0;
@@ -73,8 +73,6 @@ color:#000;
 font-weight:600;
 cursor:pointer;
 transition:0.3s;
-position:relative;
-overflow:hidden;
 }
 
 .btn:hover{
@@ -106,7 +104,7 @@ font-weight:600;
 letter-spacing:1px;
 }
 
-/* Glass card */
+/* Glass Card */
 .card{
 background:var(--glass);
 backdrop-filter:blur(20px);
@@ -114,7 +112,6 @@ padding:40px;
 border-radius:25px;
 margin-bottom:30px;
 transition:0.4s;
-position:relative;
 }
 
 .card:hover{
@@ -143,7 +140,7 @@ background:var(--accent);
 border-radius:50%;
 }
 
-/* Skill bars */
+/* Skills */
 .skill{margin-bottom:20px;}
 .bar{
 height:8px;
@@ -159,11 +156,15 @@ background:var(--accent);
 transition:2s ease;
 }
 
-/* Counter */
-.counter{
-font-size:48px;
-font-weight:700;
-color:var(--accent);
+/* Scroll Progress */
+#progress{
+position:fixed;
+top:0;
+left:0;
+height:4px;
+background:var(--accent);
+width:0%;
+z-index:3000;
 }
 
 /* Contact Modal */
@@ -201,17 +202,6 @@ transition:0.4s;
 transform:scale(1);
 }
 
-/* Scroll progress */
-#progress{
-position:fixed;
-top:0;
-left:0;
-height:4px;
-background:var(--accent);
-width:0%;
-z-index:3000;
-}
-
 @media(max-width:768px){
 h1{font-size:28px;}
 }
@@ -231,46 +221,56 @@ h1{font-size:28px;}
 </div>
 </nav>
 
+<!-- HERO -->
 <section>
 <h1>Welcome</h1>
 <div class="card">
 👋 Welcome to my Executive Profile.<br><br>
-Bhuvan here. Explore my journey in sales, leadership, analytics, and innovation. If this resonates with you — let’s connect.
+Bhuvan here. Explore my journey in sales, analytics, leadership, and innovation. If this resonates with you — let’s connect.
 </div>
 </section>
 
+<!-- EXPERIENCE -->
 <section>
-<h1>Professional Overview</h1>
-
-<div class="card">
-<strong>Objective</strong><br><br>
-Results-driven sales professional with 3+ years experience in real estate sales and analytics-driven strategy execution across builder and channel networks.
-</div>
-
-<div class="card">
-<strong>Core Expertise</strong><br><br>
-<div class="skill">Sales & Revenue Growth<div class="bar"><span data-width="95%"></span></div></div>
-<div class="skill">Data Analytics & BI<div class="bar"><span data-width="90%"></span></div></div>
-<div class="skill">Strategic Execution<div class="bar"><span data-width="85%"></span></div></div>
-</div>
-
+<h1>Experience</h1>
 <div class="card timeline">
 <div class="timeline-item"><strong>Premier Real Estate Services</strong><br>Sales Manager (01/05/2025 – Present)</div>
 <div class="timeline-item"><strong>Sobha Ltd</strong><br>Asst Sales Manager (01/06/2024 – 28/02/2025)</div>
 <div class="timeline-item"><strong>Fly Realty</strong><br>Senior Relationship Manager (18/04/2023 – 08/05/2024)</div>
 <div class="timeline-item"><strong>Brad Realty</strong><br>Relationship Manager (21/04/2022 – 17/04/2023)</div>
 </div>
-
 </section>
 
+<!-- EDUCATION -->
 <section>
-<h1>Achievements & Projects</h1>
-
+<h1>Education</h1>
 <div class="card">
-National & State Level Paper Presentation Winner.<br>
-Final Year Project Sponsored by Karnataka State Council for Science & Technology.
+MBA (Finance & Marketing)<br>
+REVA University, Bangalore (2020–2022) | 8.26 CGPA
 </div>
+<div class="card">
+B.E Mechanical Engineering<br>
+Hirasugar Institute of Technology (2015–2019) | 6.59 CGPA
+</div>
+<div class="card">
+Pre University & Secondary Education<br>
+Belagavi & Bailhongal
+</div>
+</section>
 
+<!-- SKILLS -->
+<section>
+<h1>Skills</h1>
+<div class="card">
+<div class="skill">Sales & Revenue Growth<div class="bar"><span data-width="95%"></span></div></div>
+<div class="skill">Business Analytics<div class="bar"><span data-width="90%"></span></div></div>
+<div class="skill">Strategic Execution<div class="bar"><span data-width="85%"></span></div></div>
+</div>
+</section>
+
+<!-- PROJECTS -->
+<section>
+<h1>Projects</h1>
 <div class="card">
 Risk Analysis in Capital Budgeting of Ethanol Plant<br>
 Multi Degree Robotic Arm<br>
@@ -278,28 +278,35 @@ Multi Maize Thresher<br>
 Prosthetic Arm (21 DOF)<br>
 Sasyojasa (Plant-E)
 </div>
-
 </section>
 
+<!-- AWARDS -->
 <section>
-<h1>Certifications & Learning</h1>
-
+<h1>Awards & Achievements</h1>
 <div class="card">
-Certified in Microsoft Excel (Advanced)<br>
-Certified in Business Analytics (Excel)<br>
-Certified in Business Analytics (Power BI)
+Multiple National & State Level Paper Presentation Prizes.<br>
+Final Year Project Sponsored by Karnataka State Council for Science & Technology.
 </div>
-
-<div class="card">
-Internships: P K Pumps | Agile Capital | Skillfied Mentor | Deloitte
-</div>
-
-<div class="card">
-Workshops: ISRO | IIM Calcutta (Data Analytics)
-</div>
-
 </section>
 
+<!-- INTERNSHIP -->
+<section>
+<h1>Internship</h1>
+<div class="card">
+P K Pumps | Agile Capital Services | Skillfied Mentor | Deloitte (Job Simulation Data Analyst)
+</div>
+</section>
+
+<!-- WORKSHOP -->
+<section>
+<h1>Workshop</h1>
+<div class="card">
+ISRO – Engineering Subsystems in Space Technology<br>
+IIM Calcutta – Data Analytics
+</div>
+</section>
+
+<!-- CONTACT MODAL -->
 <div id="contact">
 <div class="modal">
 <h2>Connect With Me</h2><br>
@@ -310,11 +317,10 @@ Workshops: ISRO | IIM Calcutta (Data Analytics)
 </div>
 
 <script>
-/* Spotlight Cursor */
+/* Spotlight */
 document.addEventListener("mousemove",e=>{
-const cursor=document.getElementById("cursor");
-cursor.style.left=e.clientX+"px";
-cursor.style.top=e.clientY+"px";
+document.getElementById("cursor").style.left=e.clientX+"px";
+document.getElementById("cursor").style.top=e.clientY+"px";
 });
 
 /* Scroll Reveal */
@@ -327,7 +333,7 @@ sec.classList.add("active");
 });
 });
 
-/* Skill Animation */
+/* Skill animation */
 const bars=document.querySelectorAll(".bar span");
 window.addEventListener("scroll",()=>{
 bars.forEach(bar=>{
@@ -337,7 +343,7 @@ bar.style.width=bar.dataset.width;
 });
 });
 
-/* Scroll Progress */
+/* Scroll progress */
 window.addEventListener("scroll",()=>{
 let scrollTop=document.documentElement.scrollTop;
 let height=document.documentElement.scrollHeight-document.documentElement.clientHeight;
