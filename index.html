@@ -3,105 +3,84 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bhuvaneshwar Bommannavar | Executive Profile</title>
-
-<meta name="description" content="Bhuvaneshwar Bommannavar - Sales Manager | MBA Finance & Marketing | Real Estate & Data Analytics Professional">
-<meta name="author" content="Bhuvaneshwar Bommannavar">
+<title>Bhuvaneshwar Bommannavar | Executive Portfolio</title>
+<meta name="description" content="Bhuvaneshwar Bommannavar - Sales Manager | MBA | Real Estate & Data Analytics Professional">
 
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 :root{
---primary:#00f5ff;
---dark:#0f2027;
---light:#ffffff;
+--primary:#00e0ff;
+--dark:#0f172a;
+--glass:rgba(255,255,255,0.08);
 }
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Poppins',sans-serif;
-scroll-behavior:smooth;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;scroll-behavior:smooth;}
 
 body{
-background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+background:linear-gradient(135deg,#0f172a,#1e293b,#0f172a);
 color:white;
 overflow-x:hidden;
-transition:0.4s;
 }
 
-body.light{
-background:#f5f7fa;
-color:#111;
-}
-
-/* LOADER */
-#loader{
+/* PARTICLE CANVAS */
+canvas{
 position:fixed;
-width:100%;
-height:100%;
-background:#000;
-display:flex;
-justify-content:center;
-align-items:center;
-z-index:2000;
-color:var(--primary);
-font-size:24px;
-letter-spacing:3px;
+top:0;
+left:0;
+z-index:-1;
 }
 
-/* NAV */
+/* NAVBAR */
 nav{
 position:fixed;
-width:100%;
 top:0;
+width:100%;
 display:flex;
 justify-content:space-between;
 align-items:center;
 padding:20px 8%;
-backdrop-filter:blur(12px);
-background:rgba(0,0,0,0.3);
+background:rgba(0,0,0,0.4);
+backdrop-filter:blur(15px);
 z-index:1000;
 }
 
 .logo{
 font-family:'Great Vibes',cursive;
-font-size:28px;
+font-size:30px;
 color:var(--primary);
 }
 
-.nav-right{
+.nav-buttons{
 display:flex;
 gap:15px;
 }
 
 .btn{
-padding:8px 18px;
+padding:10px 22px;
 border:none;
-border-radius:25px;
-cursor:pointer;
+border-radius:30px;
 background:var(--primary);
 color:#000;
 font-weight:600;
+cursor:pointer;
 transition:0.3s;
 }
 
 .btn:hover{
-transform:scale(1.05);
+transform:translateY(-3px) scale(1.05);
 }
 
 /* SECTIONS */
 section{
 min-height:100vh;
-padding:120px 10%;
+padding:140px 10%;
 display:flex;
 flex-direction:column;
 justify-content:center;
 opacity:0;
-transform:translateY(40px);
-transition:1s;
+transform:translateY(50px);
+transition:1s ease;
 }
 
 section.active{
@@ -110,74 +89,65 @@ transform:translateY(0);
 }
 
 h1{
-font-size:32px;
-margin-bottom:30px;
+font-size:38px;
+margin-bottom:40px;
+font-weight:600;
 }
 
-/* PARTICLE BACKGROUND */
-canvas{
-position:fixed;
-top:0;
-left:0;
-z-index:-1;
-}
-
-/* GLASS CARD */
 .card{
-background:rgba(255,255,255,0.08);
-backdrop-filter:blur(12px);
-padding:30px;
-border-radius:15px;
-margin-bottom:20px;
+background:var(--glass);
+backdrop-filter:blur(20px);
+padding:35px;
+border-radius:20px;
+margin-bottom:25px;
 transition:0.4s;
 }
 
 .card:hover{
-transform:translateY(-5px);
+transform:translateY(-6px);
+}
+
+/* HERO */
+.hero{
+text-align:center;
+}
+
+.typing{
+font-size:32px;
+color:var(--primary);
+margin-top:20px;
 }
 
 /* TIMELINE */
 .timeline{
-border-left:2px solid var(--primary);
-padding-left:20px;
+border-left:3px solid var(--primary);
+padding-left:25px;
 }
 
 .timeline-item{
-margin-bottom:25px;
+margin-bottom:30px;
+position:relative;
 }
 
-/* PROGRESS DOTS */
-#progress{
-position:fixed;
-right:20px;
-top:50%;
-transform:translateY(-50%);
-display:flex;
-flex-direction:column;
-gap:15px;
-}
-
-.dot{
-width:10px;
-height:10px;
-border-radius:50%;
-background:#aaa;
-transition:0.3s;
-}
-
-.dot.active{
+.timeline-item::before{
+content:"";
+position:absolute;
+left:-11px;
+top:5px;
+width:15px;
+height:15px;
 background:var(--primary);
-transform:scale(1.4);
+border-radius:50%;
 }
 
-/* SKILL BARS */
+/* SKILLS */
 .skill{
-margin-bottom:15px;
+margin-bottom:20px;
 }
 
 .bar{
 height:8px;
-background:#444;
+background:#334155;
 border-radius:10px;
 overflow:hidden;
 }
@@ -187,7 +157,14 @@ display:block;
 height:100%;
 width:0;
 background:var(--primary);
-transition:2s;
+transition:2s ease;
+}
+
+/* COUNTERS */
+.counter{
+font-size:36px;
+font-weight:700;
+color:var(--primary);
 }
 
 /* CONTACT MODAL */
@@ -197,117 +174,117 @@ top:0;
 left:0;
 width:100%;
 height:100%;
-background:rgba(0,0,0,0.6);
-display:none;
+background:rgba(0,0,0,0.7);
+display:flex;
 justify-content:center;
 align-items:center;
-z-index:1500;
+opacity:0;
+visibility:hidden;
+transition:0.4s;
+}
+
+#contactModal.active{
+opacity:1;
+visibility:visible;
 }
 
 .modal-content{
-background:#111;
+background:#111827;
 padding:40px;
-border-radius:15px;
-width:300px;
+border-radius:20px;
 text-align:center;
+transform:scale(0.8);
+transition:0.4s;
 }
 
-.toggle{
-cursor:pointer;
-font-size:14px;
+#contactModal.active .modal-content{
+transform:scale(1);
+}
+
+/* SCROLL PROGRESS */
+#progressBar{
+position:fixed;
+top:0;
+left:0;
+height:4px;
+background:var(--primary);
+width:0%;
+z-index:2000;
 }
 
 /* MOBILE */
 @media(max-width:768px){
-section{
-padding:100px 6%;
-}
+h1{font-size:26px;}
+.typing{font-size:20px;}
 }
 </style>
 </head>
 <body>
 
-<div id="loader">Loading Executive Profile...</div>
+<div id="progressBar"></div>
 <canvas id="particles"></canvas>
 
 <nav>
 <div class="logo">Bhuvaneshwar Bommannavar</div>
-<div class="nav-right">
+<div class="nav-buttons">
 <a href="Bhuvan_Bommannavar_Resume.pdf" download><button class="btn">Download Resume</button></a>
 <button class="btn" onclick="openContact()">Contact</button>
-<button class="btn toggle" onclick="toggleTheme()">Theme</button>
 </div>
 </nav>
 
-<div id="progress">
-<div class="dot"></div>
-<div class="dot"></div>
-<div class="dot"></div>
-<div class="dot"></div>
-</div>
-
-<section>
+<section class="hero">
 <h1>Welcome</h1>
 <div class="card">
-👋 Heyy, Welcome to my Profile.  
-Bhuvan here. You can know more about me here.  
-If you find this interesting feel free to connect with me.
+<div id="typingText" class="typing"></div>
 </div>
 </section>
 
 <section>
 <h1>Professional Overview</h1>
+
 <div class="card">
-<strong>Objective:</strong><br>
-Results-driven sales professional with over 3 years of experience in real estate specializing in sales and marketing across builder and channel partner networks. Skilled in Excel, SQL, Tableau, Power BI driving strategic decision-making and business performance.
+<strong>Objective</strong><br><br>
+Results-driven sales professional with 3+ years experience in real estate sales & marketing across builder and channel partner networks. Strong in Excel, SQL, Tableau & Power BI enabling strategic decision-making.
 </div>
 
 <div class="card">
-<strong>Skills</strong>
-<div class="skill">Excel / Power BI / SQL<div class="bar"><span style="width:90%"></span></div></div>
-<div class="skill">Sales & Marketing<div class="bar"><span style="width:95%"></span></div></div>
-<div class="skill">Problem Solving<div class="bar"><span style="width:85%"></span></div></div>
+<strong>Core Skills</strong><br><br>
+<div class="skill">Sales & Marketing<div class="bar"><span data-width="95%"></span></div></div>
+<div class="skill">Business Analytics<div class="bar"><span data-width="90%"></span></div></div>
+<div class="skill">Problem Solving<div class="bar"><span data-width="85%"></span></div></div>
 </div>
 
 <div class="card timeline">
-<div class="timeline-item">
-<strong>Premier Real Estate Services</strong><br>
-Sales Manager (01/05/2025 – Present)
+<div class="timeline-item"><strong>Premier Real Estate Services</strong><br>Sales Manager (01/05/2025 – Present)</div>
+<div class="timeline-item"><strong>Sobha Ltd</strong><br>Asst Sales Manager (01/06/2024 – 28/02/2025)</div>
+<div class="timeline-item"><strong>Fly Realty</strong><br>Senior Relationship Manager (18/04/2023 – 08/05/2024)</div>
+<div class="timeline-item"><strong>Brad Realty</strong><br>Relationship Manager (21/04/2022 – 17/04/2023)</div>
 </div>
-<div class="timeline-item">
-<strong>Sobha Ltd</strong><br>
-Asst Sales Manager (01/06/2024 – 28/02/2025)
-</div>
-<div class="timeline-item">
-<strong>Fly Realty</strong><br>
-Senior Relationship Manager (18/04/2023 – 08/05/2024)
-</div>
-<div class="timeline-item">
-<strong>Brad Realty</strong><br>
-Relationship Manager (21/04/2022 – 17/04/2023)
-</div>
-</div>
+
 </section>
 
 <section>
 <h1>Achievements & Projects</h1>
+
 <div class="card">
-National & State Level Paper Presentation Winner (Multiple 1st & 3rd Prizes).  
+National & State Level Paper Presentation Winner.<br>
 Final Year Project Sponsored by Karnataka State Council for Science & Technology.
 </div>
 
 <div class="card">
-<strong>Key Projects:</strong><br>
+<strong>Major Projects</strong><br><br>
 Risk Analysis in Capital Budgeting of Ethanol Plant<br>
 Multi Degree Robotic Arm<br>
 Multi Maize Thresher<br>
 Prosthetic Arm (21 DOF)<br>
 Sasyojasa (Plant-E)
 </div>
+
 </section>
 
 <section>
 <h1>Certifications & Learning</h1>
+
 <div class="card">
 Certified in Microsoft Excel (Advanced)<br>
 Certified in Business Analytics (Excel)<br>
@@ -315,67 +292,94 @@ Certified in Business Analytics (Power BI)
 </div>
 
 <div class="card">
-Internships at P K Pumps, Agile Capital Services, Skillfied Mentor & Deloitte (Job Simulation Data Analyst)
+Internships: P K Pumps | Agile Capital | Skillfied Mentor | Deloitte
 </div>
 
 <div class="card">
-Workshops: ISRO (Engineering Subsystems in Space Technology) & IIM Calcutta (Data Analytics)
+Workshops: ISRO | IIM Calcutta (Data Analytics)
 </div>
+
 </section>
 
 <div id="contactModal">
 <div class="modal-content">
-<h3>Contact Me</h3>
-<p>📞 +91 8867429944</p>
-<p>📧 info.bhuvaneshwar.b@gmail.com</p>
+<h2>Contact Me</h2><br>
+📞 +91 8867429944<br><br>
+📧 info.bhuvaneshwar.b@gmail.com<br><br>
 <button class="btn" onclick="closeContact()">Close</button>
 </div>
 </div>
 
 <script>
-window.onload=function(){
-setTimeout(()=>{document.getElementById("loader").style.display="none"},1500)
+/* Typing Animation */
+const text="👋 Heyy, Welcome to my Profile. Bhuvan here. You can know more about me here. If you find this interesting feel free to connect with me.";
+let i=0;
+function typing(){
+if(i<text.length){
+document.getElementById("typingText").innerHTML+=text.charAt(i);
+i++;
+setTimeout(typing,30);
 }
+}
+typing();
 
+/* Scroll reveal */
 const sections=document.querySelectorAll("section");
-const dots=document.querySelectorAll(".dot");
-
 window.addEventListener("scroll",()=>{
-sections.forEach((sec,i)=>{
-const top=sec.getBoundingClientRect().top;
-if(top<window.innerHeight-150){
+sections.forEach(sec=>{
+if(sec.getBoundingClientRect().top<window.innerHeight-150){
 sec.classList.add("active");
-dots[i].classList.add("active");
 }
 });
 });
 
-/* PARTICLES */
+/* Skill animation */
+const bars=document.querySelectorAll(".bar span");
+window.addEventListener("scroll",()=>{
+bars.forEach(bar=>{
+if(bar.getBoundingClientRect().top<window.innerHeight){
+bar.style.width=bar.dataset.width;
+}
+});
+});
+
+/* Scroll progress */
+window.addEventListener("scroll",()=>{
+let scrollTop=document.documentElement.scrollTop;
+let height=document.documentElement.scrollHeight-document.documentElement.clientHeight;
+document.getElementById("progressBar").style.width=(scrollTop/height)*100+"%";
+});
+
+/* Particle network */
 const canvas=document.getElementById("particles");
 const ctx=canvas.getContext("2d");
 canvas.width=window.innerWidth;
 canvas.height=window.innerHeight;
-let particles=[];
-for(let i=0;i<80;i++){
-particles.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,r:Math.random()*2});
-}
-function draw(){
-ctx.clearRect(0,0,canvas.width,canvas.height);
-ctx.fillStyle="rgba(0,255,255,0.3)";
-particles.forEach(p=>{
-ctx.beginPath();
-ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-ctx.fill();
-p.y+=0.5;
-if(p.y>canvas.height)p.y=0;
-});
-requestAnimationFrame(draw);
-}
-draw();
 
-function openContact(){document.getElementById("contactModal").style.display="flex";}
-function closeContact(){document.getElementById("contactModal").style.display="none";}
-function toggleTheme(){document.body.classList.toggle("light");}
+let particles=[];
+for(let i=0;i<70;i++){
+particles.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,vx:0.3,vy:0.3});
+}
+
+function animate(){
+ctx.clearRect(0,0,canvas.width,canvas.height);
+particles.forEach(p=>{
+p.x+=p.vx;
+p.y+=p.vy;
+if(p.x>canvas.width||p.x<0)p.vx*=-1;
+if(p.y>canvas.height||p.y<0)p.vy*=-1;
+ctx.beginPath();
+ctx.arc(p.x,p.y,2,0,Math.PI*2);
+ctx.fillStyle="#00e0ff";
+ctx.fill();
+});
+requestAnimationFrame(animate);
+}
+animate();
+
+/* Contact Modal */
+function openContact(){document.getElementById("contactModal").classList.add("active");}
+function closeContact(){document.getElementById("contactModal").classList.remove("active");}
 </script>
 
 </body>
