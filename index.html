@@ -3,299 +3,343 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bhuvan Bommannavar</title>
+<title>Bhuvaneshwar Bommannavar | Profile</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
-:root{
---bg:#04060c;
---accent:#4f8cff;
---text:#f1f5f9;
---muted:#94a3b8;
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+scroll-behavior:smooth;
 }
 
-*{margin:0;padding:0;box-sizing:border-box;}
-
 body{
-font-family:'Inter',sans-serif;
-background:var(--bg);
-color:var(--text);
+background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);
+color:white;
 overflow-x:hidden;
 }
 
-canvas{
-position:fixed;
-top:0;
-left:0;
-z-index:-2;
-}
-
-/* Header */
-header{
+/* NAVBAR */
+nav{
 position:fixed;
 top:0;
 width:100%;
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:30px 8%;
-z-index:100;
-transition:opacity 0.6s ease;
+padding:20px 50px;
+z-index:1000;
+background:rgba(0,0,0,0.2);
+backdrop-filter:blur(10px);
 }
 
-/* Executive Name */
 .logo{
-font-family:'Playfair Display', serif;
-font-size:42px;
-font-style:italic;
-font-weight:700;
-background:linear-gradient(90deg,#ffffff,#9ec5ff,#ffffff);
-background-size:200% auto;
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-letter-spacing:1px;
-text-shadow:0 8px 30px rgba(79,140,255,0.35);
-animation:shimmer 6s linear infinite, glowPulse 4s ease-in-out infinite;
+font-family:'Great Vibes',cursive;
+font-size:28px;
+font-weight:bold;
+color:#00f5ff;
 }
 
-@keyframes shimmer{
-0%{background-position:200% center;}
-100%{background-position:-200% center;}
+.nav-buttons button{
+margin-left:15px;
+padding:8px 18px;
+border:none;
+border-radius:20px;
+background:#00f5ff;
+color:black;
+cursor:pointer;
+font-weight:600;
+transition:0.3s;
 }
 
-@keyframes glowPulse{
-0%,100%{text-shadow:0 8px 30px rgba(79,140,255,0.35);}
-50%{text-shadow:0 12px 40px rgba(79,140,255,0.55);}
+.nav-buttons button:hover{
+background:white;
 }
 
-.header-buttons{
-display:flex;
-gap:20px;
-}
-
-.btn{
-padding:10px 24px;
-border-radius:40px;
-background:var(--accent);
-color:white;
-text-decoration:none;
-transition:0.4s cubic-bezier(.16,1,.3,1);
-}
-
+/* SECTION BASE */
 section{
 min-height:100vh;
+padding:120px 10% 80px 10%;
 display:flex;
 flex-direction:column;
 justify-content:center;
-padding:160px 8%;
-position:relative;
 }
 
-/* Hero */
-.hero{
+/* WELCOME */
+#welcome{
 text-align:center;
+position:relative;
+overflow:hidden;
 }
 
-.hero h1{
-font-family:'Playfair Display',serif;
-font-size:64px;
+#welcome h1{
+font-size:40px;
+line-height:1.5;
+animation:fadeIn 2s ease;
+}
+
+/* 3D floating balls */
+.bubble{
+position:absolute;
+border-radius:50%;
+background:rgba(0,255,255,0.15);
+animation:float 10s infinite ease-in-out;
+}
+
+@keyframes float{
+0%{transform:translateY(0px) rotate(0deg);}
+50%{transform:translateY(-40px) rotate(180deg);}
+100%{transform:translateY(0px) rotate(360deg);}
+}
+
+@keyframes fadeIn{
+from{opacity:0; transform:translateY(20px);}
+to{opacity:1; transform:translateY(0);}
+}
+
+/* PALLETS */
+.pallet-container{
+display:flex;
+flex-wrap:wrap;
+gap:20px;
+margin-top:40px;
+}
+
+.pallet{
+flex:1 1 250px;
+padding:20px;
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(10px);
+cursor:pointer;
+transition:0.4s;
+border-radius:12px;
+}
+
+.pallet:hover{
+transform:translateY(-5px) scale(1.03);
+background:rgba(0,255,255,0.15);
+}
+
+.details{
+margin-top:40px;
+animation:fadeIn 0.6s ease;
+}
+
+.details h2{
+color:#00f5ff;
 margin-bottom:20px;
 }
 
-/* ===== ONE ROW PALLETS ===== */
-.row{
-display:flex;
-gap:80px;
-overflow-x:auto;
-scroll-behavior:smooth;
-}
-
-/* Immersed pallet */
-.card{
-min-width:280px;
-cursor:pointer;
-transition:all 0.8s cubic-bezier(.16,1,.3,1);
-transform-style:preserve-3d;
-}
-
-.card h3{
-font-size:28px;
-font-weight:400;
-color:var(--text);
-opacity:0.8;
-transition:0.4s;
-}
-
-.card-content{
+.details h3{
 margin-top:20px;
-color:var(--muted);
+font-weight:600;
+}
+
+.details p{
+margin-top:8px;
 line-height:1.6;
-opacity:0;
-max-height:0;
-overflow:hidden;
-transition:all 0.6s ease;
+font-weight:300;
 }
 
-/* Active pallet */
-.card.active{
-transform:translateZ(120px) scale(1.1);
-}
-
-.card.active h3{
-opacity:1;
-color:#ffffff;
-}
-
-.card.active .card-content{
-opacity:1;
-max-height:2000px;
-}
-
-/* Final words */
-.final-words{
-text-align:center;
-font-family:'Playfair Display',serif;
-font-size:60px;
-letter-spacing:8px;
-opacity:0.9;
-}
-
+/* Responsive */
 @media(max-width:768px){
-.hero h1{font-size:36px;}
-.logo{font-size:30px;}
-.final-words{font-size:32px;}
+nav{
+padding:15px 20px;
+}
+#welcome h1{
+font-size:24px;
+}
 }
 </style>
 </head>
+
 <body>
 
-<header id="header">
-<div class="logo">Bhuvan Bommannavar</div>
-<div class="header-buttons">
-<a href="Bhuvan_CV_23-02-2026.pdf" download class="btn">Download Resume</a>
-<a href="mailto:info.bhuvaneshwar.b@gmail.com" class="btn">Contact Me</a>
+<nav>
+<div class="logo">Bhuvaneshwar Bommannavar</div>
+<div class="nav-buttons">
+<a href="Bhuvan_Bommannavar_Resume.pdf" download>
+<button>Download Resume</button>
+</a>
+<button onclick="contactMe()">Contact Me</button>
 </div>
-</header>
+</nav>
 
-<section class="hero">
-<h1 id="typing"></h1>
+<!-- WELCOME -->
+<section id="welcome">
+<h1>
+👋 Heyy, Welcome to my Profile <br>
+Bhuvan here. You can know more about me here. <br>
+If you find this interesting feel free to connect with me ✨
+</h1>
+
+<div class="bubble" style="width:120px;height:120px;top:20%;left:10%;"></div>
+<div class="bubble" style="width:80px;height:80px;top:60%;left:80%;animation-duration:12s;"></div>
+<div class="bubble" style="width:150px;height:150px;top:40%;left:50%;animation-duration:14s;"></div>
 </section>
 
+<!-- SECTION 2 -->
 <section>
-<div class="row">
+<h1>Professional Overview</h1>
 
-<div class="card" onclick="toggleCard(this)">
-<h3>Objective</h3>
-<div class="card-content">
-Results-driven sales professional with 3+ years of experience in real estate, specializing in sales and marketing across builder and channel partner networks...
-</div>
-</div>
-
-<div class="card" onclick="toggleCard(this)">
-<h3>Skills</h3>
-<div class="card-content">
-Python, SQL, Power BI, Tableau, Excel, Statistics, Gen AI...
-</div>
+<div class="pallet-container">
+<div class="pallet" onclick="showDetails('objective')">Objective</div>
+<div class="pallet" onclick="showDetails('skills')">Skills</div>
+<div class="pallet" onclick="showDetails('experience')">Experience</div>
+<div class="pallet" onclick="showDetails('education')">Education</div>
 </div>
 
-<div class="card" onclick="toggleCard(this)">
-<h3>Experience</h3>
-<div class="card-content">
-Premier Real Estate Services — Sales Manager (01/05/2025 – Present)...<br>
-Sobha Ltd — Assistant Sales Manager...<br>
-Fly Realty...<br>
-Brad Realty...
-</div>
-</div>
+<div id="details" class="details"></div>
+</section>
 
-<div class="card" onclick="toggleCard(this)">
-<h3>Education</h3>
-<div class="card-content">
-MBA – Finance & Marketing...<br>
-B.E Mechanical Engineering...
-</div>
-</div>
+<!-- SECTION 3 -->
+<section>
+<h1>Achievements & Projects</h1>
 
+<div class="pallet-container">
+<div class="pallet" onclick="showDetails('awards')">Awards & Achievements</div>
+<div class="pallet" onclick="showDetails('projects')">Projects</div>
 </div>
 </section>
 
+<!-- SECTION 4 -->
 <section>
-<div class="final-words">
-SALES · ANALYSIS · GROWTH
+<h1>Certifications & Learning</h1>
+
+<div class="pallet-container">
+<div class="pallet" onclick="showDetails('certifications')">Certifications</div>
+<div class="pallet" onclick="showDetails('internship')">Internship</div>
+<div class="pallet" onclick="showDetails('workshop')">Workshop</div>
 </div>
 </section>
 
 <script>
-gsap.registerPlugin(ScrollTrigger);
-
-/* WebGL unchanged */
-const scene=new THREE.Scene();
-const camera=new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,1000);
-const renderer=new THREE.WebGLRenderer({alpha:true});
-renderer.setSize(window.innerWidth,window.innerHeight);
-document.body.appendChild(renderer.domElement);
-camera.position.z=8;
-
-const geometry=new THREE.BufferGeometry();
-const count=6000;
-const pos=new Float32Array(count*3);
-for(let i=0;i<count;i++){
-pos[i*3]=(Math.random()-0.5)*40;
-pos[i*3+1]=(Math.random()-0.5)*40;
-pos[i*3+2]=(Math.random()-0.5)*60;
-}
-geometry.setAttribute('position',new THREE.BufferAttribute(pos,3));
-
-const material=new THREE.PointsMaterial({size:0.02,color:0x4f8cff});
-const particles=new THREE.Points(geometry,material);
-scene.add(particles);
-
-function animate(){
-requestAnimationFrame(animate);
-particles.rotation.y+=0.0004;
-particles.rotation.x+=0.0002;
-renderer.render(scene,camera);
-}
-animate();
-
-/* Scroll camera push */
-gsap.to(camera.position,{
-z:2,
-scrollTrigger:{
-trigger:document.body,
-start:"top top",
-end:"bottom bottom",
-scrub:true
-}
-});
-
-/* SINGLE ACTIVE PALLET */
-function toggleCard(card){
-document.querySelectorAll('.card').forEach(c=>{
-if(c!==card) c.classList.remove('active');
-});
-card.classList.toggle('active');
+function contactMe(){
+alert("Phone: +91 8867429944\nEmail: info.bhuvaneshwar.b@gmail.com");
 }
 
-/* Typing */
-const text="Hey 👋 Welcome to my profile. Bhuvan here.";
-let i=0;
-function typing(){
-if(i<text.length){
-document.getElementById("typing").innerHTML+=text.charAt(i);
-i++;
-setTimeout(typing,60);
-}
-}
-typing();
+function showDetails(type){
+const details=document.getElementById("details");
+details.innerHTML="";
 
-/* Header dissolve */
-window.addEventListener("scroll",()=>{
-document.getElementById("header").style.opacity=1-window.scrollY/300;
-});
-</
+if(type==="objective"){
+details.innerHTML=`
+<h2>Objective</h2>
+<p>Results-driven sales professional with over 3 years of experience in real estate, specializing in sales and marketing across builder and channel partner networks. Skilled at leveraging strong interpersonal abilities alongside data analytics tools such as Excel, SQL, Tableau, and Power BI to drive strategic decision-making and enhance business performance. Seeking to contribute this blend of sales expertise and analytical capability to a dynamic, growth-oriented organization.</p>
+`;
+}
+
+if(type==="skills"){
+details.innerHTML=`
+<h2>Skills</h2>
+<p>Pursuing Python, Statistics for Data Analysis, SQL, Power BI, Tableau, MS Excel and Gen AI for Data Analysis.</p>
+<p>Real time problem solving techniques.</p>
+<p>Good team player and adaptable to new working environment.</p>
+<p>Punctual, optimistic and goal oriented.</p>
+`;
+}
+
+if(type==="experience"){
+details.innerHTML=`
+<h2>Experience</h2>
+
+<h3>Premier Real Estate Services (01/05/2025 – Present)</h3>
+<p>Sales Manager</p>
+
+<h3>Sobha Ltd (01/06/2024 – 28/02/2025)</h3>
+<p>Asst Sales Manager</p>
+
+<h3>Fly Realty (18/04/2023 – 08/05/2024)</h3>
+<p>Senior Relationship Manager</p>
+
+<h3>Brad Realty (21/04/2022 – 17/04/2023)</h3>
+<p>Relationship Manager</p>
+`;
+}
+
+if(type==="education"){
+details.innerHTML=`
+<h2>Education</h2>
+
+<h3>Master of Business Administration (Finance & Marketing)</h3>
+<p>REVA University, Bangalore</p>
+<p>2020 – 2022 | 8.26 CGPA</p>
+
+<h3>B.E in Mechanical Engineering</h3>
+<p>Hirasugar Institute of Technology, Nidasoshi</p>
+<p>2015 – 2019 | 6.59 CGPA</p>
+
+<h3>Pre University Board</h3>
+<p>M.G.V P U College, Belagavi</p>
+<p>2013 – 2015 | 53%</p>
+
+<h3>Karnataka Secondary Education Board</h3>
+<p>K.R.C.E.S English Medium School, Bailhongal</p>
+<p>2012 – 2013 | 71%</p>
+`;
+}
+
+if(type==="awards"){
+details.innerHTML=`
+<h2>Awards & Achievements</h2>
+<p>National Level Paper Presentation Competition – Multiple 1st & 3rd Prizes</p>
+<p>3rd Prize – SHRISHTI 2K18 State Level Project Exhibition, Bangalore</p>
+<p>Final Year Project Sponsored by Karnataka State Council for Science and Technology (2018-19)</p>
+<p>Participated in various other competitions</p>
+`;
+}
+
+if(type==="projects"){
+details.innerHTML=`
+<h2>Projects</h2>
+<h3>Risk Analysis in Capital Budgeting of Ethanol Plant</h3>
+<p>Analyzed capital budgeting inputs using probability and sensitivity approaches to calculate risk and return.</p>
+
+<h3>Multi Degree of Freedom Robotic Arm</h3>
+<p>Designed a robotic arm with simplified operational usability.</p>
+
+<h3>Multi Maize Thresher</h3>
+<p>Efficient corn threshing machine with multi-functional capabilities.</p>
+
+<h3>Prosthetic Arm</h3>
+<p>Biological-mechanical arm with 21 DOF for enhanced accuracy.</p>
+
+<h3>Sasyojasa (Plant-E)</h3>
+<p>Innovative acid battery concept using alkaline matter from plants.</p>
+`;
+}
+
+if(type==="certifications"){
+details.innerHTML=`
+<h2>Certifications</h2>
+<p>Certified in Microsoft Excel (Advanced)</p>
+<p>Certified in Business Analytics using Microsoft Excel</p>
+<p>Certified in Business Analytics using Power BI</p>
+`;
+}
+
+if(type==="internship"){
+details.innerHTML=`
+<h2>Internship</h2>
+<p>P K Pumps and Precicast Pvt Ltd – Intern</p>
+<p>Agile Capital Services – Project Intern (BFSI Sector)</p>
+<p>Skillfied Mentor – Excel & Power BI</p>
+<p>Deloitte – Job Simulation Data Analyst</p>
+`;
+}
+
+if(type==="workshop"){
+details.innerHTML=`
+<h2>Workshop</h2>
+<p>ISRO – Engineering Subsystems in Space Technology</p>
+<p>IIM Calcutta (with REVA University) – Data Analytics</p>
+`;
+}
+}
+</script>
+
+</body>
+</html>
