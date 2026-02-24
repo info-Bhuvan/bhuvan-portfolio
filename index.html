@@ -1,48 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Bhuvaneshwar Bommannavar | Executive Presence</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<meta name="description" content="Bhuvaneshwar Bommannavar - Executive Sales Leader | MBA | Real Estate & Analytics Specialist">
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 :root{
---accent:#00f0ff;
---bg1:#0b1220;
---bg2:#111827;
+--accent:#00e5ff;
+--bg:#0b0f19;
 --glass:rgba(255,255,255,0.06);
+--text:#e6edf3;
 }
 
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
-html{scroll-behavior:smooth;}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
+html{
+scroll-behavior:smooth;
+scroll-snap-type:y mandatory;
+}
 body{
-background:linear-gradient(135deg,var(--bg1),var(--bg2));
-color:white;
+background:var(--bg);
+color:var(--text);
 overflow-x:hidden;
 }
 
-/* Spotlight Cursor */
-.cursor{
-position:fixed;
-width:400px;
-height:400px;
-background:radial-gradient(circle, rgba(0,240,255,0.15) 0%, transparent 60%);
-pointer-events:none;
-z-index:0;
-transform:translate(-50%,-50%);
+/* Smooth rendering */
+body, section{
+will-change:transform,opacity;
 }
 
-/* Particle Canvas */
+/* Particle background */
 canvas{
 position:fixed;
 top:0;
 left:0;
+z-index:-2;
+}
+
+/* Spotlight gradient */
+.spotlight{
+position:fixed;
+width:500px;
+height:500px;
+background:radial-gradient(circle, rgba(0,229,255,0.12), transparent 70%);
+pointer-events:none;
+transform:translate(-50%,-50%);
 z-index:-1;
 }
 
-/* Nav */
+/* Navbar */
 nav{
 position:fixed;
 top:0;
@@ -50,39 +60,43 @@ width:100%;
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:20px 8%;
-backdrop-filter:blur(15px);
-background:rgba(0,0,0,0.4);
+padding:22px 8%;
+background:rgba(0,0,0,0.35);
+backdrop-filter:blur(20px);
 z-index:1000;
 }
 
 .logo{
 font-family:'Great Vibes',cursive;
-font-size:30px;
+font-size:32px;
 color:var(--accent);
 }
 
-.nav-buttons{display:flex;gap:15px;}
+.nav-actions{
+display:flex;
+gap:15px;
+}
 
 .btn{
-padding:10px 22px;
-border:none;
+padding:10px 24px;
 border-radius:40px;
+border:none;
 background:var(--accent);
 color:#000;
 font-weight:600;
 cursor:pointer;
-transition:0.3s;
+transition:.3s;
 }
 
 .btn:hover{
 transform:translateY(-4px) scale(1.05);
-box-shadow:0 10px 30px rgba(0,240,255,0.4);
+box-shadow:0 10px 30px rgba(0,229,255,.4);
 }
 
 /* Sections */
 section{
 min-height:100vh;
+scroll-snap-align:start;
 padding:140px 10%;
 display:flex;
 flex-direction:column;
@@ -98,20 +112,18 @@ transform:translateY(0);
 }
 
 h1{
-font-size:42px;
+font-size:clamp(28px,4vw,48px);
 margin-bottom:40px;
-font-weight:600;
 letter-spacing:1px;
 }
 
-/* Glass Card */
 .card{
 background:var(--glass);
-backdrop-filter:blur(20px);
+backdrop-filter:blur(25px);
 padding:40px;
-border-radius:25px;
+border-radius:28px;
 margin-bottom:30px;
-transition:0.4s;
+transition:.4s;
 }
 
 .card:hover{
@@ -121,7 +133,7 @@ transform:translateY(-8px);
 /* Timeline */
 .timeline{
 border-left:3px solid var(--accent);
-padding-left:25px;
+padding-left:30px;
 }
 
 .timeline-item{
@@ -132,7 +144,7 @@ position:relative;
 .timeline-item::before{
 content:"";
 position:absolute;
-left:-12px;
+left:-13px;
 top:8px;
 width:16px;
 height:16px;
@@ -141,10 +153,12 @@ border-radius:50%;
 }
 
 /* Skills */
-.skill{margin-bottom:20px;}
+.skill{
+margin-bottom:20px;
+}
 .bar{
 height:8px;
-background:#1f2937;
+background:#1a2233;
 border-radius:20px;
 overflow:hidden;
 }
@@ -156,7 +170,7 @@ background:var(--accent);
 transition:2s ease;
 }
 
-/* Scroll Progress */
+/* Scroll progress */
 #progress{
 position:fixed;
 top:0;
@@ -164,24 +178,24 @@ left:0;
 height:4px;
 background:var(--accent);
 width:0%;
-z-index:3000;
+z-index:2000;
 }
 
-/* Contact Modal */
+/* Contact modal */
 #contact{
 position:fixed;
 top:0;
 left:0;
 width:100%;
 height:100%;
-background:rgba(0,0,0,0.7);
+background:rgba(0,0,0,.7);
 display:flex;
 justify-content:center;
 align-items:center;
 opacity:0;
 visibility:hidden;
-transition:0.4s;
-z-index:2000;
+transition:.4s;
+z-index:3000;
 }
 
 #contact.active{
@@ -190,47 +204,48 @@ visibility:visible;
 }
 
 .modal{
-background:#0f172a;
-padding:50px;
+background:#111827;
+padding:60px;
 border-radius:30px;
 text-align:center;
-transform:scale(0.8);
-transition:0.4s;
+transform:scale(.8);
+transition:.4s;
 }
 
 #contact.active .modal{
 transform:scale(1);
 }
 
+/* Responsive */
 @media(max-width:768px){
-h1{font-size:28px;}
+section{padding:120px 6%;}
 }
 </style>
 </head>
+
 <body>
 
 <div id="progress"></div>
-<div class="cursor" id="cursor"></div>
 <canvas id="particles"></canvas>
+<div class="spotlight" id="spotlight"></div>
 
 <nav>
 <div class="logo">Bhuvaneshwar Bommannavar</div>
-<div class="nav-buttons">
+<div class="nav-actions">
 <a href="Bhuvan_Bommannavar_Resume.pdf" download><button class="btn">Download Resume</button></a>
 <button class="btn" onclick="openContact()">Contact</button>
 </div>
 </nav>
 
-<!-- HERO -->
 <section>
 <h1>Welcome</h1>
 <div class="card">
-👋 Welcome to my Executive Profile.<br><br>
-Bhuvan here. Explore my journey in sales, analytics, leadership, and innovation. If this resonates with you — let’s connect.
+👋 Welcome to my Executive Presence.<br><br>
+Sales Leadership • Analytics • Strategic Growth • Innovation.<br><br>
+Scroll to explore my journey.
 </div>
 </section>
 
-<!-- EXPERIENCE -->
 <section>
 <h1>Experience</h1>
 <div class="card timeline">
@@ -241,72 +256,48 @@ Bhuvan here. Explore my journey in sales, analytics, leadership, and innovation.
 </div>
 </section>
 
-<!-- EDUCATION -->
 <section>
 <h1>Education</h1>
-<div class="card">
-MBA (Finance & Marketing)<br>
-REVA University, Bangalore (2020–2022) | 8.26 CGPA
-</div>
-<div class="card">
-B.E Mechanical Engineering<br>
-Hirasugar Institute of Technology (2015–2019) | 6.59 CGPA
-</div>
-<div class="card">
-Pre University & Secondary Education<br>
-Belagavi & Bailhongal
-</div>
+<div class="card">MBA (Finance & Marketing) — REVA University (8.26 CGPA)</div>
+<div class="card">B.E Mechanical Engineering — HIT Nidasoshi (6.59 CGPA)</div>
 </section>
 
-<!-- SKILLS -->
 <section>
 <h1>Skills</h1>
 <div class="card">
-<div class="skill">Sales & Revenue Growth<div class="bar"><span data-width="95%"></span></div></div>
+<div class="skill">Sales & Growth<div class="bar"><span data-width="95%"></span></div></div>
 <div class="skill">Business Analytics<div class="bar"><span data-width="90%"></span></div></div>
 <div class="skill">Strategic Execution<div class="bar"><span data-width="85%"></span></div></div>
 </div>
 </section>
 
-<!-- PROJECTS -->
 <section>
 <h1>Projects</h1>
 <div class="card">
 Risk Analysis in Capital Budgeting of Ethanol Plant<br>
 Multi Degree Robotic Arm<br>
 Multi Maize Thresher<br>
-Prosthetic Arm (21 DOF)<br>
-Sasyojasa (Plant-E)
+Prosthetic Arm<br>
+Sasyojasa
 </div>
 </section>
 
-<!-- AWARDS -->
 <section>
 <h1>Awards & Achievements</h1>
 <div class="card">
-Multiple National & State Level Paper Presentation Prizes.<br>
-Final Year Project Sponsored by Karnataka State Council for Science & Technology.
+National & State Level Paper Presentation Awards<br>
+Final Year Project Sponsored by Karnataka State Council for Science & Technology
 </div>
 </section>
 
-<!-- INTERNSHIP -->
 <section>
-<h1>Internship</h1>
+<h1>Internship & Workshops</h1>
 <div class="card">
-P K Pumps | Agile Capital Services | Skillfied Mentor | Deloitte (Job Simulation Data Analyst)
+Internships: P K Pumps | Agile Capital | Skillfied Mentor | Deloitte<br><br>
+Workshops: ISRO | IIM Calcutta (Data Analytics)
 </div>
 </section>
 
-<!-- WORKSHOP -->
-<section>
-<h1>Workshop</h1>
-<div class="card">
-ISRO – Engineering Subsystems in Space Technology<br>
-IIM Calcutta – Data Analytics
-</div>
-</section>
-
-<!-- CONTACT MODAL -->
 <div id="contact">
 <div class="modal">
 <h2>Connect With Me</h2><br>
@@ -317,17 +308,18 @@ IIM Calcutta – Data Analytics
 </div>
 
 <script>
-/* Spotlight */
+/* Spotlight movement */
 document.addEventListener("mousemove",e=>{
-document.getElementById("cursor").style.left=e.clientX+"px";
-document.getElementById("cursor").style.top=e.clientY+"px";
+const s=document.getElementById("spotlight");
+s.style.left=e.clientX+"px";
+s.style.top=e.clientY+"px";
 });
 
-/* Scroll Reveal */
+/* Scroll reveal */
 const sections=document.querySelectorAll("section");
 window.addEventListener("scroll",()=>{
 sections.forEach(sec=>{
-if(sec.getBoundingClientRect().top<window.innerHeight-150){
+if(sec.getBoundingClientRect().top<window.innerHeight-120){
 sec.classList.add("active");
 }
 });
@@ -350,15 +342,17 @@ let height=document.documentElement.scrollHeight-document.documentElement.client
 document.getElementById("progress").style.width=(scrollTop/height)*100+"%";
 });
 
-/* Particle Network */
+/* Particle system */
 const canvas=document.getElementById("particles");
 const ctx=canvas.getContext("2d");
 canvas.width=window.innerWidth;
 canvas.height=window.innerHeight;
+
 let particles=[];
-for(let i=0;i<80;i++){
-particles.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,vx:0.5,vy:0.5});
+for(let i=0;i<90;i++){
+particles.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,vx:.4,vy:.4});
 }
+
 function animate(){
 ctx.clearRect(0,0,canvas.width,canvas.height);
 for(let i=0;i<particles.length;i++){
@@ -368,13 +362,13 @@ if(p.x>canvas.width||p.x<0)p.vx*=-1;
 if(p.y>canvas.height||p.y<0)p.vy*=-1;
 ctx.beginPath();
 ctx.arc(p.x,p.y,2,0,Math.PI*2);
-ctx.fillStyle="#00f0ff";
+ctx.fillStyle="#00e5ff";
 ctx.fill();
 for(let j=i+1;j<particles.length;j++){
 let p2=particles[j];
 let dist=Math.hypot(p.x-p2.x,p.y-p2.y);
-if(dist<120){
-ctx.strokeStyle="rgba(0,240,255,0.1)";
+if(dist<130){
+ctx.strokeStyle="rgba(0,229,255,0.08)";
 ctx.beginPath();
 ctx.moveTo(p.x,p.y);
 ctx.lineTo(p2.x,p2.y);
@@ -386,7 +380,7 @@ requestAnimationFrame(animate);
 }
 animate();
 
-/* Contact */
+/* Contact modal */
 function openContact(){document.getElementById("contact").classList.add("active");}
 function closeContact(){document.getElementById("contact").classList.remove("active");}
 </script>
