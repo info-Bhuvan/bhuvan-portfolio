@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bhuvaneshwar Bommannavar | Executive Presence</title>
-
-<meta name="description" content="Bhuvaneshwar Bommannavar - Executive Sales Leader | MBA | Real Estate & Analytics Specialist">
 
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
@@ -17,42 +15,20 @@
 --text:#e6edf3;
 }
 
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
-html{
-scroll-behavior:smooth;
-scroll-snap-type:y mandatory;
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Inter',sans-serif;
 }
+
 body{
 background:var(--bg);
 color:var(--text);
 overflow-x:hidden;
 }
 
-/* Smooth rendering */
-body, section{
-will-change:transform,opacity;
-}
-
-/* Particle background */
-canvas{
-position:fixed;
-top:0;
-left:0;
-z-index:-2;
-}
-
-/* Spotlight gradient */
-.spotlight{
-position:fixed;
-width:500px;
-height:500px;
-background:radial-gradient(circle, rgba(0,229,255,0.12), transparent 70%);
-pointer-events:none;
-transform:translate(-50%,-50%);
-z-index:-1;
-}
-
-/* Navbar */
+/* NAV */
 nav{
 position:fixed;
 top:0;
@@ -60,27 +36,22 @@ width:100%;
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:22px 8%;
-background:rgba(0,0,0,0.35);
+padding:20px 8%;
+background:rgba(0,0,0,0.4);
 backdrop-filter:blur(20px);
 z-index:1000;
 }
 
 .logo{
 font-family:'Great Vibes',cursive;
-font-size:32px;
+font-size:30px;
 color:var(--accent);
-}
-
-.nav-actions{
-display:flex;
-gap:15px;
 }
 
 .btn{
 padding:10px 24px;
-border-radius:40px;
 border:none;
+border-radius:40px;
 background:var(--accent);
 color:#000;
 font-weight:600;
@@ -89,300 +60,234 @@ transition:.3s;
 }
 
 .btn:hover{
-transform:translateY(-4px) scale(1.05);
+transform:translateY(-4px);
 box-shadow:0 10px 30px rgba(0,229,255,.4);
 }
 
-/* Sections */
+/* SECTIONS */
 section{
 min-height:100vh;
-scroll-snap-align:start;
-padding:140px 10%;
 display:flex;
 flex-direction:column;
 justify-content:center;
-opacity:0;
-transform:translateY(60px);
-transition:1.2s cubic-bezier(.16,1,.3,1);
+align-items:center;
+text-align:center;
+padding:120px 10%;
+position:relative;
 }
 
-section.active{
+/* HEADING */
+.section-title{
+font-size:clamp(32px,4vw,54px);
+cursor:pointer;
+transition:.4s;
+position:relative;
+z-index:2;
+}
+
+.section-title:hover{
+color:var(--accent);
+transform:scale(1.05);
+}
+
+/* CONTENT BOX */
+.content{
+max-width:900px;
+margin-top:40px;
+opacity:0;
+transform:translateY(20px);
+transition:.6s ease;
+pointer-events:none;
+}
+
+section:hover .content{
 opacity:1;
 transform:translateY(0);
+pointer-events:auto;
 }
 
-h1{
-font-size:clamp(28px,4vw,48px);
-margin-bottom:40px;
-letter-spacing:1px;
-}
-
+/* GLASS CARD */
 .card{
 background:var(--glass);
 backdrop-filter:blur(25px);
 padding:40px;
-border-radius:28px;
-margin-bottom:30px;
-transition:.4s;
+border-radius:25px;
+margin-bottom:25px;
 }
 
-.card:hover{
-transform:translateY(-8px);
+/* SKILLS SIMPLE GRID */
+.skills-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:20px;
 }
 
-/* Timeline */
-.timeline{
-border-left:3px solid var(--accent);
-padding-left:30px;
-}
-
-.timeline-item{
-margin-bottom:35px;
-position:relative;
-}
-
-.timeline-item::before{
-content:"";
-position:absolute;
-left:-13px;
-top:8px;
-width:16px;
-height:16px;
-background:var(--accent);
-border-radius:50%;
-}
-
-/* Skills */
-.skill{
-margin-bottom:20px;
-}
-.bar{
-height:8px;
-background:#1a2233;
+.skill-item{
+background:var(--glass);
+padding:20px;
 border-radius:20px;
-overflow:hidden;
-}
-.bar span{
-display:block;
-height:100%;
-width:0;
-background:var(--accent);
-transition:2s ease;
+transition:.3s;
 }
 
-/* Scroll progress */
-#progress{
+.skill-item:hover{
+transform:translateY(-6px);
+background:rgba(0,229,255,0.08);
+}
+
+/* PARTICLE BACKGROUND */
+canvas{
 position:fixed;
 top:0;
 left:0;
-height:4px;
-background:var(--accent);
-width:0%;
-z-index:2000;
+z-index:-1;
 }
 
-/* Contact modal */
-#contact{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,.7);
-display:flex;
-justify-content:center;
-align-items:center;
-opacity:0;
-visibility:hidden;
-transition:.4s;
-z-index:3000;
-}
-
-#contact.active{
-opacity:1;
-visibility:visible;
-}
-
-.modal{
-background:#111827;
-padding:60px;
-border-radius:30px;
-text-align:center;
-transform:scale(.8);
-transition:.4s;
-}
-
-#contact.active .modal{
-transform:scale(1);
-}
-
-/* Responsive */
+/* RESPONSIVE */
 @media(max-width:768px){
-section{padding:120px 6%;}
+.content{margin-top:25px;}
 }
 </style>
 </head>
-
 <body>
 
-<div id="progress"></div>
 <canvas id="particles"></canvas>
-<div class="spotlight" id="spotlight"></div>
 
 <nav>
 <div class="logo">Bhuvaneshwar Bommannavar</div>
-<div class="nav-actions">
-<a href="Bhuvan_Bommannavar_Resume.pdf" download><button class="btn">Download Resume</button></a>
-<button class="btn" onclick="openContact()">Contact</button>
-</div>
+<a href="Bhuvan_Bommannavar_Resume.pdf" download>
+<button class="btn">Download Resume</button>
+</a>
 </nav>
 
+<!-- EXPERIENCE -->
 <section>
-<h1>Welcome</h1>
+<h1 class="section-title">Experience</h1>
+<div class="content">
+
 <div class="card">
-👋 Welcome to my Executive Presence.<br><br>
-Sales Leadership • Analytics • Strategic Growth • Innovation.<br><br>
-Scroll to explore my journey.
+<strong>Sales Manager — Premier Real Estate Services (May 2025 – Present)</strong><br><br>
+Leading high-value residential sales strategy, revenue growth planning, team coordination, client acquisition, negotiation excellence, and deal closures while maintaining premium client experience standards.
 </div>
-</section>
 
-<section>
-<h1>Experience</h1>
-<div class="card timeline">
-<div class="timeline-item"><strong>Premier Real Estate Services</strong><br>Sales Manager (01/05/2025 – Present)</div>
-<div class="timeline-item"><strong>Sobha Ltd</strong><br>Asst Sales Manager (01/06/2024 – 28/02/2025)</div>
-<div class="timeline-item"><strong>Fly Realty</strong><br>Senior Relationship Manager (18/04/2023 – 08/05/2024)</div>
-<div class="timeline-item"><strong>Brad Realty</strong><br>Relationship Manager (21/04/2022 – 17/04/2023)</div>
-</div>
-</section>
-
-<section>
-<h1>Education</h1>
-<div class="card">MBA (Finance & Marketing) — REVA University (8.26 CGPA)</div>
-<div class="card">B.E Mechanical Engineering — HIT Nidasoshi (6.59 CGPA)</div>
-</section>
-
-<section>
-<h1>Skills</h1>
 <div class="card">
-<div class="skill">Sales & Growth<div class="bar"><span data-width="95%"></span></div></div>
-<div class="skill">Business Analytics<div class="bar"><span data-width="90%"></span></div></div>
-<div class="skill">Strategic Execution<div class="bar"><span data-width="85%"></span></div></div>
+<strong>Assistant Sales Manager — Sobha Ltd (Jun 2024 – Feb 2025)</strong><br><br>
+Handled luxury property sales, customer lifecycle management, target achievement strategy, lead conversion optimization, and CRM performance analysis.
 </div>
-</section>
 
-<section>
-<h1>Projects</h1>
 <div class="card">
-Risk Analysis in Capital Budgeting of Ethanol Plant<br>
-Multi Degree Robotic Arm<br>
-Multi Maize Thresher<br>
-Prosthetic Arm<br>
-Sasyojasa
+<strong>Senior Relationship Manager — Fly Realty (Apr 2023 – May 2024)</strong><br><br>
+Managed client portfolios, conducted financial feasibility discussions, ensured customer retention, and drove consistent monthly revenue growth.
 </div>
-</section>
 
-<section>
-<h1>Awards & Achievements</h1>
 <div class="card">
-National & State Level Paper Presentation Awards<br>
-Final Year Project Sponsored by Karnataka State Council for Science & Technology
+<strong>Relationship Manager — Brad Realty (Apr 2022 – Apr 2023)</strong><br><br>
+Handled sales funnel management, customer engagement, lead nurturing, and successful deal negotiations.
+</div>
+
 </div>
 </section>
 
+<!-- EDUCATION -->
 <section>
-<h1>Internship & Workshops</h1>
+<h1 class="section-title">Education</h1>
+<div class="content">
 <div class="card">
-Internships: P K Pumps | Agile Capital | Skillfied Mentor | Deloitte<br><br>
-Workshops: ISRO | IIM Calcutta (Data Analytics)
+MBA (Finance & Marketing) — REVA University (2020–2022) | CGPA 8.26
+</div>
+<div class="card">
+B.E Mechanical Engineering — Hirasugar Institute of Technology (2015–2019) | CGPA 6.59
+</div>
 </div>
 </section>
 
-<div id="contact">
-<div class="modal">
-<h2>Connect With Me</h2><br>
-📞 +91 8867429944<br><br>
-📧 info.bhuvaneshwar.b@gmail.com<br><br>
-<button class="btn" onclick="closeContact()">Close</button>
+<!-- SKILLS -->
+<section>
+<h1 class="section-title">Skills</h1>
+<div class="content">
+<div class="skills-grid">
+<div class="skill-item">Sales Strategy</div>
+<div class="skill-item">Revenue Growth</div>
+<div class="skill-item">Business Analytics</div>
+<div class="skill-item">Negotiation</div>
+<div class="skill-item">Client Relationship Management</div>
+<div class="skill-item">Strategic Planning</div>
+<div class="skill-item">Data Interpretation</div>
+<div class="skill-item">Leadership</div>
 </div>
 </div>
+</section>
+
+<!-- PROJECTS -->
+<section>
+<h1 class="section-title">Projects</h1>
+<div class="content">
+<div class="card">
+Risk Analysis in Capital Budgeting of Ethanol Plant — Financial feasibility & ROI study.
+</div>
+<div class="card">
+Multi Degree Robotic Arm | Multi Maize Thresher | Prosthetic Arm (21 DOF) | Sasyojasa (Plant-E)
+</div>
+</div>
+</section>
+
+<!-- AWARDS -->
+<section>
+<h1 class="section-title">Awards & Achievements</h1>
+<div class="content">
+<div class="card">
+Multiple National & State Level Paper Presentation Awards.
+</div>
+<div class="card">
+Final Year Project Sponsored by Karnataka State Council for Science & Technology.
+</div>
+</div>
+</section>
+
+<!-- INTERNSHIP -->
+<section>
+<h1 class="section-title">Internship & Workshops</h1>
+<div class="content">
+<div class="card">
+Internships: P K Pumps | Agile Capital Services | Skillfied Mentor | Deloitte Job Simulation (Data Analyst)
+</div>
+<div class="card">
+Workshops: ISRO (Engineering Subsystems in Space Technology) | IIM Calcutta (Data Analytics)
+</div>
+</div>
+</section>
 
 <script>
-/* Spotlight movement */
-document.addEventListener("mousemove",e=>{
-const s=document.getElementById("spotlight");
-s.style.left=e.clientX+"px";
-s.style.top=e.clientY+"px";
-});
-
-/* Scroll reveal */
-const sections=document.querySelectorAll("section");
-window.addEventListener("scroll",()=>{
-sections.forEach(sec=>{
-if(sec.getBoundingClientRect().top<window.innerHeight-120){
-sec.classList.add("active");
-}
-});
-});
-
-/* Skill animation */
-const bars=document.querySelectorAll(".bar span");
-window.addEventListener("scroll",()=>{
-bars.forEach(bar=>{
-if(bar.getBoundingClientRect().top<window.innerHeight){
-bar.style.width=bar.dataset.width;
-}
-});
-});
-
-/* Scroll progress */
-window.addEventListener("scroll",()=>{
-let scrollTop=document.documentElement.scrollTop;
-let height=document.documentElement.scrollHeight-document.documentElement.clientHeight;
-document.getElementById("progress").style.width=(scrollTop/height)*100+"%";
-});
-
-/* Particle system */
+/* PARTICLE SYSTEM */
 const canvas=document.getElementById("particles");
 const ctx=canvas.getContext("2d");
 canvas.width=window.innerWidth;
 canvas.height=window.innerHeight;
 
 let particles=[];
-for(let i=0;i<90;i++){
-particles.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,vx:.4,vy:.4});
+for(let i=0;i<80;i++){
+particles.push({
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+vx:(Math.random()-.5)*.5,
+vy:(Math.random()-.5)*.5
+});
 }
 
 function animate(){
 ctx.clearRect(0,0,canvas.width,canvas.height);
-for(let i=0;i<particles.length;i++){
-let p=particles[i];
-p.x+=p.vx;p.y+=p.vy;
-if(p.x>canvas.width||p.x<0)p.vx*=-1;
-if(p.y>canvas.height||p.y<0)p.vy*=-1;
+particles.forEach(p=>{
+p.x+=p.vx;
+p.y+=p.vy;
+if(p.x<0||p.x>canvas.width)p.vx*=-1;
+if(p.y<0||p.y>canvas.height)p.vy*=-1;
 ctx.beginPath();
 ctx.arc(p.x,p.y,2,0,Math.PI*2);
 ctx.fillStyle="#00e5ff";
 ctx.fill();
-for(let j=i+1;j<particles.length;j++){
-let p2=particles[j];
-let dist=Math.hypot(p.x-p2.x,p.y-p2.y);
-if(dist<130){
-ctx.strokeStyle="rgba(0,229,255,0.08)";
-ctx.beginPath();
-ctx.moveTo(p.x,p.y);
-ctx.lineTo(p2.x,p2.y);
-ctx.stroke();
-}
-}
-}
+});
 requestAnimationFrame(animate);
 }
 animate();
-
-/* Contact modal */
-function openContact(){document.getElementById("contact").classList.add("active");}
-function closeContact(){document.getElementById("contact").classList.remove("active");}
 </script>
 
 </body>
