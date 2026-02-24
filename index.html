@@ -3,16 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bhuvaneshwar Bommannavar | Executive Presence</title>
+<title>Bhuvaneshwar Bommannavar | Executive Profile</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
 :root{
---accent:#00e5ff;
---bg:#0b0f19;
---glass:rgba(255,255,255,0.06);
---text:#e6edf3;
+--bg:#0e0f11;
+--text:#ffffff;
+--muted:#a1a1aa;
+--accent:#ffffff;
 }
 
 *{
@@ -26,268 +26,262 @@ body{
 background:var(--bg);
 color:var(--text);
 overflow-x:hidden;
+line-height:1.6;
 }
 
-/* NAV */
-nav{
-position:fixed;
-top:0;
-width:100%;
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:20px 8%;
-background:rgba(0,0,0,0.4);
-backdrop-filter:blur(20px);
-z-index:1000;
+.container{
+width:90%;
+max-width:1100px;
+margin:auto;
 }
 
-.logo{
-font-family:'Great Vibes',cursive;
-font-size:30px;
-color:var(--accent);
-}
-
-.btn{
-padding:10px 24px;
-border:none;
-border-radius:40px;
-background:var(--accent);
-color:#000;
-font-weight:600;
-cursor:pointer;
-transition:.3s;
-}
-
-.btn:hover{
-transform:translateY(-4px);
-box-shadow:0 10px 30px rgba(0,229,255,.4);
-}
-
-/* SECTIONS */
 section{
+padding:140px 0;
+border-bottom:1px solid rgba(255,255,255,0.05);
+}
+
+h1{
+font-size:clamp(42px,6vw,88px);
+font-weight:800;
+letter-spacing:-2px;
+line-height:1.1;
+}
+
+h2{
+font-size:clamp(28px,4vw,40px);
+font-weight:700;
+margin-bottom:60px;
+}
+
+h3{
+font-size:20px;
+font-weight:600;
+margin-bottom:10px;
+}
+
+p{
+color:var(--muted);
+font-size:16px;
+max-width:750px;
+}
+
+.hero{
 min-height:100vh;
 display:flex;
-flex-direction:column;
-justify-content:center;
 align-items:center;
-text-align:center;
-padding:120px 10%;
-position:relative;
 }
 
-/* HEADING */
-.section-title{
-font-size:clamp(32px,4vw,54px);
-cursor:pointer;
-transition:.4s;
-position:relative;
-z-index:2;
+.hero p{
+margin-top:30px;
+font-size:20px;
+color:var(--muted);
 }
 
-.section-title:hover{
-color:var(--accent);
-transform:scale(1.05);
-}
-
-/* CONTENT BOX */
-.content{
-max-width:900px;
-margin-top:40px;
-opacity:0;
-transform:translateY(20px);
-transition:.6s ease;
-pointer-events:none;
-}
-
-section:hover .content{
-opacity:1;
-transform:translateY(0);
-pointer-events:auto;
-}
-
-/* GLASS CARD */
-.card{
-background:var(--glass);
-backdrop-filter:blur(25px);
-padding:40px;
-border-radius:25px;
-margin-bottom:25px;
-}
-
-/* SKILLS SIMPLE GRID */
-.skills-grid{
+.grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+grid-template-columns:1fr 1fr;
+gap:60px;
+}
+
+.item{
+margin-bottom:60px;
+}
+
+.small{
+color:var(--muted);
+font-size:14px;
+margin-bottom:8px;
+}
+
+.skills{
+display:flex;
+flex-wrap:wrap;
 gap:20px;
 }
 
-.skill-item{
-background:var(--glass);
-padding:20px;
-border-radius:20px;
-transition:.3s;
+.skill{
+padding:10px 18px;
+border:1px solid rgba(255,255,255,0.1);
+border-radius:50px;
+font-size:14px;
+color:var(--muted);
 }
 
-.skill-item:hover{
-transform:translateY(-6px);
-background:rgba(0,229,255,0.08);
+.fade{
+opacity:0;
+transform:translateY(40px);
+transition:all .8s cubic-bezier(.16,1,.3,1);
 }
 
-/* PARTICLE BACKGROUND */
-canvas{
-position:fixed;
-top:0;
-left:0;
-z-index:-1;
+.fade.visible{
+opacity:1;
+transform:translateY(0);
 }
 
-/* RESPONSIVE */
-@media(max-width:768px){
-.content{margin-top:25px;}
+/* MOBILE */
+@media(max-width:900px){
+.grid{
+grid-template-columns:1fr;
+gap:40px;
+}
+section{
+padding:100px 0;
+}
 }
 </style>
 </head>
 <body>
 
-<canvas id="particles"></canvas>
-
-<nav>
-<div class="logo">Bhuvaneshwar Bommannavar</div>
-<a href="Bhuvan_Bommannavar_Resume.pdf" download>
-<button class="btn">Download Resume</button>
-</a>
-</nav>
+<!-- HERO -->
+<section class="hero container fade">
+<div>
+<h1>
+Bhuvaneshwar<br>
+Bommannavar
+</h1>
+<p>
+Sales Leader. Revenue Strategist. MBA (Finance & Marketing).  
+Driving growth through data, negotiation, and strategic execution.
+</p>
+</div>
+</section>
 
 <!-- EXPERIENCE -->
-<section>
-<h1 class="section-title">Experience</h1>
-<div class="content">
+<section class="container fade">
+<h2>Experience</h2>
 
-<div class="card">
-<strong>Sales Manager — Premier Real Estate Services (May 2025 – Present)</strong><br><br>
-Leading high-value residential sales strategy, revenue growth planning, team coordination, client acquisition, negotiation excellence, and deal closures while maintaining premium client experience standards.
+<div class="item">
+<div class="small">May 2025 – Present</div>
+<h3>Sales Manager — Premier Real Estate Services</h3>
+<p>
+Leading residential sales strategy, revenue planning, client acquisition,
+high-value deal negotiations, and team coordination while maintaining
+premium customer experience standards.
+</p>
 </div>
 
-<div class="card">
-<strong>Assistant Sales Manager — Sobha Ltd (Jun 2024 – Feb 2025)</strong><br><br>
-Handled luxury property sales, customer lifecycle management, target achievement strategy, lead conversion optimization, and CRM performance analysis.
+<div class="item">
+<div class="small">Jun 2024 – Feb 2025</div>
+<h3>Assistant Sales Manager — Sobha Ltd</h3>
+<p>
+Managed luxury property sales, CRM optimization, lifecycle management,
+conversion improvement, and consistent monthly revenue targets.
+</p>
 </div>
 
-<div class="card">
-<strong>Senior Relationship Manager — Fly Realty (Apr 2023 – May 2024)</strong><br><br>
-Managed client portfolios, conducted financial feasibility discussions, ensured customer retention, and drove consistent monthly revenue growth.
+<div class="item">
+<div class="small">Apr 2023 – May 2024</div>
+<h3>Senior Relationship Manager — Fly Realty</h3>
+<p>
+Handled portfolio clients, financial discussions, retention strategy,
+and revenue growth across competitive markets.
+</p>
 </div>
 
-<div class="card">
-<strong>Relationship Manager — Brad Realty (Apr 2022 – Apr 2023)</strong><br><br>
-Handled sales funnel management, customer engagement, lead nurturing, and successful deal negotiations.
+<div class="item">
+<div class="small">Apr 2022 – Apr 2023</div>
+<h3>Relationship Manager — Brad Realty</h3>
+<p>
+Managed sales funnel, lead nurturing, negotiations, and successful deal closures.
+</p>
 </div>
 
-</div>
 </section>
 
 <!-- EDUCATION -->
-<section>
-<h1 class="section-title">Education</h1>
-<div class="content">
-<div class="card">
-MBA (Finance & Marketing) — REVA University (2020–2022) | CGPA 8.26
+<section class="container fade">
+<h2>Education</h2>
+
+<div class="grid">
+<div>
+<h3>MBA – Finance & Marketing</h3>
+<p>REVA University (2020–2022) — CGPA 8.26</p>
 </div>
-<div class="card">
-B.E Mechanical Engineering — Hirasugar Institute of Technology (2015–2019) | CGPA 6.59
+
+<div>
+<h3>B.E – Mechanical Engineering</h3>
+<p>Hirasugar Institute of Technology (2015–2019) — CGPA 6.59</p>
 </div>
 </div>
+
 </section>
 
 <!-- SKILLS -->
-<section>
-<h1 class="section-title">Skills</h1>
-<div class="content">
-<div class="skills-grid">
-<div class="skill-item">Sales Strategy</div>
-<div class="skill-item">Revenue Growth</div>
-<div class="skill-item">Business Analytics</div>
-<div class="skill-item">Negotiation</div>
-<div class="skill-item">Client Relationship Management</div>
-<div class="skill-item">Strategic Planning</div>
-<div class="skill-item">Data Interpretation</div>
-<div class="skill-item">Leadership</div>
+<section class="container fade">
+<h2>Core Skills</h2>
+
+<div class="skills">
+<div class="skill">Sales Strategy</div>
+<div class="skill">Revenue Growth</div>
+<div class="skill">Business Analytics</div>
+<div class="skill">Strategic Planning</div>
+<div class="skill">Negotiation</div>
+<div class="skill">CRM Management</div>
+<div class="skill">Leadership</div>
+<div class="skill">Data Interpretation</div>
 </div>
-</div>
+
 </section>
 
 <!-- PROJECTS -->
-<section>
-<h1 class="section-title">Projects</h1>
-<div class="content">
-<div class="card">
-Risk Analysis in Capital Budgeting of Ethanol Plant — Financial feasibility & ROI study.
+<section class="container fade">
+<h2>Projects</h2>
+
+<div class="item">
+<h3>Risk Analysis in Capital Budgeting of Ethanol Plant</h3>
+<p>Financial feasibility study evaluating investment returns and risk exposure.</p>
 </div>
-<div class="card">
-Multi Degree Robotic Arm | Multi Maize Thresher | Prosthetic Arm (21 DOF) | Sasyojasa (Plant-E)
+
+<div class="item">
+<h3>Engineering Innovations</h3>
+<p>
+Multi Degree Robotic Arm • Multi Maize Thresher • Prosthetic Arm (21 DOF) • Sasyojasa (Plant-E)
+</p>
 </div>
-</div>
+
 </section>
 
 <!-- AWARDS -->
-<section>
-<h1 class="section-title">Awards & Achievements</h1>
-<div class="content">
-<div class="card">
-Multiple National & State Level Paper Presentation Awards.
-</div>
-<div class="card">
-Final Year Project Sponsored by Karnataka State Council for Science & Technology.
-</div>
-</div>
+<section class="container fade">
+<h2>Awards & Achievements</h2>
+
+<p>
+Multiple National & State Level Paper Presentation Awards.  
+Final Year Project sponsored by Karnataka State Council for Science & Technology.
+</p>
+
 </section>
 
 <!-- INTERNSHIP -->
-<section>
-<h1 class="section-title">Internship & Workshops</h1>
-<div class="content">
-<div class="card">
-Internships: P K Pumps | Agile Capital Services | Skillfied Mentor | Deloitte Job Simulation (Data Analyst)
-</div>
-<div class="card">
-Workshops: ISRO (Engineering Subsystems in Space Technology) | IIM Calcutta (Data Analytics)
-</div>
-</div>
+<section class="container fade">
+<h2>Internship & Workshops</h2>
+
+<p>
+P K Pumps • Agile Capital Services • Skillfied Mentor • Deloitte Data Analyst Simulation  
+ISRO Workshop – Engineering Subsystems in Space Technology  
+IIM Calcutta – Data Analytics
+</p>
+
 </section>
 
 <script>
-/* PARTICLE SYSTEM */
-const canvas=document.getElementById("particles");
-const ctx=canvas.getContext("2d");
-canvas.width=window.innerWidth;
-canvas.height=window.innerHeight;
+const faders=document.querySelectorAll(".fade");
 
-let particles=[];
-for(let i=0;i<80;i++){
-particles.push({
-x:Math.random()*canvas.width,
-y:Math.random()*canvas.height,
-vx:(Math.random()-.5)*.5,
-vy:(Math.random()-.5)*.5
-});
-}
+const appearOptions={
+threshold:0.2
+};
 
-function animate(){
-ctx.clearRect(0,0,canvas.width,canvas.height);
-particles.forEach(p=>{
-p.x+=p.vx;
-p.y+=p.vy;
-if(p.x<0||p.x>canvas.width)p.vx*=-1;
-if(p.y<0||p.y>canvas.height)p.vy*=-1;
-ctx.beginPath();
-ctx.arc(p.x,p.y,2,0,Math.PI*2);
-ctx.fillStyle="#00e5ff";
-ctx.fill();
+const appearOnScroll=new IntersectionObserver(function(entries,observer){
+entries.forEach(entry=>{
+if(!entry.isIntersecting) return;
+entry.target.classList.add("visible");
+observer.unobserve(entry.target);
 });
-requestAnimationFrame(animate);
-}
-animate();
+},appearOptions);
+
+faders.forEach(fader=>{
+appearOnScroll.observe(fader);
+});
 </script>
 
 </body>
