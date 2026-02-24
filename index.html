@@ -12,9 +12,9 @@
 
 <style>
 :root{
---bg:#05070c;
+--bg:#05060a;
 --text:#ffffff;
---muted:#8b95a7;
+--muted:#8e98a8;
 --accent:#4cc9f0;
 }
 
@@ -31,19 +31,20 @@ color:var(--text);
 overflow-x:hidden;
 }
 
-/* Background gradient layer */
-.bg-gradient{
+/* ===== DYNAMIC BACKGROUND ===== */
+.bg{
 position:fixed;
 width:100%;
 height:100%;
 top:0;
 left:0;
+z-index:-1;
 background:radial-gradient(circle at 20% 30%, rgba(76,201,240,0.25), transparent 40%),
 radial-gradient(circle at 80% 70%, rgba(67,97,238,0.25), transparent 40%);
-z-index:-1;
+transition:background 1.2s ease;
 }
 
-/* Navbar */
+/* ===== NAV ===== */
 nav{
 position:fixed;
 top:0;
@@ -53,44 +54,56 @@ justify-content:space-between;
 align-items:center;
 padding:20px 8%;
 background:rgba(0,0,0,0.4);
-backdrop-filter:blur(15px);
+backdrop-filter:blur(14px);
 z-index:1000;
 }
 
+.logo{
+font-weight:700;
+letter-spacing:1px;
+}
+
+.buttons{
+display:flex;
+gap:15px;
+}
+
 .btn{
-padding:10px 22px;
+padding:10px 24px;
 border-radius:40px;
 border:1px solid rgba(255,255,255,0.2);
 background:transparent;
 color:white;
 cursor:pointer;
-transition:.3s;
+transition:.3s ease;
 }
 
 .btn:hover{
 background:var(--accent);
 color:black;
+transform:translateY(-3px);
 }
 
-/* Sections */
+/* ===== PANELS ===== */
 .panel{
-min-height:100vh;
+height:100vh;
 display:flex;
 align-items:center;
 justify-content:center;
 text-align:center;
-padding:120px 10%;
-position:relative;
+padding:0 10%;
 }
 
-.container{
+.content{
 max-width:900px;
 }
 
+/* ===== TYPOGRAPHY ===== */
 h1{
-font-size:clamp(60px,8vw,120px);
+font-size:clamp(60px,9vw,120px);
 font-weight:900;
 line-height:1.05;
+letter-spacing:-2px;
 }
 
 h2{
@@ -100,19 +113,37 @@ margin-bottom:40px;
 
 p{
 font-size:18px;
-color:var(--muted);
 line-height:1.9;
+color:var(--muted);
+}
+
+/* ===== MASK REVEAL ===== */
+.mask{
+overflow:hidden;
+display:inline-block;
+}
+
+.mask span{
+display:block;
+transform:translateY(100%);
+}
+
+/* ===== MOBILE ===== */
+@media(max-width:768px){
+.panel{
+padding:0 8%;
+}
 }
 </style>
 </head>
 
 <body>
 
-<div class="bg-gradient"></div>
+<div class="bg"></div>
 
 <nav>
-<div>Bhuvaneshwar Bommannavar</div>
-<div>
+<div class="logo">Bhuvaneshwar Bommannavar</div>
+<div class="buttons">
 <a href="Bhuvan_Bommannavar_Resume.pdf" download>
 <button class="btn">Download Resume</button>
 </a>
@@ -122,59 +153,62 @@ Contact
 </div>
 </nav>
 
+<!-- HERO -->
 <section class="panel hero">
-<div class="container">
-<h1 class="title">Bhuvaneshwar<br>Bommannavar</h1>
-<p style="margin-top:30px;">
+<div class="content">
+<div class="mask"><span><h1>Bhuvaneshwar</h1></span></div>
+<div class="mask"><span><h1>Bommannavar</h1></span></div>
+<p style="margin-top:40px;">
 MBA (Finance & Marketing). Experience in real estate sales,
-analytics and client management.
+analytics and client relationship management.
 </p>
 </div>
 </section>
 
+<!-- EXPERIENCE -->
 <section class="panel">
-<div class="container">
+<div class="content">
 <h2>Experience</h2>
 <p>
-Sales Manager — Premier Real Estate Services (2025–Present)<br>
-Assistant Sales Manager — Sobha Ltd (2024–2025)<br>
-Senior Relationship Manager — Fly Realty (2023–2024)<br>
-Relationship Manager — Brad Realty (2022–2023)
+Sales Manager – Premier Real Estate Services (2025–Present)<br><br>
+Assistant Sales Manager – Sobha Ltd (2024–2025)<br><br>
+Senior Relationship Manager – Fly Realty (2023–2024)<br><br>
+Relationship Manager – Brad Realty (2022–2023)
 </p>
 </div>
 </section>
 
+<!-- PROJECTS -->
 <section class="panel">
-<div class="container">
+<div class="content">
 <h2>Projects</h2>
 <p>
-Capital Budgeting Risk Analysis – Ethanol Plant<br>
-Multi Degree Robotic Arm<br>
-Multi Maize Thresher<br>
-Prosthetic Arm (21 DOF)<br>
+Capital Budgeting Risk Analysis – Ethanol Plant<br><br>
+Multi Degree Robotic Arm<br><br>
+Multi Maize Thresher<br><br>
+Prosthetic Arm (21 DOF)<br><br>
 Sasyojasa – Sustainable Energy Concept
 </p>
 </div>
 </section>
 
+<!-- EDUCATION -->
 <section class="panel">
-<div class="container">
-<h2>Internships & Workshops</h2>
+<div class="content">
+<h2>Education</h2>
 <p>
-P K Pumps<br>
-Agile Capital Services<br>
-Deloitte Data Analytics Simulation<br>
-ISRO – Engineering Subsystems<br>
-IIM Calcutta – Data Analytics
+MBA – Finance & Marketing<br><br>
+Bachelor of Engineering
 </p>
 </div>
 </section>
 
+<!-- CONTACT -->
 <section class="panel" id="contact">
-<div class="container">
+<div class="content">
 <h2>Contact</h2>
 <p>
-Email: info.bhuvaneshwar.b@gmail.com<br>
+Email: info.bhuvaneshwar.b@gmail.com<br><br>
 Phone: +91 8867429944
 </p>
 </div>
@@ -183,36 +217,41 @@ Phone: +91 8867429944
 <script>
 gsap.registerPlugin(ScrollTrigger);
 
-/* Hero animation */
-gsap.from(".title",{
-y:120,
-opacity:0,
+/* Mask reveal animation */
+gsap.to(".mask span",{
+y:0,
 duration:1.6,
-ease:"power4.out"
+ease:"power4.out",
+stagger:.2
 });
 
-/* Panel animations */
+/* Section pin + fade */
 gsap.utils.toArray(".panel").forEach(panel=>{
-gsap.from(panel.querySelector(".container"),{
-y:100,
+gsap.from(panel.querySelector(".content"),{
 opacity:0,
+y:100,
 duration:1.2,
 ease:"power3.out",
 scrollTrigger:{
 trigger:panel,
-start:"top 70%",
+start:"top 70%"
 }
 });
 });
 
-/* Background parallax */
-gsap.to(".bg-gradient",{
-y:-200,
-ease:"none",
-scrollTrigger:{
-trigger:".panel",
-scrub:true
+/* Background morph per section */
+const bg=document.querySelector(".bg");
+gsap.utils.toArray(".panel").forEach((panel,i)=>{
+ScrollTrigger.create({
+trigger:panel,
+start:"top center",
+onEnter:()=>{
+bg.style.background=
+i%2===0
+? "radial-gradient(circle at 20% 30%, rgba(76,201,240,0.3), transparent 40%), radial-gradient(circle at 80% 70%, rgba(67,97,238,0.3), transparent 40%)"
+: "radial-gradient(circle at 30% 40%, rgba(114,9,183,0.3), transparent 40%), radial-gradient(circle at 70% 60%, rgba(72,149,239,0.3), transparent 40%)";
 }
+});
 });
 </script>
 
