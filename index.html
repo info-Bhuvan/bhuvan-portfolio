@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bhuvaneshwar Bommannavar | Profile</title>
+<title>Bhuvaneshwar Bommannavar | Executive Profile</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 *{
@@ -17,7 +17,7 @@ scroll-behavior:smooth;
 }
 
 body{
-background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);
+background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
 color:white;
 overflow-x:hidden;
 }
@@ -30,24 +30,24 @@ width:100%;
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:20px 50px;
-z-index:1000;
-background:rgba(0,0,0,0.2);
+padding:20px 8%;
+background:rgba(0,0,0,0.3);
 backdrop-filter:blur(10px);
+z-index:1000;
 }
 
 .logo{
 font-family:'Great Vibes',cursive;
 font-size:28px;
-font-weight:bold;
 color:#00f5ff;
+font-weight:bold;
 }
 
 .nav-buttons button{
 margin-left:15px;
 padding:8px 18px;
 border:none;
-border-radius:20px;
+border-radius:25px;
 background:#00f5ff;
 color:black;
 cursor:pointer;
@@ -59,16 +59,21 @@ transition:0.3s;
 background:white;
 }
 
-/* SECTION BASE */
+/* SECTION */
 section{
 min-height:100vh;
-padding:120px 10% 80px 10%;
+padding:120px 10%;
 display:flex;
 flex-direction:column;
 justify-content:center;
 }
 
-/* WELCOME */
+h1{
+font-size:32px;
+margin-bottom:30px;
+}
+
+/* Welcome */
 #welcome{
 text-align:center;
 position:relative;
@@ -76,56 +81,49 @@ overflow:hidden;
 }
 
 #welcome h1{
-font-size:40px;
-line-height:1.5;
-animation:fadeIn 2s ease;
+font-size:38px;
+line-height:1.6;
 }
 
-/* 3D floating balls */
+/* Floating 3D bubbles */
 .bubble{
 position:absolute;
 border-radius:50%;
-background:rgba(0,255,255,0.15);
-animation:float 10s infinite ease-in-out;
+background:rgba(0,255,255,0.12);
+animation:float 12s infinite ease-in-out;
 }
 
 @keyframes float{
-0%{transform:translateY(0px) rotate(0deg);}
+0%{transform:translateY(0) rotate(0deg);}
 50%{transform:translateY(-40px) rotate(180deg);}
-100%{transform:translateY(0px) rotate(360deg);}
+100%{transform:translateY(0) rotate(360deg);}
 }
 
-@keyframes fadeIn{
-from{opacity:0; transform:translateY(20px);}
-to{opacity:1; transform:translateY(0);}
-}
-
-/* PALLETS */
+/* Pallets */
 .pallet-container{
 display:flex;
 flex-wrap:wrap;
 gap:20px;
-margin-top:40px;
+margin-bottom:40px;
 }
 
 .pallet{
-flex:1 1 250px;
-padding:20px;
+padding:18px 25px;
 background:rgba(255,255,255,0.05);
-backdrop-filter:blur(10px);
 cursor:pointer;
-transition:0.4s;
 border-radius:12px;
+transition:0.4s;
 }
 
 .pallet:hover{
-transform:translateY(-5px) scale(1.03);
-background:rgba(0,255,255,0.15);
+background:rgba(0,255,255,0.2);
+transform:translateY(-5px);
 }
 
+/* Details */
 .details{
-margin-top:40px;
-animation:fadeIn 0.6s ease;
+margin-top:20px;
+line-height:1.8;
 }
 
 .details h2{
@@ -134,23 +132,22 @@ margin-bottom:20px;
 }
 
 .details h3{
-margin-top:20px;
+margin-top:25px;
 font-weight:600;
 }
 
 .details p{
 margin-top:8px;
-line-height:1.6;
 font-weight:300;
 }
 
 /* Responsive */
 @media(max-width:768px){
-nav{
-padding:15px 20px;
-}
 #welcome h1{
 font-size:24px;
+}
+nav{
+padding:15px 5%;
 }
 }
 </style>
@@ -168,7 +165,7 @@ font-size:24px;
 </div>
 </nav>
 
-<!-- WELCOME -->
+<!-- 1. WELCOME -->
 <section id="welcome">
 <h1>
 👋 Heyy, Welcome to my Profile <br>
@@ -177,43 +174,47 @@ If you find this interesting feel free to connect with me ✨
 </h1>
 
 <div class="bubble" style="width:120px;height:120px;top:20%;left:10%;"></div>
-<div class="bubble" style="width:80px;height:80px;top:60%;left:80%;animation-duration:12s;"></div>
-<div class="bubble" style="width:150px;height:150px;top:40%;left:50%;animation-duration:14s;"></div>
+<div class="bubble" style="width:90px;height:90px;top:60%;left:80%;animation-duration:14s;"></div>
+<div class="bubble" style="width:150px;height:150px;top:40%;left:50%;animation-duration:16s;"></div>
 </section>
 
-<!-- SECTION 2 -->
+<!-- 2. PROFESSIONAL -->
 <section>
 <h1>Professional Overview</h1>
 
 <div class="pallet-container">
-<div class="pallet" onclick="showDetails('objective')">Objective</div>
-<div class="pallet" onclick="showDetails('skills')">Skills</div>
-<div class="pallet" onclick="showDetails('experience')">Experience</div>
-<div class="pallet" onclick="showDetails('education')">Education</div>
+<div class="pallet" onclick="showContent('objective','section2')">Objective</div>
+<div class="pallet" onclick="showContent('skills','section2')">Skills</div>
+<div class="pallet" onclick="showContent('experience','section2')">Experience</div>
+<div class="pallet" onclick="showContent('education','section2')">Education</div>
 </div>
 
-<div id="details" class="details"></div>
+<div id="section2" class="details"></div>
 </section>
 
-<!-- SECTION 3 -->
+<!-- 3. ACHIEVEMENTS & PROJECTS -->
 <section>
 <h1>Achievements & Projects</h1>
 
 <div class="pallet-container">
-<div class="pallet" onclick="showDetails('awards')">Awards & Achievements</div>
-<div class="pallet" onclick="showDetails('projects')">Projects</div>
+<div class="pallet" onclick="showContent('awards','section3')">Awards & Achievements</div>
+<div class="pallet" onclick="showContent('projects','section3')">Projects</div>
 </div>
+
+<div id="section3" class="details"></div>
 </section>
 
-<!-- SECTION 4 -->
+<!-- 4. CERTIFICATIONS & LEARNING -->
 <section>
 <h1>Certifications & Learning</h1>
 
 <div class="pallet-container">
-<div class="pallet" onclick="showDetails('certifications')">Certifications</div>
-<div class="pallet" onclick="showDetails('internship')">Internship</div>
-<div class="pallet" onclick="showDetails('workshop')">Workshop</div>
+<div class="pallet" onclick="showContent('certifications','section4')">Certifications</div>
+<div class="pallet" onclick="showContent('internship','section4')">Internship</div>
+<div class="pallet" onclick="showContent('workshop','section4')">Workshop</div>
 </div>
+
+<div id="section4" class="details"></div>
 </section>
 
 <script>
@@ -221,187 +222,96 @@ function contactMe(){
 alert("Phone: +91 8867429944\nEmail: info.bhuvaneshwar.b@gmail.com");
 }
 
-function showDetails(type){
-const details=document.getElementById("details");
-details.innerHTML="";
+function showContent(type, sectionId){
+const container = document.getElementById(sectionId);
+container.innerHTML = "";
 
-if(type==="objective"){
-details.innerHTML=`
+const content = {
+
+objective: `
 <h2>Objective</h2>
 <p>Results-driven sales professional with over 3 years of experience in real estate, specializing in sales and marketing across builder and channel partner networks. Skilled at leveraging strong interpersonal abilities alongside data analytics tools such as Excel, SQL, Tableau, and Power BI to drive strategic decision-making and enhance business performance. Seeking to contribute this blend of sales expertise and analytical capability to a dynamic, growth-oriented organization.</p>
-`;
-}
+`,
 
-if(type==="skills"){
-details.innerHTML=`
+skills: `
 <h2>Skills</h2>
 <p>Pursuing Python, Statistics for Data Analysis, SQL, Power BI, Tableau, MS Excel and Gen AI for Data Analysis.</p>
 <p>Real time problem solving techniques.</p>
 <p>Good team player and adaptable to new working environment.</p>
 <p>Punctual, optimistic and goal oriented.</p>
-`;
-}
+`,
 
-if(type==="experience"){
-details.innerHTML=`
+experience: `
 <h2>Experience</h2>
-
 <h3>Premier Real Estate Services (01/05/2025 – Present)</h3>
 <p>Sales Manager</p>
-
 <h3>Sobha Ltd (01/06/2024 – 28/02/2025)</h3>
 <p>Asst Sales Manager</p>
-
 <h3>Fly Realty (18/04/2023 – 08/05/2024)</h3>
 <p>Senior Relationship Manager</p>
-
 <h3>Brad Realty (21/04/2022 – 17/04/2023)</h3>
 <p>Relationship Manager</p>
-`;
-}
+`,
 
-if(type==="education"){
-details.innerHTML=`
+education: `
 <h2>Education</h2>
+<h3>MBA (Finance & Marketing)</h3>
+<p>REVA University, Bangalore | 2020–2022 | 8.26 CGPA</p>
+<h3>B.E Mechanical Engineering</h3>
+<p>Hirasugar Institute of Technology, Nidasoshi | 2015–2019 | 6.59 CGPA</p>
+<h3>Pre University</h3>
+<p>M.G.V P U College, Belagavi | 2013–2015 | 53%</p>
+<h3>Karnataka Secondary Education</h3>
+<p>K.R.C.E.S English Medium School, Bailhongal | 2012–2013 | 71%</p>
+`,
 
-<h3>Master of Business Administration (Finance & Marketing)</h3>
-<p>REVA University, Bangalore</p>
-<p>2020 – 2022 | 8.26 CGPA</p>
-
-<h3>B.E in Mechanical Engineering</h3>
-<p>Hirasugar Institute of Technology, Nidasoshi</p>
-<p>2015 – 2019 | 6.59 CGPA</p>
-
-<h3>Pre University Board</h3>
-<p>M.G.V P U College, Belagavi</p>
-<p>2013 – 2015 | 53%</p>
-
-<h3>Karnataka Secondary Education Board</h3>
-<p>K.R.C.E.S English Medium School, Bailhongal</p>
-<p>2012 – 2013 | 71%</p>
-`;
-}
-
-function showDetails(type){
-const details=document.getElementById("details");
-details.innerHTML="";
-
-if(type==="awards"){
-details.innerHTML=`
+awards: `
 <h2>Awards & Achievements</h2>
-
-<h3>National Level Paper Presentation Competition</h3>
-
-<p><strong>1st Prize</strong><br>
-Hirasugar Institute of Technology, Nidasoshi, Belagavi<br>
-Organized by Mechanical Department AIMSS Committee<br>
-16th March 2018 (Departmental Level)</p>
-
-<p><strong>3rd Prize</strong><br>
-Shaikh College of Engineering, Belagavi – "JIGYASA"<br>
-Mechanical Department<br>
-6th & 7th April 2018 (National Level)</p>
-
-<p><strong>1st Prize</strong><br>
-Shaikh College of Engineering, Belagavi – "JIGYASA"<br>
-Mechanical Department<br>
-12th & 13th October 2018 (National Level)</p>
-
-<p><strong>3rd Prize</strong><br>
-Maratha Mandal Engineering College, Belagavi – "OJAS"<br>
-Mechanical Department<br>
-24th & 25th April 2018 (National Level)</p>
-
-<p><strong>3rd Prize</strong><br>
-Hirasugar Institute of Technology, Nidasoshi – "QUEST"<br>
-Electrical & Electronics Department AIMSS<br>
-25th March 2019 (National Level)</p>
-
-<p><strong>3rd Prize</strong><br>
-State Level Project Exhibition – "SHRISHTI 2K18"<br>
-Organized by ABVP, Bangalore<br>
-22nd & 24th May 2018 (State Level)</p>
-
-<p><strong>Final Year Project Sponsored</strong><br>
-Karnataka State Council for Science and Technology<br>
-Under 42nd Series of Project Schemes (2018–19)</p>
-
+<p>Multiple 1st & 3rd prizes in National Level Paper Presentation Competitions across Hirasugar Institute, Shaikh College (JIGYASA), Maratha Mandal (OJAS), and QUEST competitions.</p>
+<p>3rd Prize – SHRISHTI 2K18 State Level Project Exhibition, Bangalore.</p>
+<p>Final Year Project Sponsored by Karnataka State Council for Science and Technology (2018–19).</p>
 <p>Participated in various other competitions.</p>
-`;
-}
+`,
 
-if(type==="projects"){
-details.innerHTML=`
+projects: `
 <h2>Projects</h2>
-
-<h3>A Study on Risk Analysis in Capital Budgeting of Ethanol Plant</h3>
-<p>Shri Someshwar Sakkare Kharkhane Niyamit, Bailhongal</p>
-<p>Analyzed capital budgeting inputs using probability approach, sensitivity approach and various other risk evaluation methods to calculate return on investment of ethanol plant in sugar industry. Delivered structured analysis and conclusion to the respective industry. (Duration: 3 Months)</p>
-
+<h3>Risk Analysis in Capital Budgeting of Ethanol Plant</h3>
+<p>Analyzed risk and return using probability and sensitivity approaches. Duration: 3 Months.</p>
 <h3>Multi Degree of Freedom Robotic Arm</h3>
-<p>Designed and developed a robotic arm based on mechanical and robotics fundamentals. Created simplified operational usability enabling easy handling even for less experienced operators. (Duration: 3 Months)</p>
-
+<p>Developed simplified robotics model. Duration: 3 Months.</p>
 <h3>Multi Maize Thresher</h3>
-<p>Developed an efficient corn threshing machine reducing time and effort. Included multi-functional capability such as generating power for 10–20W bulb and integrated grinding tool for sharpening equipment. (Duration: 1 Month)</p>
-
+<p>Designed multi-functional agricultural machine. Duration: 1 Month.</p>
 <h3>Prosthetic Arm</h3>
-<p>Designed a biological-mechanical extension arm with 21 Degrees of Freedom to replicate human hand precision for amputees. (Duration: 2 Weeks)</p>
-
+<p>Biological-mechanical arm with 21 DOF. Duration: 2 Weeks.</p>
 <h3>Sasyojasa (Plant-E)</h3>
-<p>Conceptualized acid battery development using alkaline matter extracted from plant roots applying engineering techniques. (Duration: 2 Weeks)</p>
-`;
-}
+<p>Plant-based acid battery concept. Duration: 2 Weeks.</p>
+`,
 
-if(type==="certifications"){
-details.innerHTML=`
+certifications: `
 <h2>Certifications</h2>
+<p>Certified in Microsoft Excel (Advanced)</p>
+<p>Certified in Business Analytics using Microsoft Excel</p>
+<p>Certified in Business Analytics using Power BI</p>
+`,
 
-<h3>Certified in Microsoft Excel (Advanced)</h3>
-<p>Advanced data formulation using formulas, functions, pivot tables, pivot charts, macros and VBA. Designed interactive Excel dashboards for professional data presentation.</p>
-
-<h3>Certified in Business Analytics using Microsoft Excel</h3>
-<p>Applied statistical functions and business research formulas in Excel to analyze structured datasets and present analytical insights.</p>
-
-<h3>Certified in Business Analytics using Power BI</h3>
-<p>Used Power BI for advanced data modeling, visualization and strategic presentation to support management decision-making processes.</p>
-`;
-}
-
-if(type==="internship"){
-details.innerHTML=`
+internship: `
 <h2>Internship</h2>
+<p>P K Pumps and Precicast Pvt Ltd – Industrial Intern</p>
+<p>Agile Capital Services – Project Intern (BFSI Sector)</p>
+<p>Skillfied Mentor – Excel & Power BI</p>
+<p>Deloitte – Job Simulation Data Analyst</p>
+`,
 
-<h3>P K Pumps and Precicast Pvt Ltd</h3>
-<p>Kupwad MIDC, Sangli</p>
-<p>Worked as an Intern gaining exposure to industrial operations.</p>
-
-<h3>Agile Capital Services</h3>
-<p>BFSI Sector – 2 Months</p>
-<p>Worked as Project Intern handling sector-based financial exposure.</p>
-
-<h3>Skillfied Mentor</h3>
-<p>Worked as an Intern on Excel and Power BI for banking medical insurance analytics.</p>
-
-<h3>Deloitte – Job Simulation Data Analyst</h3>
-<p>Industrial project based on operations and decision-making using Excel and Tableau for structured analysis.</p>
-`;
-}
-
-if(type==="workshop"){
-details.innerHTML=`
+workshop: `
 <h2>Workshop</h2>
+<p>ISRO – Engineering Subsystems in Space Technology</p>
+<p>IIM Calcutta – Data Analytics (In association with REVA University)</p>
+`
+};
 
-<h3>ISRO</h3>
-<p>1 Day Workshop – Engineering Subsystems in Space Technology</p>
-
-<h3>IIM Calcutta (In association with REVA University, Bangalore)</h3>
-<p>2 Day Workshop – Data Analytics</p>
-`;
-}
+container.innerHTML = content[type];
 }
 </script>
 
 </body>
 </html>
-
-
