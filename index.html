@@ -282,60 +282,121 @@ details.innerHTML=`
 `;
 }
 
+<script>
+function showDetails(type){
+const details=document.getElementById("details");
+details.innerHTML="";
+
 if(type==="awards"){
 details.innerHTML=`
 <h2>Awards & Achievements</h2>
-<p>National Level Paper Presentation Competition – Multiple 1st & 3rd Prizes</p>
-<p>3rd Prize – SHRISHTI 2K18 State Level Project Exhibition, Bangalore</p>
-<p>Final Year Project Sponsored by Karnataka State Council for Science and Technology (2018-19)</p>
-<p>Participated in various other competitions</p>
+
+<h3>National Level Paper Presentation Competition</h3>
+
+<p><strong>1st Prize</strong><br>
+Hirasugar Institute of Technology, Nidasoshi, Belagavi<br>
+Organized by Mechanical Department AIMSS Committee<br>
+16th March 2018 (Departmental Level)</p>
+
+<p><strong>3rd Prize</strong><br>
+Shaikh College of Engineering, Belagavi – "JIGYASA"<br>
+Mechanical Department<br>
+6th & 7th April 2018 (National Level)</p>
+
+<p><strong>1st Prize</strong><br>
+Shaikh College of Engineering, Belagavi – "JIGYASA"<br>
+Mechanical Department<br>
+12th & 13th October 2018 (National Level)</p>
+
+<p><strong>3rd Prize</strong><br>
+Maratha Mandal Engineering College, Belagavi – "OJAS"<br>
+Mechanical Department<br>
+24th & 25th April 2018 (National Level)</p>
+
+<p><strong>3rd Prize</strong><br>
+Hirasugar Institute of Technology, Nidasoshi – "QUEST"<br>
+Electrical & Electronics Department AIMSS<br>
+25th March 2019 (National Level)</p>
+
+<p><strong>3rd Prize</strong><br>
+State Level Project Exhibition – "SHRISHTI 2K18"<br>
+Organized by ABVP, Bangalore<br>
+22nd & 24th May 2018 (State Level)</p>
+
+<p><strong>Final Year Project Sponsored</strong><br>
+Karnataka State Council for Science and Technology<br>
+Under 42nd Series of Project Schemes (2018–19)</p>
+
+<p>Participated in various other competitions.</p>
 `;
 }
 
 if(type==="projects"){
 details.innerHTML=`
 <h2>Projects</h2>
-<h3>Risk Analysis in Capital Budgeting of Ethanol Plant</h3>
-<p>Analyzed capital budgeting inputs using probability and sensitivity approaches to calculate risk and return.</p>
+
+<h3>A Study on Risk Analysis in Capital Budgeting of Ethanol Plant</h3>
+<p>Shri Someshwar Sakkare Kharkhane Niyamit, Bailhongal</p>
+<p>Analyzed capital budgeting inputs using probability approach, sensitivity approach and various other risk evaluation methods to calculate return on investment of ethanol plant in sugar industry. Delivered structured analysis and conclusion to the respective industry. (Duration: 3 Months)</p>
 
 <h3>Multi Degree of Freedom Robotic Arm</h3>
-<p>Designed a robotic arm with simplified operational usability.</p>
+<p>Designed and developed a robotic arm based on mechanical and robotics fundamentals. Created simplified operational usability enabling easy handling even for less experienced operators. (Duration: 3 Months)</p>
 
 <h3>Multi Maize Thresher</h3>
-<p>Efficient corn threshing machine with multi-functional capabilities.</p>
+<p>Developed an efficient corn threshing machine reducing time and effort. Included multi-functional capability such as generating power for 10–20W bulb and integrated grinding tool for sharpening equipment. (Duration: 1 Month)</p>
 
 <h3>Prosthetic Arm</h3>
-<p>Biological-mechanical arm with 21 DOF for enhanced accuracy.</p>
+<p>Designed a biological-mechanical extension arm with 21 Degrees of Freedom to replicate human hand precision for amputees. (Duration: 2 Weeks)</p>
 
 <h3>Sasyojasa (Plant-E)</h3>
-<p>Innovative acid battery concept using alkaline matter from plants.</p>
+<p>Conceptualized acid battery development using alkaline matter extracted from plant roots applying engineering techniques. (Duration: 2 Weeks)</p>
 `;
 }
 
 if(type==="certifications"){
 details.innerHTML=`
 <h2>Certifications</h2>
-<p>Certified in Microsoft Excel (Advanced)</p>
-<p>Certified in Business Analytics using Microsoft Excel</p>
-<p>Certified in Business Analytics using Power BI</p>
+
+<h3>Certified in Microsoft Excel (Advanced)</h3>
+<p>Advanced data formulation using formulas, functions, pivot tables, pivot charts, macros and VBA. Designed interactive Excel dashboards for professional data presentation.</p>
+
+<h3>Certified in Business Analytics using Microsoft Excel</h3>
+<p>Applied statistical functions and business research formulas in Excel to analyze structured datasets and present analytical insights.</p>
+
+<h3>Certified in Business Analytics using Power BI</h3>
+<p>Used Power BI for advanced data modeling, visualization and strategic presentation to support management decision-making processes.</p>
 `;
 }
 
 if(type==="internship"){
 details.innerHTML=`
 <h2>Internship</h2>
-<p>P K Pumps and Precicast Pvt Ltd – Intern</p>
-<p>Agile Capital Services – Project Intern (BFSI Sector)</p>
-<p>Skillfied Mentor – Excel & Power BI</p>
-<p>Deloitte – Job Simulation Data Analyst</p>
+
+<h3>P K Pumps and Precicast Pvt Ltd</h3>
+<p>Kupwad MIDC, Sangli</p>
+<p>Worked as an Intern gaining exposure to industrial operations.</p>
+
+<h3>Agile Capital Services</h3>
+<p>BFSI Sector – 2 Months</p>
+<p>Worked as Project Intern handling sector-based financial exposure.</p>
+
+<h3>Skillfied Mentor</h3>
+<p>Worked as an Intern on Excel and Power BI for banking medical insurance analytics.</p>
+
+<h3>Deloitte – Job Simulation Data Analyst</h3>
+<p>Industrial project based on operations and decision-making using Excel and Tableau for structured analysis.</p>
 `;
 }
 
 if(type==="workshop"){
 details.innerHTML=`
 <h2>Workshop</h2>
-<p>ISRO – Engineering Subsystems in Space Technology</p>
-<p>IIM Calcutta (with REVA University) – Data Analytics</p>
+
+<h3>ISRO</h3>
+<p>1 Day Workshop – Engineering Subsystems in Space Technology</p>
+
+<h3>IIM Calcutta (In association with REVA University, Bangalore)</h3>
+<p>2 Day Workshop – Data Analytics</p>
 `;
 }
 }
@@ -343,3 +404,4 @@ details.innerHTML=`
 
 </body>
 </html>
+
